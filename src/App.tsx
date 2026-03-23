@@ -5,19 +5,62 @@ import { useState } from "react";
 
 
 const sections = [
-  { title: "Elysian Code - Phase 1", phase: "cave", text: ["Users first experience starts in a 3D cave, accessed through a website"],     image: "/cave1.png" },
+  { title: "Code-L Phase 1 - a 3D meta-verse, with an ongoing mythos", phase: "cave", text: ["Users first experience the mythos and alternative world of Code-L, through inside a 3D cave, accessed through a website."],     image: "/cave1.png" },
   { title: "The Cave", phase: "cave", text: ["Once a player is inside, they can control an avatar.", "You are not alone. Other online participants will be there with you.", "Each player has the same looking avatar but different usernames and a chat bubble to chat to all."], image: "/cave-avatars.png"  },
-{ title: "Backstory - Ahriman's plan", phase: "cave", text: ["These caves have been designed by Ahriman to trap humans inside systems which they cannot escape. Deceiving them with a false idea of reality, he holds them prisoners."], image: "/Ahriman.png"  },
+  { title: "GamePlay", phase: "cave", text: ["Players can view screen from first perspective and move their characters to interact with environment and other online players..", ], image: "/firstperspective.png"  },
+  { title: "Backstory - Ahriman's plan", phase: "cave", text: ["These caves have been designed by Ahriman to trap humans inside systems which they cannot escape. Deceiving them with a false idea of reality, he holds them prisoners."], image: "/Ahriman.png"  },
 { title: "The Puppeteer", phase: "cave", text: ["controlled by a person in ElCode from backend, puppeteer speaks of safety inside the cave and chaos outside..", "She maintains order and calms the participants."] ,image: "/cave-puppeteer.png"},
-  { title: "The Blue Device", phase: "cave", text: ["With events posted by us on backend explaining events happening in mythos Code-L, from an Ahriman perspective."],image: "/cave-bluedevice.png" },
+  { title: "The Blue Device", phase: "cave", text: ["A live feed of events posted by puppeteers from backend explaining events happening in mythos Code-L, from an Ahriman perspective."],image: "/cave-bluedevice.png" },
   { title: "The Ritual", phase: "cave", text: ["At certain moments the puppeteer may invite prisoners to follow her toward a dark dungeon located at the back of the cave.",
 "Participants who follow enter a ritual space.",
 "Within the dungeon a disturbing ceremony unfolds:",
 "Prisoners are bound to chains while the sound of wolves echoes through the chamber. They can no longer move their characters and are bounded to what is happening.",
 "The ritual builds in intensity through music and sound as shadows move through the darkness.", "The wolves start coming with a lead cunty singer as their leader."] ,image: "/chained.png"},
-{ title: "Ritual Leader", phase: "cave", text: ["A cunty individual to host the ritual where she sings and players watch as their bodies are being eaten by wolves. they can move their heads to look, but not move their bodies. They end up dying."], image: "/dominatrix.png" },
-  { title: "Phase 2 -The Escape: June 1st", phase: "escape", text: ["The wall breaks open.", "Ellys steps in and performs a song, giving option for prisoners to join him on a boat to ELSPARK for an escape from Ahriman's trap."] , video:"/escape.avi"},
-  { title: "The  Boat", phase: "escape", text: ["Players who join Ellys board on the boat and sail to island of Pandora, to join ELSPARK."] , image:"/boat.png"},
+{ title: "Ritual Leader", phase: "cave", text: ["A cunty individual hosts the ritual where she sings and players watch as their bodies are being eaten by wolves. they can move their heads to look, but not move their bodies. They end up dying. A lived in music video."], image: "/dominatrix.png" },
+  { title: "Phase 2 -The Escape: June 1st", phase: "escape", text: ["The wall breaks open.", "Ellys steps in and performs a song, giving option for prisoners to join him to ELSPARK and escape from Ahriman's trap."] , video:"/escape.avi"},
+  { title: "my heart cant take another bleed", phase: "escape",     text: ["“my heart cant take another bleed.”. (ACT II, track 6)"],lyrics:[
+"verse 1:“urgency! my heart cant take another bleed.",
+"Ahriman’s war, threatens to kill our inner kids.",
+"urgency! a scar she stabbed for my blood to freeze.",
+"Bases she built on my heart, without my permit.” ", 
+"verse 2: “dizzy boy I thought I found her" ,
+"the one to be with me when it darkens.",
+"foolish of me to trust the puppeteer.",
+"this cave we need to leave she sold us the wrong idea.",
+
+"my hand i extend to the monarch inside",
+"ego laid the soil for the self now to drive.",
+"foolish of me to let you inside my gear,",
+"we could had sailled away, the sea feels so sincere.",
+
+"verse 3: “I strip myself from all my fears.",
+"I choose to escape, to this trap I will not adhere.",
+"they are lying to you, Ahriman, and his wolves are here.",
+"come come escape with me away from the slaughter. mental guillotina. ",
+
+"verse 4: “Our attention turned into a mechanical coil",
+"we cant speak from God, our brains have no choice.",
+"I refuse to stay, to an algorithm to obey.",
+"where does the surplus go why do I have to slave, for the wolves to eat the cake?",
+"power to the people, a laocratic world.",
+"we dont need violence, we need new ecosystems.",
+"we need infrastructures to distribute gold.",
+"then ahriman has no worth, then ahriman has no worth",
+
+"verse 5: light a spark and throw it down my spine,",
+"you can start a wildfire when you smile.",
+"melt my heart, posses me if you want me",
+"I try to lift the anchor, my hand you are holding",
+"how can we sail to a new life to a system I dont believe in, I wont oblige.",
+"I choose not to stay to this cave here to hide.",
+"my hand let go, I choose to take control",
+"the wheel i rotated, I lift the anchor for the sea I sail",
+"looking for a new world, i welcome you to come with me ",
+"the tides we face but we stay still, whether you come or not, ",
+"I will still go, thank you for the lessons you have given me,",
+"my heart cant bleed no more."] , audio: "/MHCTAB18.wav",},
+  
+  { title: "The  Boat", phase: "escape", text: ["Players who join Ellys, board on the boat and sail to island of Pandora, arriving on ELSPARK."] , image:"/boat.png"},
 
   { title: "ELSPARK 3D", phase: "elspark", text: ["A new decentralised world emerges on the island of Pandora.", "An extension of elspark.online, but on a 3D world with every user having their own avatar"], image:"/ELSPARK.png" },
   { title: "ELSPARK Theatre", phase: "elspark", text: ["They are imemdiately guided to ELSPARK Theatre where, Ellys takes on the stage.","when the lights dim and curtains open, he reveals a screen"], image:"/ELSPARKTheatre.png" },
@@ -51,29 +94,45 @@ export default function App() {
   
     <div className={`app ${section.phase}`}>
     <div className="tv">
-      <div className="content">
-        <div className="card">
-          <h1 className="cardh ">{section.title}</h1>
-          {section.text.map((line, i) => (
-            <p className=" text-font "key={i}>{line}</p>
+  <div className="content">
+    <div className="card">
+      <h1 className="cardh">{section.title}</h1>
+      {section.text.map((line, i) => (
+        <p className="text-font" key={i}>{line}</p>
+      ))}
+      
+      {/* LYRICS */}
+      {section.lyrics && (
+        <div className="lyrics-section">
+          <h3>Lyrics</h3>
+          {section.lyrics.map((line, i) => (
+            <p className="lyrics-line" key={i}>{line}</p>
           ))}
         </div>
-      </div>
-  
-      {section.image && (
-        <img src={section.image} className="bg-image" />
-      )}
-  
-      {section.video && (
-        <video
-          className="bg-video"
-          autoPlay
-          loop
-          muted
-          src={section.video}
-        />
       )}
     </div>
+  </div>
+
+  {/* IMAGE/VIDEO */}
+  {section.image && <img src={section.image} className="bg-image" />}
+  {section.video && (
+    <video className="bg-video" autoPlay loop muted src={section.video} />
+  )}
+
+  {/* AUDIO PLAYER */}
+  {section.audio && (
+    <div className="audio-player">
+      <audio 
+        controls 
+        src={section.audio}
+        className="draft-audio"
+      >
+        Your browser doesn't support audio.
+      </audio>
+    </div>
+  )}
+</div>
+
   
     <div className="controls">
       <button onClick={prev}>Back</button>

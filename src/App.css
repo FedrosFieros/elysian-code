@@ -14,135 +14,137 @@ body {
   color: white;
 }
 
-/* APP FULLSCREEN */
+/* APP CONTAINER */
 .app {
   height: 100vh;
   width: 100vw;
   display: flex;
-  flex-direction: column;   /* TV + controls */
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-/* PHASE BACKGROUNDS */
-.app.cave {
-  background: radial-gradient(circle, #111, #000);
-}
-
-.app.escape {
-  background: black;
-}
-
-.app.elspark {
-  background: linear-gradient(to top, #001f3f, #0077ff);
-}
-
-/* TV AREA – FULL WIDTH, RESPONSIVE HEIGHT */
-.tv {
-  position: relative;
-  width: 100vw;
-  height: min(70vh, 56.25vw);  /* keep ~16:9, shrink on small screens */
-  overflow: hidden;
-  background: #000;
-}
-
-/* BACKGROUND IMAGE / VIDEO FILLS TV */
-.bg-image,
-.bg-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-    /* shrink proportionally */
-}
-
-/* OVERLAY */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
-
-/* CENTER CONTENT */
-.content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  
-  display: flex;
-  align-items: center;      /* vertical center */
-  justify-content: center;  /* horizontal center */
-  padding: 2vw;
+  flex-direction: column;
+  padding: 2vh 2vw;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
-/* CARD BEHIND TEXT */
+/* TV - FLEX STACK */
+.tv {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+
+/* TEXT CONTENT AT TOP */
+.content {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 60rem;
+  display: flex;
+  justify-content: center;
+}
+
 .card {
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   border-radius: 1rem;
-  padding: 2.5vw 3vw;       /* scales with viewport */
-  max-width: 60rem;
+  padding: 2rem;
+  width: 100%;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* BIG HEADING */
 .cardh {
-  margin: 0 0 1.2rem;
-  font-size: clamp(2.6rem, 4.6vw, 4.6rem);
+  font-size: clamp(2.2rem, 4vw, 4.5rem);
+  margin: 0 0 1.5rem;
   line-height: 1.1;
 }
 
-/* BODY TEXT */
 .text-font {
-  margin: 0.7rem 0;
-  font-size: clamp(5.4rem, 2.6vw, 5rem);
-  line-height: 1.7;
-
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  margin: 0.5rem 0;
+  line-height: 1.6;
 }
-/* CONTROLS */
+
+/* IMAGE BELOW TEXT - NOT FULL WIDTH */
+.bg-image,
+.bg-video {
+  max-width: 50vw;           /* limits width */
+  max-height: 40vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;       /* keeps proportions, no cropping */
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* CONTROLS AT BOTTOM */
 .controls {
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 1.5rem;
+  padding: 1rem 0;
 }
 
 button {
-  padding: 0.6rem 1.2rem;
-  background: black;
+  padding: 0.8rem 1.6rem;
+  background: rgba(255, 255, 255, 0.1);
   border: 1px solid white;
   color: white;
+  border-radius: 0.5rem;
   cursor: pointer;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
 }
 
-/* SMALL SCREENS (PHONES) */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .tv {
-    height: 60vh;                  /* a bit shorter */
+  .app {
+    padding: 1vh 1vw;
   }
-
-  .content {
-    padding: 1rem;
+  
+  .bg-image,
+  .bg-video {
+    max-width: 85vw;
+    max-height: 35vh;
   }
-
+  
   .card {
-    width: 100%;
-    max-width: 100%;
-    padding: 1.2rem 1.4rem;
-    border-radius: 0.75rem;
+    padding: 1.5rem;
   }
 }
+.lyrics-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
 
-/* VERY LARGE SCREENS – LET TEXT GET BIGGER */
-@media (min-width: 1400px) {
-  .card h1 {
-    font-size: clamp(2.5rem, 2.4vw, 4rem);
-  }
+.lyrics-section h3 {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  margin: 0 0 1rem;
+  opacity: 0.9;
+}
 
-  .card p {
-    font-size: clamp(1.1rem, 1.1vw, 1.6rem);
-  }
+.lyrics-line {
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  margin: 0.3rem 0;
+  line-height: 1.6;
+  font-style: italic;
+  opacity: 0.85;
+}
+.audio-player {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.draft-audio {
+  width: 100%;
+  min-width: 80rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
