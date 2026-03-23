@@ -9,12 +9,12 @@ const sections = [
     title: "Preface", 
     phase: "intro", 
     text: [
-      "Welcome to Code-L: A 3D meta-verse mythos unfolding across phases.",
-      "Use this document to vavigate through the different phases, and how players will escape Ahriman's trap to discover ELSPARK (a 3D extension of elspark.online).",
+      "Welcome to Code-L: An interactive meta-mythos unfolding across ElWord, a new 3D digital world.",
+      "Use this document to vavigate through the different phases of development for this new world, the backstory and how players will escape Ahriman's trap to discover ELSPARK (a 3D extension of elspark.online).",
       "Use the left navbar or Next/Back buttons to explore."
-    ]
+    ],   presenterPosition: "center-right"
   },
-  { title: "Code-L Phase 1 ", phase: "cave", text: ["Users first experience the mythos and alternative world of Code-L, through inside a 3D cave, accessed through a website."],     image: "/cave1.png" },
+  { title: "Code-L Phase 1 ", phase: "cave", text: ["Users first experience the mythos and alternative world of Code-L, through inside a 3D cave, accessed through a website."],     image: "/cave1.png",   presenterPosition: "top-right" },
   { title: "The Cave", phase: "cave", text: ["Once a player is inside, they can control an avatar.", "But they are not alone. Other online participants will be there in the same room.", "Each player has the same looking avatar but different usernames and a chat bubble to chat to all."], image: "/cave-avatars.png"  },
   { title: "GamePlay", phase: "cave", text: ["Players can view screen from first perspective and move their characters to interact with environment and other online players..", ], image: "/firstperspective.png"  },
   { title: "Backstory - Ahriman's plan", phase: "cave", text: ["These caves have been designed by Ahriman to trap humans inside systems which they cannot escape. Deceiving them with a false idea of reality, he holds them prisoners."], image: "/Ahriman.png"  },
@@ -92,7 +92,7 @@ export default function App() {
   const section = sections[index];
 
   return (
-    <div className={`app ${section.phase}`}>
+    <div className={`app ${section.phase} `}>
       {/* LEFT NAVBAR */}
       <nav className="navbar">
         <ul className="nav-list">
@@ -111,6 +111,8 @@ export default function App() {
 
       {/* MAIN CONTENT */}
       <div className="main-content">
+          {/* ELC0 PRESENTER - MOVES PER SECTION */}
+  
         <div className="tv">
           <div className="content">
             <div className="card">
@@ -152,9 +154,9 @@ export default function App() {
           )}
         </div>
 
-        <div className="controls">
+        <div className="controls ">
           <button onClick={() => setIndex(Math.max(0, index - 1))}>Back</button>
-          <button onClick={() => setIndex(Math.min(sections.length - 1, index + 1))}>Next</button>
+          <button  onClick={() => setIndex(Math.min(sections.length - 1, index + 1))}>Next</button>
         </div>
       </div>
     </div>
