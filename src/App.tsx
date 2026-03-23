@@ -10,7 +10,7 @@ const sections = [
     phase: "intro", 
     text: [
       "Welcome to Code-L: A 3D meta-verse mythos unfolding across phases.",
-      "Navigate through the cave, ready through how players will escape Ahriman's trap, and discover ELSPARK (a 3D extension of elspark.online).",
+      "Use this document to vavigate through the different phases, and how players will escape Ahriman's trap to discover ELSPARK (a 3D extension of elspark.online).",
       "Use the left navbar or Next/Back buttons to explore."
     ]
   },
