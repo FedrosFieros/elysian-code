@@ -5,19 +5,28 @@ import { useState } from "react";
 
 
 const sections = [
-  { title: "Code-L Phase 1 - a 3D meta-verse, with an ongoing mythos", phase: "cave", text: ["Users first experience the mythos and alternative world of Code-L, through inside a 3D cave, accessed through a website."],     image: "/cave1.png" },
-  { title: "The Cave", phase: "cave", text: ["Once a player is inside, they can control an avatar.", "You are not alone. Other online participants will be there with you.", "Each player has the same looking avatar but different usernames and a chat bubble to chat to all."], image: "/cave-avatars.png"  },
+  { 
+    title: "Preface", 
+    phase: "intro", 
+    text: [
+      "Welcome to Code-L: A 3D meta-verse mythos unfolding across phases.",
+      "Navigate through the cave, ready through how players will escape Ahriman's trap, and discover ELSPARK (a 3D extension of elspark.online).",
+      "Use the left navbar or Next/Back buttons to explore."
+    ]
+  },
+  { title: "Code-L Phase 1 ", phase: "cave", text: ["Users first experience the mythos and alternative world of Code-L, through inside a 3D cave, accessed through a website."],     image: "/cave1.png" },
+  { title: "The Cave", phase: "cave", text: ["Once a player is inside, they can control an avatar.", "But they are not alone. Other online participants will be there in the same room.", "Each player has the same looking avatar but different usernames and a chat bubble to chat to all."], image: "/cave-avatars.png"  },
   { title: "GamePlay", phase: "cave", text: ["Players can view screen from first perspective and move their characters to interact with environment and other online players..", ], image: "/firstperspective.png"  },
   { title: "Backstory - Ahriman's plan", phase: "cave", text: ["These caves have been designed by Ahriman to trap humans inside systems which they cannot escape. Deceiving them with a false idea of reality, he holds them prisoners."], image: "/Ahriman.png"  },
 { title: "The Puppeteer", phase: "cave", text: ["controlled by a person in ElCode from backend, puppeteer speaks of safety inside the cave and chaos outside..", "She maintains order and calms the participants."] ,image: "/cave-puppeteer.png"},
   { title: "The Blue Device", phase: "cave", text: ["A live feed of events posted by puppeteers from backend explaining events happening in mythos Code-L, from an Ahriman perspective."],image: "/cave-bluedevice.png" },
-  { title: "The Ritual", phase: "cave", text: ["At certain moments the puppeteer may invite prisoners to follow her toward a dark dungeon located at the back of the cave.",
+  { title: "The Wolves Ritual", phase: "cave", text: ["At certain moments the puppeteer may invite prisoners to follow her toward a dark dungeon located at the back of the cave.",
 "Participants who follow enter a ritual space.",
 "Within the dungeon a disturbing ceremony unfolds:",
 "Prisoners are bound to chains while the sound of wolves echoes through the chamber. They can no longer move their characters and are bounded to what is happening.",
 "The ritual builds in intensity through music and sound as shadows move through the darkness.", "The wolves start coming with a lead cunty singer as their leader."] ,image: "/chained.png"},
 { title: "Ritual Leader", phase: "cave", text: ["A cunty individual hosts the ritual where she sings and players watch as their bodies are being eaten by wolves. they can move their heads to look, but not move their bodies. They end up dying. A lived in music video."], image: "/dominatrix.png" },
-  { title: "Phase 2 -The Escape: June 1st", phase: "escape", text: ["The wall breaks open.", "Ellys steps in and performs a song, giving option for prisoners to join him to ELSPARK and escape from Ahriman's trap."] , video:"/escape.avi"},
+  { title: "Phase 2 -The Escape: June 1st", phase: "escape", text: ["The wall facing the sea breaks open.", "Ellys steps in and performs a song, giving option for prisoners to join him to ELSPARK and escape from Ahriman's trap."] , video:"/escape.avi"},
   { title: "my heart cant take another bleed", phase: "escape",     text: ["“my heart cant take another bleed.”. (ACT II, track 6)"],lyrics:[
 "verse 1:“urgency! my heart cant take another bleed.",
 "Ahriman’s war, threatens to kill our inner kids.",
@@ -58,7 +67,7 @@ const sections = [
 "looking for a new world, i welcome you to come with me ",
 "the tides we face but we stay still, whether you come or not, ",
 "I will still go, thank you for the lessons you have given me,",
-"my heart cant bleed no more."] , audio: "/MHCTAB18.wav",},
+"my heart cant bleed no more.'", "actions: Ellys invites puppeteer to come with him but she doesnt"] , audio: "/MHCTAB18.wav",},
   
   { title: "The  Boat", phase: "escape", text: ["Players who join Ellys, board on the boat and sail to island of Pandora, arriving on ELSPARK."] , image:"/boat.png"},
 

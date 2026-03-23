@@ -25,15 +25,55 @@ body {
 
 
 /* TV - FLEX STACK */
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* TV NOW SCROLLABLE */
 .tv {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  justify-content: center;
-  align-items: center;
-  padding: 2vh 2vw;
-  overflow-y: auto;
+  padding: 2vh 3vw;
+  overflow-y: auto;        /* ← SCROLLABLE */
+  scroll-behavior: smooth; /* ← smooth scrolling */
+  scrollbar-width: thin;   /* Firefox thin scrollbar */
+  scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+/* Webkit scrollbar styling (Chrome/Safari) */
+.tv::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tv::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+
+.tv::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.4);
+  border-radius: 4px;
+}
+
+.tv::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,107,107,0.6);
+}
+
+/* CARD - PREVENTS OVERFLOW */
+.card {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 100%;
+  overflow: hidden;  /* card itself doesn't scroll */
+  flex-shrink: 0;    /* prevents squishing */
 }
 /* TEXT CONTENT AT TOP */
 .content {
@@ -44,14 +84,7 @@ body {
   justify-content: center;
 }
 
-.card {
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  padding: 2rem;
-  width: 100%;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-}
+
 
 .cardh {
   font-size: clamp(2.2rem, 4vw, 4.5rem);
