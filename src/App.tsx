@@ -76,7 +76,11 @@ const sections = [
   { title: "ELSPARK TV", phase: "elspark", text: ["The screen is ELSPARK TV, a digital platform broadcasting live from Apothiki, our first edition of ELCA -  a live theatrical performance we execute in physical space."], image:"/ELSPARKTV.png" },
 
   { title: "ELSPARK NEWS", phase: "elspark", text: ["ELTV is our media production company and we connect creatives across Europe to produce independent shows, like ELSPARK NEWS, which are broadcasted onto ELSPARK TV. A curated channel only for our original shows.."],image:"/ELSPARKNEWS.png" },
-  { title: "What happens after? Phase 3", phase: "elspark", text: ["ELSPARK continues being live in 3D, welcoming new audiences away from Ahriman's corrupted social media spaces.","we make more shows through ELTV to broadcast on ELSPARK TV.",] },
+  { title: "What happens after? Phase 3", phase: "elspark", text: ["ELSPARK continues being live in 3D, welcoming new audiences away from Ahriman's corrupted social media spaces.",] },
+  { title: "ELTV", phase: "elspark", text: ["We continue producing more shows, broadcasting through ELSPARK TV compensating creators with profits.",] },
+  { title: "Elly's Code", phase: "elspark", text: ["Elly's debut studio album is available to be experienced through an interactive website through which users can observe the prequel to the events on June 1st..","split in two ACTS, ACTI follows story of a caterpillar transforming to a white moth, while ACT II follows story of Ellys breaking out of the cave for the first time and his journey to find ELSPARK.Then on the 6th track  he comes back and invites other prisoners to join him on ELSPARK."] },
+
+
 ];
 
 
