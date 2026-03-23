@@ -78,68 +78,73 @@ export default function App() {
   const [index, setIndex] = useState(0);
   const section = sections[index];
 
-  const next = () => {
-    if (index < sections.length - 1) {
-      setIndex(index + 1);
-    }
-  };
-
-  const prev = () => {
-    if (index > 0) {
-      setIndex(index - 1);
-    }
-  };
-
   return (
-  
     <div className={`app ${section.phase}`}>
-    <div className="tv">
-  <div className="content">
-    <div className="card">
-      <h1 className="cardh">{section.title}</h1>
-      {section.text.map((line, i) => (
-        <p className="text-font" key={i}>{line}</p>
-      ))}
-      
-      {/* LYRICS */}
-      {section.lyrics && (
-        <div className="lyrics-section">
-          <h3>Lyrics</h3>
-          {section.lyrics.map((line, i) => (
-            <p className="lyrics-line" key={i}>{line}</p>
+      {/* LEFT NAVBAR */}
+      <nav className="navbar">
+        <ul className="nav-list">
+          {sections.map((sec, i) => (
+            <li key={i}>
+              <button 
+                className={`nav-item ${i === index ? 'active' : ''}`}
+                onClick={() => setIndex(i)}
+              >
+                {sec.title}
+              </button>
+            </li>
           ))}
+        </ul>
+      </nav>
+
+      {/* MAIN CONTENT */}
+      <div className="main-content">
+        <div className="tv">
+          <div className="content">
+            <div className="card">
+              <h1 className="cardh">{section.title}</h1>
+              {section.text.map((line, i) => (
+                <p className="text-font" key={i}>{line}</p>
+              ))}
+              
+              {/* LYRICS */}
+              {section.lyrics && (
+                <div className="lyrics-section">
+                  <h3>Lyrics</h3>
+                  {section.lyrics.map((line, i) => (
+                    <p className="lyrics-line" key={i}>{line}</p>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* IMAGE/VIDEO */}
+          {section.image && <img src={section.image} className="bg-image" />}
+          {section.video && (
+            <video className="bg-video" autoPlay loop muted src={section.video} />
+          )}
+
+          {/* AUDIO PLAYER */}
+          {section.audio && (
+            <div className="audio-player flex flex-col">
+             
+              <audio 
+                controls 
+                src={section.audio}
+                className="draft-audio"
+              >
+                Your browser doesn't support audio.
+              </audio>
+            </div>
+          )}
         </div>
-      )}
+
+        <div className="controls">
+          <button onClick={() => setIndex(Math.max(0, index - 1))}>Back</button>
+          <button onClick={() => setIndex(Math.min(sections.length - 1, index + 1))}>Next</button>
+        </div>
+      </div>
     </div>
-  </div>
-
-  {/* IMAGE/VIDEO */}
-  {section.image && <img src={section.image} className="bg-image" />}
-  {section.video && (
-    <video className="bg-video" autoPlay loop muted src={section.video} />
-  )}
-
-  {/* AUDIO PLAYER */}
-  {section.audio && (
-    <div className="audio-player">
-      <audio 
-        controls 
-        src={section.audio}
-        className="draft-audio"
-      >
-        Your browser doesn't support audio.
-      </audio>
-    </div>
-  )}
-</div>
-
-  
-    <div className="controls">
-      <button onClick={prev}>Back</button>
-      <button onClick={next}>Next</button>
-    </div>
-  </div>
-  
-
   );
 }
+
