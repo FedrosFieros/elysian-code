@@ -1,0 +1,416 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #020617;
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.journey-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.journey-strip {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.journey-step {
+  flex: 0 0 100vw;
+  height: 100vh;
+  padding: 3rem 10vw 6rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.step-content {
+  max-width: 600px;
+}
+
+.step-content h1 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.step-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.ground {
+  position: relative;
+  height: 140px;
+  border-top: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+/* puppet base position */
+.puppet {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  transform-origin: center bottom;
+}
+
+/* "active" puppet does a subtle walk / bounce */
+.puppet-active {
+  animation: puppet-walk 0.6s ease-in-out;
+}
+
+@keyframes puppet-walk {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(20px) translateY(-8px);
+  }
+  100% {
+    transform: translateX(40px) translateY(0);
+  }
+}
+
+.journey-ui {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 999px;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.journey-ui button {
+  background: #22c55e;
+  border: none;
+  color: #020617;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.journey-ui button:disabled {
+  background: #6b7280;
+  cursor: default;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #020617;
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.runner-root {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* HUD */
+
+.hud {
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  z-index: 10;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.8);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  backdrop-filter: blur(8px);
+  font-size: 0.9rem;
+}
+
+.hud button {
+  background: #22c55e;
+  border: none;
+  color: #020617;
+  font-weight: 600;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.hud button:disabled {
+  background: #6b7280;
+}
+
+/* corridor */
+
+.corridor {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 900px;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+}
+
+/* floor moving backwards */
+
+.floor {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 200%;
+  height: 40%;
+  transform: translateX(-50%) rotateX(70deg);
+  transform-origin: center bottom;
+  background-image: linear-gradient(
+      to right,
+      rgba(15, 23, 42, 0.4) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, #111827 40px, #020617 40px);
+  background-size: 40px 40px;
+  transition: background-position 0.2s linear;
+}
+
+/* side walls */
+
+.wall {
+  position: absolute;
+  top: 0;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(#020617, #0f172a);
+  opacity: 0.9;
+}
+
+.wall-left {
+  left: 0;
+}
+
+.wall-right {
+  right: 0;
+}
+
+/* player */
+
+.runner {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+}
+
+.runner-step {
+  animation: runner-step 0.25s ease-out;
+}
+
+@keyframes runner-step {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-12px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* billboards */
+
+.billboard {
+  position: absolute;
+  left: 50%;
+  width: 320px;
+  transform-origin: center;
+  transition: opacity 0.2s linear;
+}
+
+.billboard.left {
+  transform: translateX(-210px);
+}
+
+.billboard.right {
+  transform: translateX(210px);
+}
+
+.billboard-inner {
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  padding: 0.9rem 1rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
+}
+
+.billboard-inner h2 {
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.billboard-inner p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+body {
+  margin: 0;
+  font-family: monospace;
+  background: black;
+  color: white;
+}
+
+.container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.panel {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+  padding: 40px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+p {
+  opacity: 0.7;
+  margin: 5px 0;
+}

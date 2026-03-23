@@ -1,0 +1,148 @@
+/* ROOT */
+html,
+body,
+#root {
+  height: 100%;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: monospace;
+  background: black;
+  color: white;
+}
+
+/* APP FULLSCREEN */
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;   /* TV + controls */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* PHASE BACKGROUNDS */
+.app.cave {
+  background: radial-gradient(circle, #111, #000);
+}
+
+.app.escape {
+  background: black;
+}
+
+.app.elspark {
+  background: linear-gradient(to top, #001f3f, #0077ff);
+}
+
+/* TV AREA – FULL WIDTH, RESPONSIVE HEIGHT */
+.tv {
+  position: relative;
+  width: 100vw;
+  height: min(70vh, 56.25vw);  /* keep ~16:9, shrink on small screens */
+  overflow: hidden;
+  background: #000;
+}
+
+/* BACKGROUND IMAGE / VIDEO FILLS TV */
+.bg-image,
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+    /* shrink proportionally */
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* CENTER CONTENT */
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  
+  display: flex;
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
+  padding: 2vw;
+  box-sizing: border-box;
+}
+
+/* CARD BEHIND TEXT */
+.card {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 2.5vw 3vw;       /* scales with viewport */
+  max-width: 60rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* BIG HEADING */
+.cardh {
+  margin: 0 0 1.2rem;
+  font-size: clamp(2.6rem, 4.6vw, 4.6rem);
+  line-height: 1.1;
+}
+
+/* BODY TEXT */
+.text-font {
+  margin: 0.7rem 0;
+  font-size: clamp(5.4rem, 2.6vw, 5rem);
+  line-height: 1.7;
+
+}
+/* CONTROLS */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  background: black;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+}
+
+/* SMALL SCREENS (PHONES) */
+@media (max-width: 768px) {
+  .tv {
+    height: 60vh;                  /* a bit shorter */
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.2rem 1.4rem;
+    border-radius: 0.75rem;
+  }
+}
+
+/* VERY LARGE SCREENS – LET TEXT GET BIGGER */
+@media (min-width: 1400px) {
+  .card h1 {
+    font-size: clamp(2.5rem, 2.4vw, 4rem);
+  }
+
+  .card p {
+    font-size: clamp(1.1rem, 1.1vw, 1.6rem);
+  }
+}
