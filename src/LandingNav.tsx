@@ -10,6 +10,13 @@ const cards = [
     available: true
   },
   {
+    title: "ELSPARKTV",
+    subtitle: "A curated digital platform for original shows produced by ELTV.",
+    path: "/elspark-tv",
+    bgColor: "linear-gradient(135deg,rgb(212, 212, 212),rgb(175, 175, 175))",
+    available: true
+  },
+  {
     title: "Elcode Updates", 
     subtitle: "Current projects, strategy and announcements.",
     path: "/elcode-updates",
