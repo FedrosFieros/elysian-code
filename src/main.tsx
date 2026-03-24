@@ -1,10 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LandingNav from "./LandingNav";
+import CodeL from "./CodeL";
+import "./App.css";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<LandingNav />} />
+      <Route path="/ellys-code" element={<CodeL />} />
+      {/* <Route path="/elcode-updates" element={<ElcodeUpdates />} /> */}
+    </Routes>
+  </BrowserRouter>
+);

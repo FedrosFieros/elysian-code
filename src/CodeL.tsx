@@ -88,7 +88,7 @@ const sections = [
 
 
 
-export default function App() {
+export default function CodeL() {
   const [index, setIndex] = useState(0);
   const section = sections[index];
 
