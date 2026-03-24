@@ -57,7 +57,7 @@ export default function LandingNav() {
   
           {/* CARDS */}
           <div className="cards-container">
-            {cards.map((card, index) => (
+            {cards.map((card) => (
               <div key={card.path} className={`landing-card-wrapper ${card.available ? '' : 'wip'}`}>
                 {card.available ? (
                   <Link 
