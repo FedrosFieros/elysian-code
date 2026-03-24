@@ -118,7 +118,18 @@ export default function ELSPARKTV() {
             <p className="text cinematic emphasis">
               100% of the value is yours.
             </p>
+            <div className="enter-container">
+  <p className="system-msg"> ACCESS POINT AVAILABLE</p>
 
+  <a 
+    href="https://elspark.online/el-tv" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="enter-link"
+  >
+    ENTER ELSPARK.ONLINE/el-tv
+  </a>
+</div>
             <div className="signal-break">/// END OF TRANSMISSION ///</div>
 
           </div>

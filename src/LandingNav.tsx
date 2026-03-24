@@ -4,12 +4,18 @@ import "./App.css";
 const cards = [
   {
     title: "Code-L",
-    subtitle: "Explore a walkthrough of the meta-mythos Code-L taking place inside 3D world of ELWorld.",
+    subtitle: "Explore a walkthrough of the meta-mythos Code-L taking place on the digital planet of Arcadia.",
     path: "/ellys-code",
     bgColor: "linear-gradient(135deg,rgb(212, 212, 212), #ffb347)",
     available: true
   },
   {
+    title: "Arcadia",
+    subtitle: "A 3D digital planet where Code-L unfolds..",
+    path: "/elworld",
+    bgColor: "linear-gradient(135deg,rgb(0, 0, 0),rgb(175, 175, 175))",
+    available: true
+  },  {
     title: "ELSPARKTV",
     subtitle: "A curated digital platform for original shows produced by ELTV.",
     path: "/elspark-tv",
