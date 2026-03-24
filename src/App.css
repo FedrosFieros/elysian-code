@@ -437,7 +437,7 @@ html, body, #root {
 }
 
 .hero-title {
-  font-size: clamp(4rem, 12vw, 8rem);
+  font-size: clamp(2rem, 12vw, 3rem);
   background: linear-gradient(135deg, #ffb347, #ff4b8b, #00d4ff, #00ff88);
   background-size: 400% 400%;
   -webkit-background-clip: text;

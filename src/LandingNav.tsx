@@ -57,7 +57,7 @@ export default function LandingNav() {
             <div className="hero-content">
               <h1 className="hero-title">Welcome to Elysian Code</h1>
               <p className="hero-subtitle">
-                Explore projects, notes and updates for projects.
+                Explore notes and updates for projects.
               </p>
             </div>
           </div>
