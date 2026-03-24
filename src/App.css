@@ -31,6 +31,7 @@
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   padding: 1.5rem 0.5rem;
   overflow-y: auto;
+  overflow-x:auto;
 }
 
 .nav-item {
@@ -178,7 +179,7 @@
 .bg-video {
   margin-top: 2rem;
   border-radius: 1rem;
-  max-width: 60%;
+  max-width: 100%;
   align-self: center;
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85);
 }
@@ -278,6 +279,7 @@ html, body, #root {
     height: auto;             /* auto height */
     max-height: 25vh;         /* limit height */
     overflow-y: auto;
+    overflow-x: auto;
     order: 1;                 /* navbar first */
   }
   
@@ -289,8 +291,8 @@ html, body, #root {
   
   .nav-list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: horizontal;
+    justify-content: start;
     gap: 0.5rem;
   }
   
