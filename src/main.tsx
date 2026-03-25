@@ -2,16 +2,18 @@
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingNav from "./LandingNav";
-import CodeL from "./CodeL";
 import ELSPARKTV from "./ELSPARKTV";
 import ELWORLD from "./ELWORLD";
 import "./App.css";
+import TheCave from "./CodeLPhase1";
+import CodeLPhase2 from "./CodeLPhase2";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<LandingNav />} />
-      <Route path="/ellys-code" element={<CodeL />} />
+      <Route path="/codeLphase1" element={<TheCave />} />
+      <Route path="/codeLphase2" element={<CodeLPhase2 />} />
       <Route path="/elspark-tv" element={<ELSPARKTV />} />
       <Route path="/elworld" element={<ELWORLD />} />
       {/* <Route path="/elcode-updates" element={<ElcodeUpdates />} /> */}
