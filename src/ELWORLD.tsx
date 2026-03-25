@@ -7,7 +7,7 @@ const sections = [
     title: "ARCADIA",
     content: (
       <>
-        <h1 className="cardh glitch">ARCADIA</h1>
+        <h1 className="cardh ">ARCADIA</h1>
 
         <p className="broadcast-line">▮ PLANETARY SIGNAL DETECTED</p>
 
@@ -31,7 +31,7 @@ const sections = [
     title: "CORE MECHANICS",
     content: (
       <p className="cinematic">
-        <h2 className="section-title flicker glitch">CORE MECHANICS</h2>
+        <h2 className="cardh">CORE MECHANICS</h2>
 
        
 
@@ -56,7 +56,7 @@ const sections = [
     title: "ELSPARK",
     content: (
       <>
-        <h2 className="section-title">ELSPARK</h2>
+        <h2 className="cardh">ELSPARK</h2>
 
         <p className="text cinematic">
           This planet runs differently.

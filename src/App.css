@@ -6,7 +6,7 @@
   background: radial-gradient(circle at top, #c8c7c7 0%, #d8d2d2 55%, #d1d0d2 100%);
   color: white;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "SF Pro Display", sans-serif;
 }
@@ -69,7 +69,7 @@
   width:100%;
   flex-direction: column;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
   align-items: center;
 }
 
@@ -678,13 +678,13 @@ html, body, #root {
 }
 
 .cinematic {
-  font-size: 2.05rem;
+  font-size: 1.65rem;
   margin-bottom: 10px;
   text-align: center;
 }
 
 .emphasis {
-  font-size: 3.2rem;
+  font-size: 2.2rem;
   font-weight: 600;
 }
 

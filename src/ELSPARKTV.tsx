@@ -69,12 +69,12 @@ const sections = [
           A moment appears. Everyone watches. Then it disappears into time.
         </p>
 
-        <p className="text cinematic">Unless you claim it.</p>
+        <p className="text cinematic">Unless you claim it,</p>
 
-        <p className="text glitch ">for 1 elcoin</p>
+        <p className="text  emphasis ">for 1 elcoin</p>
 
         <p className="text cinematic">
-          That is all it takes to store a copy of the ELVD in your personal collection.
+          That is all it takes to purchase a copy of the ELVD and store in your personal collection.
         </p>
 
         <p className="text cinematic">
