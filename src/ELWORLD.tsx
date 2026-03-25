@@ -50,7 +50,7 @@ const sections = [
       <>
         <h2 className="cardh">ELSPARK</h2>
 
-        <p className="text cinematic">This planet runs differently.</p>
+        <p className="text cinematic">The planet of Arcadia runs differently.</p>
 
         <p className="text cinematic">
           Ahriman (an algorithm) has taken over a lot of the land across the
@@ -147,9 +147,9 @@ export default function ELWORLD() {
       {/* MAIN CONTENT */}
       <div className="main-content">
         <div className="tv ">
-          <div className="content">
+
             <div className="card">{section.content}</div>
-          </div>
+     
              {/* CONTROLS */}
         <div className="controls">
           <button onClick={() => setIndex(Math.max(0, index - 1))}>Back</button>
