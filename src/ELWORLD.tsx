@@ -105,7 +105,7 @@ const sections = [
           </p>
   
           <p className="text cinematic">
-            Build exhibitions. Launch businesses. Form new societies.
+          ElCode takes it back from Ahriman and helps individuals build exhibitions, launch businesses or form new societies.
           </p>
   
           <p className="text cinematic emphasis">
