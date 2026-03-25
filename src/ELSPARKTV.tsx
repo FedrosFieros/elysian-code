@@ -7,7 +7,8 @@ const sections = [
     title: "ELSPARK TV",
     content: (
       <>
-        <h1 className="cardh glitch">ELSPARK TV</h1>
+                
+        <h1 className="cardh ">ELSPARK TV</h1>
 
         <p className="broadcast-line">▮ LIVE SIGNAL DETECTED</p>
 
@@ -35,7 +36,7 @@ const sections = [
     title: "MECHANICS",
     content: (
       <>
-        <h2 className="cardh glitch">CORE MECHANICS</h2>
+        <h2 className="cardh ">CORE MECHANICS</h2>
 
         <p className="text cinematic">Observe:
 
@@ -58,7 +59,7 @@ const sections = [
     title: "ELVDS",
     content: (
       <>
-        <h2 className="section-title glitch cinematic ">ELVDs</h2>
+        <h2 className="cardh ">ELVDs</h2>
 
         <p className="text cinematic">ELVDs don’t upload.</p>
 
@@ -88,7 +89,7 @@ const sections = [
     title: "WHY ELSPARKTV",
     content: (
       <>
-        <h2 className="section-title">WHY THIS EXISTS</h2>
+        <h2 className="cardh">WHY THIS EXISTS</h2>
 
         <p className="text cinematic">
           Infinite content killed culture.
@@ -114,8 +115,8 @@ const sections = [
   {
     title: "LINEUP",
     content: (
-      <p className="cinematic">
-        <h2 className="section-title flicker">
+      <>
+        <h2 className="section-title ">
           LINEUP — original shows produced through ELTV
         </h2>
 
@@ -138,21 +139,21 @@ const sections = [
         </ul>
 
         <div className="signal-break">/// JOIN THE SYSTEM ///</div>
-      </p>
+      </>
     ),
   },
   {
     title: "ELSPARK NEWS",
     content: (
       <>
-        <h2 className="section-title glitch">ELSPARK NEWS</h2>
-  
+        <h2 className="section-title ">ELSPARK NEWS</h2>
+  <span className="card">
         <img 
           src="/ELSPARKNEWS.png" 
           alt="ELSPARK NEWS"
-          className="section-image"
+          className="bg-image"
         />
-  
+  </span>
         <p className="text cinematic">
           A satirical depiction of news in the world,
           through the mythos of Code-L using human actors.
@@ -252,7 +253,9 @@ export default function ELSPARKTV() {
       {/* CONTENT */}
       <div className="main-content">
         <div className="tv">
+        <div className="content">
           <div className="card">{section.content}</div>
+          </div>
         </div>
 
         <div className="controls">

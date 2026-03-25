@@ -174,7 +174,9 @@ export default function ELWORLD() {
       {/* MAIN CONTENT */}
       <div className="main-content">
         <div className="tv">
+        <div className="content">
           <div className="card">{section.content}</div>
+          </div>
         </div>
 
         {/* CONTROLS */}

@@ -43,16 +43,17 @@ const cards = [
   {
     title: "ELCA",
     subtitle:
-      "A live theatrical performance broadcasted from ELCAVE. First edition, broadcasted on June 1st.",
+      "A live theatre festival broadcasted from ELSPARK TV. First edition on June 1st.",
     path: "/elworld",
     bgColor: "linear-gradient(135deg,rgb(0, 0, 0),rgb(175, 175, 175))",
     available: false,
   },
   {
-    title: "Elcode Updates",
-    subtitle: "Current projects, strategy and announcements.",
-    path: "/elcode-updates",
-    bgColor: "linear-gradient(135deg,rgb(21, 26, 28), #0077ff)",
+    title: "ElCave",
+    subtitle:
+      "An experience ritualistic exhibition, for one person to experience at a time in 20 minutes.",
+    path: "/elworld",
+    bgColor: "linear-gradient(135deg,rgb(0, 0, 0),rgb(175, 175, 175))",
     available: false,
   },
   {
@@ -63,6 +64,14 @@ const cards = [
     bgColor: "linear-gradient(135deg,rgb(213, 213, 213), #00cc6a)",
     available: false,
   },
+  {
+    title: "Elcode Updates",
+    subtitle: "Current projects, strategy and announcements.",
+    path: "/elcode-updates",
+    bgColor: "linear-gradient(135deg,rgb(21, 26, 28), #0077ff)",
+    available: false,
+  },
+ 
   {
     title: "ELTV updates",
     subtitle: "shows, scripts, dates, scheduling etc ",
