@@ -142,12 +142,13 @@ export default function CodeLPhase2() {
               </audio>
             </div>
           )}
-        </div>
-
-        <div className="controls ">
+               <div className="controls ">
           <button onClick={() => setIndex(Math.max(0, index - 1))}>Back</button>
           <button  onClick={() => setIndex(Math.min(sections.length - 1, index + 1))}>Next</button>
         </div>
+        </div>
+
+   
       </div>
     </div>
   );
