@@ -238,7 +238,7 @@ export default function ELSPARK() {
         <div className="content">
           <div className="card">{section.content}</div>
           </div>
-        </div>
+      
 
         {/* CONTROLS */}
         <div className="controls">
@@ -249,6 +249,7 @@ export default function ELSPARK() {
           >
             Next
           </button>
+          </div>
         </div>
       </div>
     </div>

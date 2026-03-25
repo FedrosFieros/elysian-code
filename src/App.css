@@ -116,6 +116,7 @@
 .tv {
   position: relative;
   flex: 1;
+
   margin: 2vh 6vw 1vh;
   padding: 2rem 3rem;
   border-radius: 1.5rem;

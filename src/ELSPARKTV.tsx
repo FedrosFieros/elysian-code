@@ -255,10 +255,7 @@ export default function ELSPARKTV() {
         <div className="tv">
         <div className="content">
           <div className="card">{section.content}</div>
-          </div>
-        </div>
-
-        <div className="controls">
+          <div className="controls">
           <button
             onClick={() =>
               setIndex(Math.max(0, index - 1))
@@ -277,6 +274,10 @@ export default function ELSPARKTV() {
             Next
           </button>
         </div>
+          </div>
+        </div>
+
+       
       </div>
     </div>
   );
