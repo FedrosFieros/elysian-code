@@ -768,12 +768,12 @@ html, body, #root {
   margin-bottom: 10px;
 }
 .logo {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 900;
   letter-spacing: 2px;
-  padding: 20px;
+  padding: 2px;
   cursor: pointer;
-  border-bottom: 1px solid rgba(40, 35, 35, 0.1);
+  border-bottom: 1px solid rgba(201, 197, 197, 0.1);
   
 }
 

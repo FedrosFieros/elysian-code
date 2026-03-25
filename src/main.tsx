@@ -7,6 +7,7 @@ import ELWORLD from "./ELWORLD";
 import "./App.css";
 import TheCave from "./CodeLPhase1";
 import CodeLPhase2 from "./CodeLPhase2";
+import ELSPARK from "./ELSPARK";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Route path="/codeLphase2" element={<CodeLPhase2 />} />
       <Route path="/elspark-tv" element={<ELSPARKTV />} />
       <Route path="/elworld" element={<ELWORLD />} />
+      <Route path="/elspark" element={<ELSPARK />} />
       {/* <Route path="/elcode-updates" element={<ElcodeUpdates />} /> */}
     </Routes>
   </BrowserRouter>

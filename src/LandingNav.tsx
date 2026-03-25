@@ -14,22 +14,30 @@ const cards = [
     subtitle:
       "On June 1st Ellys breaks into the cave to help prisoners escape giving them option to board on a boat and sail to ELSPARK.",
     path: "/CodeLPhase2",
-    bgColor: "linear-gradient(135deg,rgb(212, 212, 212), #ffb347)",
+    bgColor: "linear-gradient(135deg,rgb(212, 212, 212),rgb(255, 108, 71))",
     available: true,
   },
   {
     title: "Arcadia",
     subtitle:
-      "A decentralised 3D digital planet where mythos of Code-L unfolds and a new society can be hosted...",
+      "A 3D digital planet where mythos of Code-L unfolds and a new society can be hosted...",
     path: "/elworld",
-    bgColor: "linear-gradient(135deg,rgb(0, 0, 0),rgb(175, 175, 175))",
+    bgColor: "linear-gradient(135deg,rgb(0, 0, 0),rgb(93, 210, 9))",
+    available: true,
+  },
+  {
+    title: "ELSPARK",
+    subtitle:
+      "A decentralised social digital park on Arcadia, but also accessible on earth.",
+    path: "/elspark",
+    bgColor: "linear-gradient(135deg,rgb(218, 201, 201),rgb(135, 135, 135))",
     available: true,
   },
   {
     title: "ELSPARKTV",
     subtitle: "A curated digital platform for original shows produced by ELTV.",
     path: "/elspark-tv",
-    bgColor: "linear-gradient(135deg,rgb(212, 212, 212),rgb(175, 175, 175))",
+    bgColor: "linear-gradient(135deg,rgb(212, 212, 212),rgb(95, 2, 136))",
     available: true,
   },
   {

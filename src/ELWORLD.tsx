@@ -30,10 +30,10 @@ const sections = [
   {
     title: "CORE MECHANICS",
     content: (
-      <>
-        <h2 className="section-title flicker">CORE MECHANICS</h2>
+      <p className="cinematic">
+        <h2 className="section-title flicker glitch">CORE MECHANICS</h2>
 
-        <p className="whisper">You may proceed:</p>
+       
 
         <ul className="bullet-list staged">
           <li>
@@ -49,7 +49,7 @@ const sections = [
         </ul>
 
         <div className="signal-break">/// SYSTEM INTERRUPTION ///</div>
-      </>
+      </p>
     ),
   },
   {
@@ -63,11 +63,11 @@ const sections = [
         </p>
 
         <p className="text cinematic">
-          No algorithms decide what you see.
+       Ahriman (an algorithm) has taken over a lot of the land across the planet, but ELSPARK exists as an ecosystem outside of his control.
         </p>
 
         <p className="text cinematic">
-          No ads interrupt your experience.
+        On ELSPARK, no algorithms decide what you see.  No ads interrupt your experience.
         </p>
 
         <p className="text cinematic">
@@ -77,52 +77,60 @@ const sections = [
         <p className="text cinematic emphasis">
           Presence replaces manipulation.
         </p>
+        <p className="text cinematic emphasis">
+  And soon ELSPARK will help people take back power and claim Arcadia back.
+        </p>
 
         <div className="signal-break">/// ECONOMY ONLINE ///</div>
       </>
     ),
   },
+  
+  
   {
-    title: "ECONOMY",
-    content: (
-      <>
-        <p className="text cinematic">
-          Value flows through elcoins.
-        </p>
-
-        <p className="text cinematic">
-          Trade your art. Offer your skill. Build your role.
-        </p>
-
-        <p className="text cinematic">
-          Earn. Keep. Or extract it back into the real world.
-        </p>
-      </>
-    ),
-  },
-  {
-    title: "ENTER",
+    title: "Rest of the land",
     content: (
       <>
         <div className="enter-container">
-          <p className="system-msg">ACCESS POINT AVAILABLE</p>
-
-          <a
-            href="https://elspark.online"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="enter-link"
-          >
-            ENTER ELSPARK.ONLINE
-          </a>
+          <p className="system-msg">
+            ARCADIA IS FINITE
+          </p>
+  
+          <p className="text cinematic">
+            Land outside ELSPARK is unclaimed.
+          </p>
+  
+          <p className="text cinematic">
+            It is ready to be populated.
+          </p>
+  
+          <p className="text cinematic">
+            Build exhibitions. Launch businesses. Form new societies.
+          </p>
+  
+          <p className="text cinematic emphasis">
+            Claim space. Define reality.
+          </p>
+  
+          <p className="text cinematic">
+            ElCode assists in constructing your world.
+          </p>
+  
+          <p className="text cinematic">
+            No purchase required.
+          </p>
+  
+          <p className="text cinematic highlight">
+            Each user receives credits to claim cm² of land.
+          </p>
         </div>
-
+  
         <div className="signal-break">
-          /// END OF TRANSMISSION ///
+          /// TERRITORY UNLOCKED ///
         </div>
       </>
-    ),
-  },
+    )
+  }
 ];
 
 export default function ELWORLD() {

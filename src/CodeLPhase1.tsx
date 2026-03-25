@@ -43,15 +43,17 @@ export default function TheCave() {
     <div className={`app ${section.phase} `}>
       {/* LEFT NAVBAR */}
       <nav className="navbar">
-      <Link 
+      <div>   <Link 
                     to={'/'} 
                     className="logo" 
                    
                   >
-                    <h2>Elysian Code</h2>
+                   ELYSIAN CODE
        
                
                   </Link>
+                  </div>
+
         <ul className="nav-list">
           {sections.map((sec, i) => (
             <li key={i}>

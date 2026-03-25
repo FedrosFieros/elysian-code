@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const sections = [
   {
-    title: "SIGNAL",
+    title: "ELSPARK TV",
     content: (
       <>
         <h1 className="cardh glitch">ELSPARK TV</h1>
