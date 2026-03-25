@@ -109,7 +109,7 @@ export default function LandingNav() {
         </div>
 
         {/* CARDS */}
-        <div className="cards-container">
+        <div className="cards-container card ">
           {cards.map((card) => (
             <div
               key={card.path}

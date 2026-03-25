@@ -7,7 +7,7 @@ const sections = [
     title: "ELSPARK",
     content: (
       <>
-        <h1 className="cardh glitch">ELSPARK</h1>
+        <h1 className="cardh ">ELSPARK</h1>
 
         <p className="text cinematic">A social digital park</p>
 
@@ -33,7 +33,7 @@ const sections = [
     title: "CORE MECHANICS",
     content: (
       <>
-        <h2 className="section-title flicker glitch"> MECHANICS</h2>
+        <h2 className="cardh"> MECHANICS</h2>
 
         <ul className="bullet-list staged cinematic">
           <li>
@@ -57,7 +57,7 @@ const sections = [
     title: "ATTRACTIONS",
     content: (
       <>
-        <h2 className="section-title glitch">ATTRACTIONS</h2>
+        <h2 className="cardh">ATTRACTIONS</h2>
 
         <p className="text cinematic">ELSPARK is composed of spaces.</p>
 
@@ -103,7 +103,7 @@ const sections = [
     title: "ECONOMY",
     content: (
       <>
-        <p className="text cinematic">Value flows through elcoins.</p>
+        <p className="cardh">Value flows through elcoins.</p>
 
         <p className="text cinematic">
           Trade your art. Offer your skill. Build your role.
@@ -150,7 +150,7 @@ const sections = [
     title: "LAOCRACY",
     content: (
       <>
-        <h2 className="section-title glitch">LAOCRACY</h2>
+        <h2 className="cardh">LAOCRACY</h2>
 
         <p className="text cinematic">ELSPARK is not governed from above.</p>
 

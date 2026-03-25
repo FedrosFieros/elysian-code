@@ -101,7 +101,7 @@ export default function CodeLPhase2() {
 
       {/* MAIN CONTENT */}
       <div className="main-content">
-          {/* ELC0 PRESENTER - MOVES PER SECTION */}
+          
   
         <div className="tv">
           <div className="content">
