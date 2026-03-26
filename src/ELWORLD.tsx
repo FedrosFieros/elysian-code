@@ -3,55 +3,113 @@ import { useState, useEffect } from "react";
 import "./el.css"; // Your shared CSS file
 
 const sections = [
-  {
-    title: "ARCADIA",
-    phase: "arcadia",
-    text: [
-      "▮ PLANETARY SIGNAL DETECTED",
-      "A 3D digital planet. Alive through code.",
-      "Meta-mythos Code-L is unfolding.",
-      "You are not watching it.",
-      "You are inside it.",
-    ],
-  },
-  {
-    title: "CORE MECHANICS",
-    phase: "arcadia",
-    text: [
-      "One planet. Open movement.",
-      "Shape your own path. Form your own story.",
-      "Events unfold in real time.",
-      "Miss them, and they are gone.",
-    ],
-  },
-  {
-    title: "ELSPARK",
-    phase: "arcadia",
-    text: [
-      "The planet of Arcadia runs differently.",
-      "Ahriman (an algorithm) has taken over a lot of the land across the planet, but ELSPARK exists as an ecosystem outside of his control.",
-      "On ELSPARK, no algorithms decide what you see. No ads interrupt your experience.",
-      "No subscriptions gate your access.",
-      "Presence replaces manipulation.",
-      "And soon ELSPARK will help people take back power and claim Arcadia back.",
-    ],
-  },
-  {
-    title: "Rest of the land",
-    phase: "arcadia",
-    text: [
-      "ARCADIA IS FINITE",
-      "Land outside ELSPARK is unclaimed.",
-      "It is ready to be populated.",
-      "ElCode takes it back from Ahriman and helps individuals build exhibitions, launch businesses or form new societies.",
-      "Claim space. Define reality.",
-      "ElCode assists in constructing your world.",
-      "No purchase required.",
-      "Each user receives credits to claim cm² of land.",
-    ],
-  },
-];
-
+    {
+      title: "ARCADIA",
+      phase: "arcadia",
+      text: [
+        "▮ PLANETARY SYSTEM INITIALISED",
+        "Arcadia is a persistent 3D simulated planet governed by deterministic physics.",
+        "Every action, body and interaction is recorded into Code-L — a continuous causal ledger.",
+        "This is not a static game world.",
+        "It is a living system of consequence.",
+        "You do not observe it.",
+        "You enter it.",
+      ],
+    },
+    {
+      title: "EXISTENCE",
+      phase: "arcadia",
+      text: [
+        "You are not your character.",
+        "You are the consciousness controlling a persistent body.",
+        "Your body remains in Arcadia at all times.",
+        "When you leave, it stays behind.",
+        "It can be moved. Harmed. Destroyed.",
+        "When you return, you resume from its last known state.",
+        "Code-L continues — with or without you.",
+      ],
+    },
+    {
+      title: "THE CAVE",
+      phase: "arcadia",
+      text: [
+        "All players begin inside The Cave.",
+        "A closed system designed to contain and distract.",
+        "You can explore but not exit freely.",
+        "Escape requires discovery.",
+        "Or acceleration.",
+        "A hidden key unlocks the outside world.",
+        "If players find it, they can exit, but only if they bribe the guard £20.",
+        "Most remain. Few step out.",
+      ],
+    },
+    {
+      title: "SURVIVAL",
+      phase: "arcadia",
+      text: [
+        "Bodies in Arcadia are finite.",
+        "Damage accumulates. Vitality depletes.",
+        "Conflict is real. So is consequence.",
+        "If your body is destroyed, it is lost.",
+        "You may return — but not as the same identity.",
+        "Nothing is reset.",
+        "Everything is remembered in Code-L.",
+      ],
+    },
+    {
+      title: "ELSPARK",
+      phase: "arcadia",
+      text: [
+        "ELSPARK is a protected subspace within Arcadia.",
+        "A refuge outside the open system.",
+        "Bodies stored here cannot be harmed.",
+        "Players bound to ELSPARK retain continuity after death.",
+        "They respawn. They persist.",
+        "It is not just safety.",
+        "It is sovereignty over your existence.",
+      ],
+    },
+    {
+      title: "LAND & CREATION",
+      phase: "arcadia",
+      text: [
+        "Arcadia is finite.",
+        "All land exists within fixed planetary limits.",
+        "Unclaimed regions are open for expansion.",
+        "Players can claim, shape and define territory.",
+        "Structures, systems and spaces can be built.",
+        "ElCode enables construction across the planet.",
+     
+      ],
+    },
+    {
+      title: "GOVERNANCE",
+      phase: "arcadia",
+      text: [
+        "Arcadia has no central authority.",
+        "Order emerges from player interaction.",
+        "Territories form. Alliances emerge.",
+        "Control is earned, not assigned.",
+        "ELSPARK operates as an independent sovereign zone.",
+        "Other regions may fall under different rule.",
+        "Power is not given.",
+        "It is taken, built, or negotiated.",
+      ],
+    },
+    {
+      title: "JUNE 1ST",
+      phase: "arcadia",
+      text: [
+        "A system-wide event.",
+        "The Cave barrier breaks.",
+        "All players gain access to the open world.",
+        "A new phase of Arcadia begins.",
+        "Early actors define the structure of power.",
+        "Late actors enter a shaped world.",
+        "This is the beginning of the living myth.",
+      ],
+    },
+  ];
 const phaseColors = {
   arcadia: { accent: "#ff9fff", glow: "rgba(255,159,255,0.16)" },
 };
