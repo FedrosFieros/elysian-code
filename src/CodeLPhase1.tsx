@@ -17,7 +17,7 @@ const sections = [
     text: [
       "Users first experience the planet inside a 3D cave, accessed through el.world available in April.",
     ],
-    video: "/0001_1.mp4",
+    video: "/caveDraft.mp4",
   },
   {
     title: "The Cave",
