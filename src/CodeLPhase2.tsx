@@ -1,156 +1,297 @@
-
-import { Link } from 'react-router-dom';
-import './App.css'
-
-import { useState } from "react";
-
-
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import "./el.css";
 const sections = [
-  { title: "Phase 2 -The Escape: June 1st", phase: "escape", text: ["The wall facing the sea breaks open.", "Ellys steps in and performs a song, giving option for prisoners to join him to ELSPARK and escape from Ahriman's trap."] , video:"/escape.avi"},
-  { title: "my heart cant take another bleed", phase: "escape",     text: ["“my heart cant take another bleed.”. (ACT II, track 6)"],lyrics:[
-"verse 1:“urgency! my heart cant take another bleed.",
-"Ahriman’s war, threatens to kill our inner kids.",
-"urgency! a scar she stabbed for my blood to freeze.",
-"Bases she built on my heart, without my permit.” ", 
-"verse 2: “dizzy boy I thought I found her" ,
-"the one to be with me when it darkens.",
-"foolish of me to trust the puppeteer.",
-"this cave we need to leave she sold us the wrong idea.",
-
-"my hand i extend to the monarch inside",
-"ego laid the soil for the self now to drive.",
-"foolish of me to let you inside my gear,",
-"we could had sailled away, the sea feels so sincere.",
-
-"verse 3: “I strip myself from all my fears.",
-"I choose to escape, to this trap I will not adhere.",
-"they are lying to you, Ahriman, and his wolves are here.",
-"come come escape with me away from the slaughter. mental guillotina. ",
-
-"verse 4: “Our attention turned into a mechanical coil",
-"we cant speak from God, our brains have no choice.",
-"I refuse to stay, to an algorithm to obey.",
-"where does the surplus go why do I have to slave, for the wolves to eat the cake?",
-"power to the people, a laocratic world.",
-"we dont need violence, we need new ecosystems.",
-"we need infrastructures to distribute gold.",
-"then ahriman has no worth, then ahriman has no worth",
-
-"verse 5: light a spark and throw it down my spine,",
-"you can start a wildfire when you smile.",
-"melt my heart, posses me if you want me",
-"I try to lift the anchor, my hand you are holding",
-"how can we sail to a new life to a system I dont believe in, I wont oblige.",
-"I choose not to stay to this cave here to hide.",
-"my hand let go, I choose to take control",
-"the wheel i rotated, I lift the anchor for the sea I sail",
-"looking for a new world, i welcome you to come with me ",
-"the tides we face but we stay still, whether you come or not, ",
-"I will still go, thank you for the lessons you have given me,",
-"my heart cant bleed no more.'", "actions: Ellys invites puppeteer to come with him but she doesnt"] , audio: "/MHCTAB19.wav",},
-  
-  { title: "The  Boat", phase: "escape", text: ["Players who join Ellys, board on the boat and sail to island of Pandora, arriving on ELSPARK."] , image:"/boat.png"},
-
-  { title: "ELSPARK 3D", phase: "elspark", text: ["A new decentralised world emerges on the island of Pandora.", "An extension of elspark.online, but on a 3D world with every user now having the option to create their own avatar"], image:"/ELSPARK.png" },
-  { title: "ELSPARK Theatre", phase: "elspark", text: ["As soon as they arrive at ELSPARK, they are imemdiately guided to ELSPARK Theatre where, Ellys takes on the stage.","when the lights dim and curtains open, he reveals a screen"], image:"/ELSPARKTheatre.png" },
-  { title: "ELSPARK TV", phase: "elspark", text: ["The screen is ELSPARK TV, a digital platform of original content made by ELTV. Whether pre-recorded digital shows or live performances.","The first broadcast will be our first edition of ELCA -  a live theatrical performance we execute in physical space broadcasting onto the channel."], image:"/ELSPARKTV.png" },
-  { title: "ELCA", phase: "elspark", text: ["A live theatrical performance with the following schedule:","1) Monarch of my Body","2)ELSPARK NEWS skits","3)live performances with skits or music from local performers on city we host it everytime"], image:"/ELSPARKTheatre.png" },
-  
-  
-  { title: "What happens after? Phase 3", phase: "elspark", text: ["Arcadia continues being accesible as a 3D world, and ELSPARK welcomes new audiences away from Ahriman's corrupted social media spaces.","New accounts always start in the cave, but ones who create an account on ELSPARK can always spawn from there. ELSPARK TV broadcasts original ELTV shows and ElCode funds it through tech projects."] },
-  
-  { title: "Elly's Code", phase: "elspark", text: ["Elly's debut studio album is available to be experienced through an interactive website through which users can observe the prequel to the events on June 1st..","split in two ACTS, ACTI follows story of a caterpillar transforming to a white moth, while ACT II follows story of Ellys breaking out of the cave for the first time and his journey to find ELSPARK.Then on the 6th track  he comes back and invites other prisoners to join him on ELSPARK."] },
- 
+  {
+    title: "Phase 2 - The Escape: June 1st",
+    phase: "escape",
+    text: [
+      "At 8pm, the wall facing the sea breaks open.",
+      "Ellys steps in and performs 'My heart cant take another bleed', giving option for prisoners to join him to ELSPARK and escape from Ahriman's trap.",
+    ],
+    video: "/escape.avi",
+  },
+  {
+    title: "my heart cant take another bleed",
+    phase: "escape",
+    text: [
+      "“my heart cant take another bleed.” (ACT II, track 6).",
+    ],
+    lyrics: [
+      "verse 1: “urgency! my heart cant take another bleed.",
+      "Ahriman’s war, threatens to kill our inner kids.",
+      "urgency! a scar she stabbed for my blood to freeze.",
+      "Bases she built on my heart, without my permit.”",
+      "verse 2: “dizzy boy I thought I found her",
+      "the one to be with me when it darkens.",
+      "foolish of me to trust the puppeteer.",
+      "this cave we need to leave she sold us the wrong idea.",
+      "my hand i extend to the monarch inside",
+      "ego laid the soil for the self now to drive.",
+      "foolish of me to let you inside my gear,",
+      "we could had sailled away, the sea feels so sincere.",
+      "verse 3: “I strip myself from all my fears.",
+      "I choose to escape, to this trap I will not adhere.",
+      "they are lying to you, Ahriman, and his wolves are here.",
+      "come come escape with me away from the slaughter. mental guillotina.",
+      "verse 4: “Our attention turned into a mechanical coil",
+      "we cant speak from God, our brains have no choice.",
+      "I refuse to stay, to an algorithm to obey.",
+      "where does the surplus go why do I have to slave, for the wolves to eat the cake?",
+      "power to the people, a laocratic world.",
+      "we dont need violence, we need new ecosystems.",
+      "we need infrastructures to distribute gold.",
+      "then ahriman has no worth, then ahriman has no worth",
+      "verse 5: “light a spark and throw it down my spine,",
+      "you can start a wildfire when you smile.",
+      "melt my heart, posses me if you want me",
+      "I try to lift the anchor, my hand you are holding",
+      "how can we sail to a new life to a system I dont believe in, I wont oblige.",
+      "I choose not to stay to this cave here to hide.",
+      "my hand let go, I choose to take control",
+      "the wheel i rotated, I lift the anchor for the sea I sail",
+      "looking for a new world, i welcome you to come with me",
+      "the tides we face but we stay still, whether you come or not,",
+      "I will still go, thank you for the lessons you have given me,",
+      "my heart cant bleed no more.'",
+      "actions: Ellys invites puppeteer to come with him but she doesnt",
+    ],
+    audio: "/MHCTAB19.wav",
+  },
+  {
+    title: "The Boat",
+    phase: "escape",
+    text: [
+      "Players who join Ellys, board on the boat and sail to island of Pandora, arriving on ELSPARK.",
+    ],
+    image: "/boat.png",
+  },
+  {
+    title: "ELSPARK 3D",
+    phase: "elspark",
+    text: [
+      "A new decentralised world emerges on the island of Pandora.",
+      "An extension of elspark.online, but on a 3D world with every user now having the option to create their own avatar.",
+    ],
+    image: "/ELSPARK.png",
+  },
+  {
+    title: "ELSPARK Theatre",
+    phase: "elspark",
+    text: [
+      "As soon as they arrive at ELSPARK, they are immediately guided to ELSPARK Theatre where Ellys takes on the stage.",
+      "When the lights dim and curtains open, he reveals a screen.",
+    ],
+    image: "/ELSPARKTheatre.png",
+  },
+  {
+    title: "ELSPARK TV",
+    phase: "elspark",
+    text: [
+      "The screen is ELSPARK TV, a digital platform of original content made by ELTV. Whether pre-recorded digital shows or live performances.",
+      "The first broadcast will be our first edition of ELCA – a live theatrical performance we execute in physical space broadcasting onto the channel.",
+    ],
+    image: "/ELSPARKTV.png",
+  },
+  {
+    title: "ELCA #1",
+    phase: "elspark",
+    text: [
+      "A live theatrical performance of Monarch of my Body broadcasting from ElCave, colcuding the musical for Elly's Code.",
+         ],
+    image: "/ELSPARKTheatre.png",
+  },
+  {
+    title: "What happens after? Phase 3",
+    phase: "elspark",
+    text: [
+      "Arcadia continues being accessible as a 3D world, and ELSPARK welcomes new audiences away from Ahriman's corrupted social media spaces.",
+      "New accounts always start in the cave, but ones who create an account on ELSPARK can always spawn from there. ELSPARK TV broadcasts original ELTV shows and ElCode funds it through tech projects.",
+    ],
+  },
+  {
+    title: "Elly's Code",
+    phase: "elspark",
+    text: [
+      "Elly's debut studio album is available to be experienced through an interactive website through which users can observe the prequel to the events on June 1st.",
+      "Split in two ACTS: ACT I follows the story of a caterpillar transforming to a white moth, while ACT II follows the story of Ellys breaking out of the cave for the first time and his journey to find ELSPARK. Then on the 6th track he comes back and invites other prisoners to join him on ELSPARK.",
+    ],
+  },
 ];
 
-
-
-
+const phaseColors = {
+  escape: { accent: "#7cd9ff", glow: "rgba(124,217,255,0.18)" },
+  elspark: { accent: "#9fff7c", glow: "rgba(159,255,124,0.15)" },
+};
 
 export default function CodeLPhase2() {
   const [index, setIndex] = useState(0);
+  const [navOpen, setNavOpen] = useState(false);
   const section = sections[index];
+  const phaseTheme = phaseColors[section.phase] || phaseColors.escape;
+  const { accent, glow } = phaseTheme;
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 769px)");
+    const handler = (e) => { if (e.matches) setNavOpen(false); };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  const goTo = (i) => { setIndex(i); setNavOpen(false); };
 
   return (
-    <div className={`app ${section.phase} `}>
-      {/* LEFT NAVBAR */}
-      <nav className="navbar">
-   <div>   <Link 
-                    to={'/'} 
-                    className="logo" 
-                   
-                  >
-                   ELYSIAN CODE
-       
-               
-                  </Link>
-                  </div>
-        <ul className="nav-list">
-          {sections.map((sec, i) => (
-            <li key={i}>
-              <button 
-                className={`nav-item ${i === index ? 'active' : ''}`}
-                onClick={() => setIndex(i)}
-              >
-                {sec.title}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <>
+      {/* You can reuse the same <style> block from TheCave here,
+          or move it to a shared CSS file and just keep the classNames identical. */}
 
-      {/* MAIN CONTENT */}
-      <div className="main-content">
-          
-  
-        <div className="tv">
-          <div className="content">
-            <div className="card">
-              <h1 className="cardh">{section.title}</h1>
-              {section.text.map((line, i) => (
-                <p className="text-font" key={i}>{line}</p>
-              ))}
-              
-              {/* LYRICS */}
+      <div
+        className="ec-shell"
+        style={{
+          "--accent": accent,
+          "--accent-rgb": accent
+            .replace("#", "")
+            .match(/.{2}/g)
+            .map((h) => parseInt(h, 16))
+            .join(","),
+          boxShadow: `inset 0 0 200px ${glow}`,
+        }}
+      >
+        {/* Mobile overlay */}
+        <div
+          className={`ec-overlay ${navOpen ? "open" : ""}`}
+          onClick={() => setNavOpen(false)}
+        />
+
+        {/* Sidebar */}
+        <nav className={`ec-sidebar ${navOpen ? "open" : ""}`}>
+          <Link to="/" className="ec-logo">
+            Elysian Code
+          </Link>
+          <ul className="ec-nav-list">
+            {sections.map((sec, i) => (
+              <li key={i}>
+                <button
+                  className={`ec-nav-item ${i === index ? "active" : ""}`}
+                  onClick={() => goTo(i)}
+                >
+                  {sec.title}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Stage */}
+        <div className="ec-stage">
+          <div className="ec-spotlight" />
+
+          {/* Mobile toggle */}
+          <button className="ec-toggle" onClick={() => setNavOpen(true)}>
+            ☰
+          </button>
+
+          {/* Screen */}
+          <div className="ec-screen">
+            <div className="ec-content">
+              <p className="ec-phase-tag">
+                {section.phase === "escape" ? "Code-L · Phase 2" : "ELSPARK"}
+              </p>
+
+              <h1 className="ec-title">{section.title}</h1>
+              <div className="ec-rule" />
+
+              <div className="ec-text-block">
+                {section.text?.map((line, i) => (
+                  <p key={i}>{line}</p>
+                ))}
+              </div>
+
+              {/* Lyrics block */}
               {section.lyrics && (
-                <div className="lyrics-section">
-                  <h3>Lyrics</h3>
+                <div className="ec-text-block" style={{ marginTop: "1.5rem" }}>
+                  <p
+                    style={{
+                      fontFamily: "'Cinzel', serif",
+                      letterSpacing: "0.18em",
+                      textTransform: "uppercase",
+                      fontSize: "0.75rem",
+                      opacity: 0.7,
+                    }}
+                  >
+                    Lyrics
+                  </p>
                   {section.lyrics.map((line, i) => (
-                    <p className="lyrics-line" key={i}>{line}</p>
+                    <p key={i}>{line}</p>
                   ))}
                 </div>
               )}
+
+              {/* Audio player */}
+              {section.audio && (
+                <div style={{ marginTop: "1.5rem" }}>
+                  <audio
+                    controls
+                    src={section.audio}
+                    style={{ width: "100%" }}
+                  >
+                    Your browser does not support audio.
+                  </audio>
+                </div>
+              )}
+
+              {/* Media: video first, otherwise image */}
+              {section.video ? (
+                <video
+                  className="ec-image"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  src={section.video}
+                />
+              ) : section.image ? (
+                <img
+                  src={section.image}
+                  alt={section.title}
+                  className="ec-image"
+                />
+              ) : null}
             </div>
           </div>
 
-          {/* IMAGE/VIDEO */}
-          {section.image && <img src={section.image} className="bg-image" />}
-          {section.video && (
-            <video className="bg-video" autoPlay loop muted src={section.video} />
-          )}
-
-          {/* AUDIO PLAYER */}
-          {section.audio && (
-            <div className="audio-player flex flex-col">
-             
-              <audio 
-                controls 
-                src={section.audio}
-                className="draft-audio"
-              >
-                Your browser doesn't support audio.
-              </audio>
+          {/* Controls */}
+          <div className="ec-controls">
+            <div className="ec-progress">
+              {sections.map((_, i) => (
+                <div
+                  key={i}
+                  className={`ec-pip ${i === index ? "active" : ""}`}
+                  onClick={() => setIndex(i)}
+                />
+              ))}
             </div>
-          )}
-               <div className="controls ">
-          <button onClick={() => setIndex(Math.max(0, index - 1))}>Back</button>
-          <button  onClick={() => setIndex(Math.min(sections.length - 1, index + 1))}>Next</button>
+            <div className="ec-btn-group">
+              <button
+                className="ec-btn"
+                onClick={() => setIndex(Math.max(0, index - 1))}
+                disabled={index === 0}
+              >
+                ← Back
+              </button>
+              <button
+                className="ec-btn ec-btn-next"
+                onClick={() =>
+                  setIndex(Math.min(sections.length - 1, index + 1))
+                }
+                disabled={index === sections.length - 1}
+              >
+                Next →
+              </button>
+            </div>
+          </div>
         </div>
-        </div>
-
-   
       </div>
-    </div>
+    </>
   );
 }
-

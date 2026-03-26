@@ -1,0 +1,87 @@
+.ellys-app {
+    /* Inherits your existing responsive layout */
+  }
+  
+  .song-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .act-tag {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin: 0.5rem 0 1rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+  
+  .lyrics-container {
+    margin-bottom: 2rem;
+  }
+  
+  .lyrics-container p {
+    margin-bottom: 1rem;
+  }
+  
+  .audio-player {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .song-audio {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+  }
+  
+  .audio-note {
+    opacity: 0.6;
+    font-size: 0.85rem;
+    margin: 0;
+  }
+  
+  /* Mobile audio player */
+  @media (max-width: 768px) {
+    .song-audio {
+      max-width: 100%;
+    }
+    
+    .audio-player {
+      padding: 1.5rem;
+    }
+  }
+  
+  .audio-player {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0,0,0,0.5);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-top: 2rem;
+}
+
+.soundcloud-fallback {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.fallback-note,
+.audio-note {
+  opacity: 0.7;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0 0;
+  font-style: italic;
+}
+
+.fallback-note {
+  color: #66ccff;
+}
+
+.audio-note {
+  color: #ff6666;
+}
