@@ -60,17 +60,22 @@ export default function Arcadia() {
   const [index, setIndex] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
   const section = sections[index];
-  const { accent, glow } = phaseColors.arcadia;
+  const { accent } = phaseColors.arcadia;
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 769px)");
-    const handler = (e) => { if (e.matches) setNavOpen(false); };
+    const handler = (e: MediaQueryListEvent) => {
+        if (e.matches) setNavOpen(false);
+      };
+      
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  const goTo = (i) => { setIndex(i); setNavOpen(false); };
-
+  const goTo = (i: number) => {
+    setIndex(i);
+    setNavOpen(false);
+  };
   return (
     <>
       <style>{`
@@ -104,15 +109,16 @@ export default function Arcadia() {
 
       <div
         className="ec-shell"
-        style={{
-          "--accent": accent,
-          "--accent-rgb": accent
-            .replace("#", "")
-            .match(/.{2}/g)
-            .map((h) => parseInt(h, 16))
-            .join(","),
-          boxShadow: `inset 0 0 200px ${glow}`,
-        }}
+        style={
+            {
+              "--accent": accent,
+              "--accent-rgb": accent
+                .replace("#", "")
+                .match(/.{2}/g)!
+                .map((h: string) => parseInt(h, 16))
+                .join(","),
+            } as React.CSSProperties
+          }
       >
         {/* Mobile overlay */}
         <div

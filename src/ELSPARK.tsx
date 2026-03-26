@@ -108,18 +108,18 @@ export default function ELSPARK() {
   const [navOpen, setNavOpen] = useState(false);
 
   const section = sections[index];
-  const { accent, glow } = phaseColors.elspark;
+  const { accent } = phaseColors.elspark;
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 769px)");
-    const handler = (e) => {
+    const handler = (e: MediaQueryListEvent) => {
       if (e.matches) setNavOpen(false);
     };
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  const goTo = (i) => {
+  const goTo = (i: number) => {
     setIndex(i);
     setNavOpen(false);
   };
@@ -171,15 +171,16 @@ export default function ELSPARK() {
 
       <div
         className="ec-shell"
-        style={{
-          "--accent": accent,
-          "--accent-rgb": accent
-            .replace("#", "")
-            .match(/.{2}/g)
-            .map((h) => parseInt(h, 16))
-            .join(","),
-          boxShadow: `inset 0 0 200px ${glow}`,
-        }}
+        style={
+          {
+            "--accent": accent,
+            "--accent-rgb": accent
+              .replace("#", "")
+              .match(/.{2}/g)!
+              .map((h: string) => parseInt(h, 16))
+              .join(","),
+          } as React.CSSProperties
+        }
       >
         {/* Overlay */}
         <div

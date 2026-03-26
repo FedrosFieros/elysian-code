@@ -119,26 +119,31 @@ const sections = [
   },
 ];
 
-const phaseColors = {
-  escape: { accent: "#7cd9ff", glow: "rgba(124,217,255,0.18)" },
-  elspark: { accent: "#9fff7c", glow: "rgba(159,255,124,0.15)" },
-};
+type Phase = "intro" | "cave";
 
+const phaseColors: Record<Phase, { accent: string; glow: string }> = {
+  intro: { accent: "#...", glow: "#..." },
+  cave: { accent: "#...", glow: "#..." },
+};
 export default function CodeLPhase2() {
   const [index, setIndex] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
   const section = sections[index];
-  const phaseTheme = phaseColors[section.phase] || phaseColors.escape;
-  const { accent, glow } = phaseTheme;
+  const { accent } =
+  phaseColors[section.phase as keyof typeof phaseColors] || phaseColors.cave;
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 769px)");
-    const handler = (e) => { if (e.matches) setNavOpen(false); };
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) setNavOpen(false);
+    };
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
-
-  const goTo = (i) => { setIndex(i); setNavOpen(false); };
+  const goTo = (i: number) => {
+    setIndex(i);
+    setNavOpen(false);
+  };
 
   return (
     <>
@@ -147,15 +152,16 @@ export default function CodeLPhase2() {
 
       <div
         className="ec-shell"
-        style={{
-          "--accent": accent,
-          "--accent-rgb": accent
-            .replace("#", "")
-            .match(/.{2}/g)
-            .map((h) => parseInt(h, 16))
-            .join(","),
-          boxShadow: `inset 0 0 200px ${glow}`,
-        }}
+        style={
+          {
+            "--accent": accent,
+            "--accent-rgb": accent
+              .replace("#", "")
+              .match(/.{2}/g)!
+              .map((h: string) => parseInt(h, 16))
+              .join(","),
+          } as React.CSSProperties
+        }
       >
         {/* Mobile overlay */}
         <div

@@ -311,9 +311,9 @@ html, body, #root {
 .ec-btn-next {
   background: var(--accent);
   border-color: transparent;
-  color: #0a0608;
+  color: #adadad;
   font-weight: 700;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+  box-shadow: 0 6px 24px rgba(185, 185, 185, 0.5);
 }
 .ec-btn-next:hover:not(:disabled) {
   filter: brightness(1.1);

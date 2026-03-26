@@ -84,26 +84,36 @@ const sections = [
   },
 ];
 
-const phaseColors = {
-  intro: { accent: "#e8c97a", glow: "rgba(232,201,122,0.15)" },
-  cave:  { accent: "#ff7c5c", glow: "rgba(255,124,92,0.12)"  },
+type Phase = "intro" | "cave";
+
+const phaseColors: Record<Phase, { accent: string; glow: string }> = {
+  intro: { accent: "#...", glow: "#..." },
+  cave: { accent: "#...", glow: "#..." },
 };
+
 
 export default function TheCave() {
   const [index, setIndex] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
   const section = sections[index];
-  const { accent, glow } = phaseColors[section.phase] || phaseColors.cave;
+  const { accent } =
+  phaseColors[section.phase as keyof typeof phaseColors] || phaseColors.cave;
 
   // close nav on resize to desktop
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 769px)");
-    const handler = (e) => { if (e.matches) setNavOpen(false); };
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) setNavOpen(false);
+    };
+    
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  const goTo = (i) => { setIndex(i); setNavOpen(false); };
+  const goTo = (i: number) => {
+    setIndex(i);
+    setNavOpen(false);
+  };
 
   return (
     <>
@@ -421,7 +431,7 @@ export default function TheCave() {
         .ec-btn-next {
           background: var(--accent);
           border-color: transparent;
-          color: #0a0608;
+          color:rgb(158, 158, 158);
           font-weight: 700;
           box-shadow: 0 6px 24px rgba(0,0,0,0.5);
         }
@@ -477,11 +487,16 @@ export default function TheCave() {
 
       <div
         className={`ec-shell`}
-        style={{
-          "--accent": accent,
-          "--accent-rgb": accent.replace("#","").match(/.{2}/g).map(h=>parseInt(h,16)).join(","),
-          boxShadow: `inset 0 0 200px ${glow}`,
-        }}
+        style={
+          {
+            "--accent": accent,
+            "--accent-rgb": accent
+              .replace("#", "")
+              .match(/.{2}/g)!
+              .map((h: string) => parseInt(h, 16))
+              .join(","),
+          } as React.CSSProperties
+        }
       >
         {/* Mobile overlay */}
         <div
