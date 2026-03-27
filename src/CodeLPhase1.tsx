@@ -512,6 +512,7 @@ export default function TheCave() {
         {/* Sidebar */}
         <nav className={`ec-sidebar ${navOpen ? "open" : ""}`}>
           <Link to="/" className="ec-logo"> ARCADIA</Link>
+          <h1  className="ec-logo"> Phase 1</h1>
           <ul className="ec-nav-list">
             {sections.map((sec, i) => (
               <li key={i}>
@@ -524,6 +525,7 @@ export default function TheCave() {
               </li>
             ))}
           </ul>
+          <Link to="/CodeLPhase2" className="codeL ec-btn "> Phase 2</Link>
         </nav>
 
         {/* Stage */}

@@ -3,7 +3,7 @@ import "./el.css"; // Your shared CSS file
 const cards = [
     {
         title: "Arcadia",
-        label: "Autonomous Digital 3D Planet",
+        label: "An autonomous Digital 3D rendered Planet",
         subtitle: "Running 24/7, the planet has a recorded history weaving the unfolding of the real-time mythos Code-L . Arcadians are static, unless connected by a human, who then directly influences the 3D environemnt of Arcadia.",
         path: "/elworld",
         accent: "#4ecb6b",
@@ -13,7 +13,7 @@ const cards = [
   {
     title: "Code-L Phase 1",
     label: "Ahriman's Cave",
-    subtitle: "First entry onto Arcadia and the mythos of Code-L begins in a digital cave.",
+    subtitle: "Initially trapped for a few months, first entry onto Arcadia begins in a digital cave, with only few at the time escapingto the rest of the world.",
     path: "/codeLphase1",
     accent: "#e8c97a",
     available: true,
@@ -22,7 +22,7 @@ const cards = [
   {
     title: "Code-L Phase 2",
     label: "The Escape",
-    subtitle: "Ellys breaks into the cave to help prisoners escape and board a boat to ELSPARK.",
+    subtitle: "Ellys breaks into the cave and helps every prisoner to escape and tells them that if they are looking for shelter and spawn safely they need to find ELSPARK.",
     path: "/CodeLPhase2",
     accent: "#ff7c5c",
     available: true,
@@ -32,7 +32,7 @@ const cards = [
   {
     title: "ELSPARK",
     label: "Digital Park",
-    subtitle: "A decentralised social digital park on Arcadia, also accessible on earth.",
+    subtitle: "A decentralised social digital park on Arcadia. Players who sign up are granted safe shelter away from Ahriman, whose scarecrows attack sleeping bodies.",
     path: "/elspark",
     accent: "#c0bfbf",
     available: true,
@@ -239,6 +239,7 @@ export default function LandingNav() {
           justify-content: flex-end;
           padding: 2.5rem 2rem 2rem;
           min-height: 280px;
+          margin-top:100px;
           overflow: hidden;
           text-decoration: none;
           color: inherit;

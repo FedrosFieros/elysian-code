@@ -174,6 +174,7 @@ export default function CodeLPhase2() {
           <Link to="/" className="ec-logo">
           ARCADIA
           </Link>
+          <h2 className="ec-logo "> Phase 2</h2>
           <ul className="ec-nav-list">
             {sections.map((sec, i) => (
               <li key={i}>

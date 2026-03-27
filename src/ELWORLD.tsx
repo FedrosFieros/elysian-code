@@ -251,6 +251,11 @@ export default function Arcadia() {
               </li>
             ))}
           </ul>
+       
+                <Link to="/codeLphase1" className="codeL ec-btn ">
+                 <h1 className="codeLarcadia-signal"> Code-L: Phase 1</h1>
+                </Link>
+     
         </nav>
         {/* Stage */}
         <div className="ec-stage">
@@ -303,7 +308,7 @@ export default function Arcadia() {
                 ))}
               
               {section.subheading && (
-                <Link to="/codeLphase1" className="signal-break huge">
+                <Link to="/codeLphase1" className="codeL ec-btn ">
                  <h1 className="codeLarcadia-signal"> Code-L: Phase 1</h1>
                 </Link>
               )}
