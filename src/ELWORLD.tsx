@@ -228,15 +228,7 @@ export default function Arcadia() {
           } as React.CSSProperties
         }
       >
-        {/* Background Video */}
-        <video
-          className="ec-bg-video"
-          autoPlay
-          loop
-          muted
-          playsInline
-          src="/caveDraft.mp4" // ← swap this path
-        />
+       
         {/* Mobile overlay */}
         <div
           className={`ec-overlay ${navOpen ? "open" : ""}`}
@@ -264,14 +256,29 @@ export default function Arcadia() {
         <div className="ec-stage">
           <div className="ec-spotlight" />
 
-          {/* Mobile toggle */}
-          <button className="ec-toggle" onClick={() => setNavOpen(true)}>
-            ☰
-          </button>
-
+            {/* Mobile toggle - ADD THIS BACK */}
+  <button 
+    className="ec-toggle" 
+    onClick={() => setNavOpen(o => !o)}
+    style={{zIndex: 100}}  // ensures it's clickable
+  >
+    ☰
+  </button>
+ {/* Background Video */}
+ <video
+          className="ec-bg-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          src="/caveDraft.mp4" // ← swap this path
+        />
           {/* Screen */}
           <div className="ec-screen">
+            
+
             <div className="ec-content">
+              
               <p className="ec-phase-tag arcadia huge">Code-L · ARCADIA</p>
 
               <h1 className="ec-title">{section.title}</h1>

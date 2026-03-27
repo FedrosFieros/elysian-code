@@ -22,20 +22,7 @@ html, body, #root {
 }
 
 /* ── SIDEBAR ── */
-.ec-sidebar {
-  width: 260px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  background: #06030a;
-  border-right: 1px solid rgba(255,255,255,0.05);
-  overflow-y: auto;
-  overflow-x: hidden;
-  z-index: 20;
-  transition: transform 0.4s cubic-bezier(0.77,0,0.18,1);
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.1) transparent;
-}
+
 
 .ec-logo {
   display: block;
@@ -187,8 +174,8 @@ html, body, #root {
   
   border: 1px solid rgba(255,255,255,0.04);
   border-bottom: none;
-  position: center;
-  z-index: 2;
+  position: relative;
+  z-index: 20;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(255,255,255,0.08) transparent;
@@ -196,10 +183,11 @@ html, body, #root {
   flex-direction: column;
 margin-left: 20%;
 margin-right: 20%;
+opacity:0.7;
 }
 
 .ec-content {
-  flex: 1;
+position:relative;
   padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 5vw, 4rem);
   display: flex;
   flex-direction: column;
@@ -338,14 +326,7 @@ margin-right: 20%;
   .ec-toggle  { display: flex; }
   .ec-overlay { display: block; }
 
-  .ec-sidebar {
-    position: fixed;
-    top: 0; left: 0;
-    height: 100dvh;
-    width: 280px;
-    transform: translateX(-100%);
-    box-shadow: 4px 0 40px rgba(0,0,0,0.8);
-  }
+
   .ec-sidebar.open { transform: translateX(0); }
   .ec-overlay { pointer-events: none; opacity: 0; transition: opacity 0.3s ease; }
   .ec-overlay.open { pointer-events: auto; opacity: 1; }
@@ -374,26 +355,27 @@ letter-spacing: 0.32em;
 }
 /* Background video */
 .ec-bg-video {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 0;
+    z-index: 10;
     pointer-events: none;
-    display: none;
+
     opacity: 0.3;
   }
   
   /* Make sure overlay, sidebar and stage sit above it */
-  .ec-overlay,
-  .ec-sidebar,
-  .ec-stage {
-    position: center;
-    z-index: 100;
-  }
 
+  .ec-overlay {
+    pointer-events: none;
+  }
+  
+  .ec-overlay.open {
+    pointer-events: auto; /* but only for the area not covered by sidebar */
+  }
 
   @media (min-width: 1024px) {
     .ec-bg-video {
@@ -409,8 +391,26 @@ letter-spacing: 0.32em;
     border-right: 1px solid rgba(255,255,255,0.05);
     overflow-y: auto;
     overflow-x: hidden;
-    z-index: 20;
+    z-index: 2000px;
     transition: transform 0.4s cubic-bezier(0.77,0,0.18,1);
     scrollbar-width: thin;
     scrollbar-color: rgba(255,255,255,0.1) transparent;
+    opacity:1;
+  }
+  @media (max-width: 768px) {
+    .ec-sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh;
+      width: 280px;
+      transform: translateX(-100%);  /* HIDDEN offscreen */
+      opacity: 0;                    /* HIDDEN invisible */
+      z-index: 100;
+      transition: all 0.4s cubic-bezier(0.77,0,0.18,1);  /* ALL properties */
+    }
+    
+    .ec-sidebar.open {
+      transform: translateX(0);      /* VISIBLE onscreen */
+      opacity: 1;                    /* VISIBLE solid */
+    }
   }
