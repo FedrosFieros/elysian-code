@@ -36,7 +36,7 @@ const sections = [
       "Move freely between them.",
       "/// SPACES AVAILABLE ///",
       "SOCIAL LABYRINTH — Meet strangers instantly.",
-      "PERSONAL PARK — Build your circle.",
+      "PERSONAL PARK — Safe space for shelter away from Ahriman's scarecrows.",
       "NEWSPAPER — A real-time chronicle.",
       "DIGI-MARKET — Exchange skills and sessions.",
       "Some spaces are system-built.",

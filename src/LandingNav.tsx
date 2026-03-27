@@ -4,7 +4,7 @@ const cards = [
     {
         title: "Arcadia",
         label: "An autonomous Digital 3D rendered Planet",
-        subtitle: "Running 24/7, the planet has a recorded history weaving the unfolding of the real-time mythos Code-L . Arcadians are static, unless connected by a human, who then directly influences the 3D environemnt of Arcadia.",
+        subtitle: "Running 24/7, the planet has a recorded history weaving the unfolding of the real-time mythos Code-L . Arcadians are static, unless connected by a human, who then directly influences the 3D environemnt around them.",
         path: "/elworld",
         accent: "#4ecb6b",
         available: true,
@@ -13,7 +13,7 @@ const cards = [
   {
     title: "Code-L Phase 1",
     label: "Ahriman's Cave",
-    subtitle: "Initially trapped for a few months, first entry onto Arcadia begins in a digital cave, with only few at the time escapingto the rest of the world.",
+    subtitle: "Initially every player is trapped in their first entry onto Arcadia, commencing  inside a 3D digital cave, with only few at a time able to escape out to the rest of the world.",
     path: "/codeLphase1",
     accent: "#e8c97a",
     available: true,
@@ -32,7 +32,7 @@ const cards = [
   {
     title: "ELSPARK",
     label: "Digital Park",
-    subtitle: "A decentralised social digital park on Arcadia. Players who sign up are granted safe shelter away from Ahriman, whose scarecrows attack sleeping bodies.",
+    subtitle: "A decentralised social digital park on Arcadia. Players who sign up are granted safe shelter away from Ahriman, whose scarecrows attack sleeping bodies if left exposed.",
     path: "/elspark",
     accent: "#c0bfbf",
     available: true,
@@ -50,10 +50,10 @@ const cards = [
   {
     title: "Elly's Code",
     label: "Debut Album",
-    subtitle: "studio album, which is integrated in a musical unfolding through Code-L.",
+    subtitle: "musical split in two ACTS exploring the discovery of ELSPARK. Players can experience it in real-time, watching the events unfold, around them but they cannot influence them. What was done at the time of livestreaming, stays.",
     path: "/ellyscode",
     accent: "#00cc6a",
-    available: true,
+    available: false,
     icon: "♫",
   },
   {
