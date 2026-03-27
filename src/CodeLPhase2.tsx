@@ -12,11 +12,11 @@ const sections = [
     video: "/escape.avi",
   },
   {
-    title: "my heart cant take another bleed",
+    title: "“my heart cant take another bleed.” (ACT II, track 6).",
     phase: "escape",
     text: [
-      "“my heart cant take another bleed.” (ACT II, track 6).",
-    ],
+      "Ellys returns to tell Lady Dopamina about ELSPARK and that it can offer them immortality and shelter from scarecrows.",
+ "the puppeteer Lady Dopamina refused to come and stabs him instead.","the wolves then come out to eat everyone but the people in the cave kick them to death.","people can escape from cave onto the new world, but Ellys tells them about ELSPARK.",   ],
     lyrics: [
       "verse 1: “urgency! my heart cant take another bleed.",
       "Ahriman’s war, threatens to kill our inner kids.",
@@ -62,7 +62,7 @@ const sections = [
     title: "The Boat",
     phase: "escape",
     text: [
-      "Players who join Ellys, board on the boat and sail to island of Pandora, arriving on ELSPARK.",
+      "Players who join Ellys, board on the boat and sail to island of Pandora, arriving to ELSPARK.",
     ],
     image: "/boat.png",
   },
