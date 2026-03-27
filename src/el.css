@@ -184,15 +184,18 @@ html, body, #root {
   margin: clamp(0.75rem, 2vh, 1.5rem) clamp(2.5rem, 6vw, 5rem) 0;
   border-radius: 1rem 1rem 0 0;
   background: #0d0910;
+  
   border: 1px solid rgba(255,255,255,0.04);
   border-bottom: none;
-  position: relative;
+  position: center;
   z-index: 2;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(255,255,255,0.08) transparent;
   display: flex;
   flex-direction: column;
+margin-left: 20%;
+margin-right: 20%;
 }
 
 .ec-content {
@@ -311,9 +314,9 @@ html, body, #root {
 .ec-btn-next {
   background: var(--accent);
   border-color: transparent;
-  color: #adadad;
+  color: #000000;
   font-weight: 700;
-  box-shadow: 0 6px 24px rgba(185, 185, 185, 0.5);
+  box-shadow: 0 6px 24px rgba(35, 35, 35, 0.5);
 }
 .ec-btn-next:hover:not(:disabled) {
   filter: brightness(1.1);
@@ -369,3 +372,45 @@ font-size: 0.7rem;
 letter-spacing: 0.32em;
 }
 }
+/* Background video */
+.ec-bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    display: none;
+    opacity: 0.3;
+  }
+  
+  /* Make sure overlay, sidebar and stage sit above it */
+  .ec-overlay,
+  .ec-sidebar,
+  .ec-stage {
+    position: center;
+    z-index: 100;
+  }
+
+
+  @media (min-width: 1024px) {
+    .ec-bg-video {
+      display: block;
+    }
+  } /* ── SIDEBAR ── */
+  .ec-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: #06030a;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 20;
+    transition: transform 0.4s cubic-bezier(0.77,0,0.18,1);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+  }

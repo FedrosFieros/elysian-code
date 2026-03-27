@@ -9,7 +9,7 @@ const sections = [
       " Code-L is an interactive meta-mythos unfolding across a new 3D digital planet, called Arcadia.",
       "In this world, Ahriman has bought over all the land and trapped all Arcadians into caves. ",
       "And this is where players spawn inside when they enter arcadia.world.",
-      "Use the sidebar or the Next / Back buttons to explore.",
+
     ],
   },
   {
@@ -42,15 +42,15 @@ const sections = [
     phase: "cave",
     text: [
       "These caves were designed by Ahriman to trap humans inside systems they cannot escape — a false reality holding them prisoner.",
-      "The trap mirrors the financial system: a design that enslaves people into debt they are born into.",
+
     ],
     image: "/Ahriman.png",
   },
   {
-    title: "The Puppeteer",
+    title: "Lady Dopamina, Puppeteer",
     phase: "cave",
     text: [
-      "Assigned by Ahriman and operated from the ElCode backend, the Puppeteer speaks of safety inside the cave and chaos outside.",
+      "A deceiving character inside the cave who will constanty find ways to distract the prisoners so they dont exit. She speaks of safety inside the cave and uncertainty outside.",
       "She maintains order. She calms the prisoners.",
     ],
     image: "/cave-puppeteer.png",
@@ -59,8 +59,8 @@ const sections = [
     title: "The Blue Device",
     phase: "cave",
     text: [
-      "Every player carries a device displaying a live feed — events posted by puppeteers from the backend, narrated from Ahriman's perspective.",
-      "A space for live participants to read, react, and discuss.",
+      "Every player carries a device displaying intense blue light when looked on, constantly broadcasting hypnotising videos.",
+      "all subbliminal messages from Ahriman ",
     ],
     image: "/cave-bluedevice.png",
   },
@@ -78,8 +78,8 @@ const sections = [
     title: "Ritual Leader",
     phase: "cave",
     text: [
-      "A cunty individual hosts the ritual — singing as players watch their bodies consumed by wolves.",
-      "They can turn their heads. They cannot run. They die. A lived-in music video.",
+      "Lady Dopamina hosts the ritual — singing as players watch their bodies consumed by wolves.",
+      "They can turn their heads. They cannot run. They die in real time and cannot be stopped.. A lived-in music video.",
     ],
     image: "/dominatrix.png",
   },
@@ -412,11 +412,11 @@ export default function TheCave() {
         .ec-btn {
           padding: 0.55rem 1.5rem;
           border-radius: 999px;
-          border: 1px solid rgba(255,255,255,0.12);
+          border: 10px solid rgba(255,255,255,0.12);
           background: transparent;
           color: rgba(240,236,228,0.6);
           font-family: 'Cinzel', serif;
-          font-size: 0.6rem;
+          font-size: 1.6rem;
           letter-spacing: 0.25em;
           text-transform: uppercase;
           cursor: pointer;
@@ -554,21 +554,7 @@ export default function TheCave() {
     className="ec-image"
   />
 ) : null}
-            </div>
-          </div>
-
-          {/* Controls */}
-          <div className="ec-controls">
-            <div className="ec-progress">
-              {sections.map((_, i) => (
-                <div
-                  key={i}
-                  className={`ec-pip ${i === index ? "active" : ""}`}
-                  onClick={() => setIndex(i)}
-                />
-              ))}
-            </div>
-            <div className="ec-btn-group">
+  <div className="ec-btn-group">
               <button
                 className="ec-btn"
                 onClick={() => setIndex(Math.max(0, index - 1))}
@@ -584,6 +570,22 @@ export default function TheCave() {
                 Next →
               </button>
             </div>
+            </div>
+            
+          </div>
+
+          {/* Controls */}
+          <div className="ec-controls">
+            <div className="ec-progress">
+              {sections.map((_, i) => (
+                <div
+                  key={i}
+                  className={`ec-pip ${i === index ? "active" : ""}`}
+                  onClick={() => setIndex(i)}
+                />
+              ))}
+            </div>
+          
           </div>
         </div>
       </div>

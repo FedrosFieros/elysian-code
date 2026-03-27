@@ -3,8 +3,8 @@ import "./el.css"; // Your shared CSS file
 const cards = [
     {
         title: "Arcadia",
-        label: "3D Digital Planet",
-        subtitle: "A 3D digital planet where the mythos of Code-L unfolds and a new society is hosted.",
+        label: "Autonomous Digital 3D Planet",
+        subtitle: "Running 24/7, the planet has a recorded history weaving the real-time mythos of Code-L unfolding, as Arcadians directly influence the environemnt.",
         path: "/elworld",
         accent: "#4ecb6b",
         available: true,
@@ -220,7 +220,8 @@ export default function LandingNav() {
 
         /* ── GRID ── */
         .el-grid {
-          display: grid;
+          display: flex;
+          flex-direction:column;
           grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
           gap: 1.5px;
           max-width: 1400px;
@@ -301,7 +302,7 @@ export default function LandingNav() {
         }
 
         .el-card-desc {
-          font-size: 1.275rem;
+          font-size: 2.275rem;
           line-height: 1.7;
           color: rgb(196, 196, 196);
           font-style: italic;
@@ -402,12 +403,15 @@ export default function LandingNav() {
         <div className="el-stage">
           {/* Header */}
           <header className="el-header">
-            <p className="el-eyebrow">Welcome to</p>
+            
+
             <h1 className="el-title">Elysian Code</h1>
+          
             <div className="el-rule" />
             <p className="el-subtitle">
-              A website exploring the meta-mythos of Code-L, unfolding across the digital 3D planet Arcadia, bringing forth a real-time determinstic environment, with independent conscious pariticpants.
+         A transcript 
             </p>
+          
           </header>
 
           {/* Cards Grid */}
@@ -428,13 +432,14 @@ export default function LandingNav() {
                   <span className={`el-badge ${card.available ? "el-badge-live" : "el-badge-wip"}`}>
                     {card.available ? "Live" : "Soon"}
                   </span>
+                  <h2 className="el-card-title" style={{ color: card.available ? "#f0ece4" : "rgba(240,236,228,0.4)" }}>
+                    {card.title}
+                  </h2>
                   <div className="el-card-icon" style={{ color: card.accent }}>
                     {card.icon}
                   </div>
                   <p className="el-card-label">{card.label}</p>
-                  <h2 className="el-card-title" style={{ color: card.available ? "#f0ece4" : "rgba(240,236,228,0.4)" }}>
-                    {card.title}
-                  </h2>
+              
                   <p className="el-card-desc">{card.subtitle}</p>
                   {card.available && (
                     <span className="el-card-arrow" style={{ color: card.accent }}>↗</span>
