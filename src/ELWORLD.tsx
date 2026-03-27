@@ -47,11 +47,11 @@ const sections = [
       title: "SURVIVAL",
       phase: "arcadia",
       text: [
-        "Bodies in Arcadia breathe in heart beats which increases when you hug with someone however stabs can cause make you lose them .",
+        "Bodies in Arcadia breathe in heart beats which increases when you hug with someone however stabs can make you lose some .",
         "Players can move their bodies to make dance moves, but if directed at a person, it stabs them, losing blood.",
         "If conflict is real. So is consequence.",
         "If your body is destroyed, it is lost.",
-        "You may return — but not as the same identity.",
+        "You may return, but not as the same identity.",
         "Account is reset.",
         "Everything is remembered in Code-L, but you are a new person.",
       ],
@@ -100,8 +100,8 @@ const sections = [
         "Ellys comes to the cave breaking the door for all to go.",
         "The cave door breaks and outside as they escape for the first time, we have clear demonstration of the laws for the universe..",
         "All players gain access to the open world.",
-        "A new phase of Arcadia begins.",
-        "This is the beginning of the living myth Code-L.",
+        "A new phase of Arcadia and Code-L begins.",
+       
       ],
     },
   ];

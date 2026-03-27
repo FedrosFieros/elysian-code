@@ -9,10 +9,15 @@ const SONGS = [
     lyrics: (
       <>
         <p className="cinematic">
+          Code-L is a recorded and living meta-mythos. Events are captured and can be relieved but not changed. Elly's Code explores the story of Ellys and the first time he escaped from the cave to find ELSPARK.
+          </p>
+          <p>
+          Elly's Code is split in two acts.
           ACT I explores the birth of Carl, a white caterpillar transforming
           onto a white moth and then ends the ACT burning into ashes and coming
           out as a red butterfly.
         </p>
+        <p>Name of ACT I is meta-metamorphosis and can be experienced as an independent video game. It explores the spiritual awakeneing of Elly's before he realises he is a prisoer inside The Cave.</p>
       </>
     ),
   },

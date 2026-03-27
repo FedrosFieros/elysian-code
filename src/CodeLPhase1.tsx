@@ -25,7 +25,7 @@ const sections = [
     phase: "cave",
     text: [
       "Once inside, players control an avatar in a shared space alongside other online participants.",
-      "Each avatar looks the same but carries a unique username and chat bubble. No accounts — every session spawns a fresh character.",
+      "Each avatar looks the same but carries a unique username and chat bubble. ",
     ],
     image: "/cave-avatars.png",
   },
