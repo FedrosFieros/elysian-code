@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import "./el.css"; // Your shared CSS file
 const cards = [
+    {
+        title: "Arcadia",
+        label: "3D Digital Planet",
+        subtitle: "A 3D digital planet where the mythos of Code-L unfolds and a new society is hosted.",
+        path: "/elworld",
+        accent: "#4ecb6b",
+        available: true,
+        icon: "⬡",
+      },
   {
     title: "Code-L Phase 1",
     label: "Ahriman's Cave",
@@ -19,15 +28,7 @@ const cards = [
     available: true,
     icon: "◎",
   },
-  {
-    title: "Arcadia",
-    label: "3D Digital Planet",
-    subtitle: "A 3D digital planet where the mythos of Code-L unfolds and a new society is hosted.",
-    path: "/elworld",
-    accent: "#4ecb6b",
-    available: true,
-    icon: "⬡",
-  },
+
   {
     title: "ELSPARK",
     label: "Digital Park",
@@ -405,7 +406,7 @@ export default function LandingNav() {
             <h1 className="el-title">Elysian Code</h1>
             <div className="el-rule" />
             <p className="el-subtitle">
-              A website exploring the meta-mythos of Code-L, unfolding across a digital 3D planet Arcadia, bringing forth live theatre, and a new era for tech and creative industry.
+              A website exploring the meta-mythos of Code-L, unfolding across the digital 3D planet Arcadia, bringing forth a real-time determinstic environment, with independent conscious pariticpants.
             </p>
           </header>
 

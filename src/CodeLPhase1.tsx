@@ -6,8 +6,9 @@ const sections = [
     title: "Preface",
     phase: "intro",
     text: [
-      "Welcome to Code-L: An interactive meta-mythos unfolding across a new 3D digital planet, called Arcadia.",
-      "Use this document to navigate through the first phase of how visitors can experience this planet, the backstory and how players will escape Ahriman's trap to discover ELSPARK.",
+      " Code-L is an interactive meta-mythos unfolding across a new 3D digital planet, called Arcadia.",
+      "In this world, Ahriman has bought over all the land and trapped all Arcadians into caves. ",
+      "And this is where players spawn inside when they enter arcadia.world.",
       "Use the sidebar or the Next / Back buttons to explore.",
     ],
   },

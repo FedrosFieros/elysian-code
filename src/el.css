@@ -323,7 +323,13 @@ html, body, #root {
   color: #0a0608;
   transform: translateY(-1px);
 }
-
+.huge {
+    text-align: start;
+    opacity: 0.3;
+    margin: 30px 0;
+    font-size: 200px;
+    letter-spacing: 2px;
+  }
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .ec-toggle  { display: flex; }

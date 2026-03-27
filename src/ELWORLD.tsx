@@ -9,7 +9,7 @@ const sections = [
       text: [
         "▮ PLANETARY SYSTEM INITIALISED",
         "Arcadia is a persistent 3D simulated planet governed by deterministic physics.",
-        "Every action, body and interaction is recorded into Code-L — a continuous causal ledger.",
+        "Every action, body and interaction is recorded into Code-L; a continuous causal myth.",
         "This is not a static game world.",
         "It is a living system of consequence.",
         "You do not observe it.",
@@ -21,11 +21,11 @@ const sections = [
       phase: "arcadia",
       text: [
         "You are not your character.",
-        "You are the consciousness controlling a persistent body.",
+        "You are the consciousness controlling a persistent body inside the mythos.",
         "Your body remains in Arcadia at all times.",
         "When you leave, it stays behind.",
         "It can be moved. Harmed. Destroyed.",
-        "When you return, you resume from its last known state.",
+        "When you return, you resume from your last known state, or if you are dead as a new character",
         "Code-L continues — with or without you.",
       ],
     },
@@ -38,7 +38,7 @@ const sections = [
         "You can explore but not exit freely.",
         "Escape requires discovery.",
         "Or acceleration.",
-        "A hidden key unlocks the outside world.",
+        "A hidden key unlocks the gate to outside world.",
         "If players find it, they can exit, but only if they bribe the guard £20.",
         "Most remain. Few step out.",
       ],
@@ -47,13 +47,13 @@ const sections = [
       title: "SURVIVAL",
       phase: "arcadia",
       text: [
-        "Bodies in Arcadia are finite.",
-        "Damage accumulates. Vitality depletes.",
-        "Conflict is real. So is consequence.",
+        "Bodies in Arcadia breathe in heart beats which increases when you hug with someone however stabs can cause make you lose them .",
+        "Players can move their bodies to make dance moves, but if directed at a person, it stabs them, losing blood.",
+        "If conflict is real. So is consequence.",
         "If your body is destroyed, it is lost.",
         "You may return — but not as the same identity.",
-        "Nothing is reset.",
-        "Everything is remembered in Code-L.",
+        "Account is reset.",
+        "Everything is remembered in Code-L, but you are a new person.",
       ],
     },
     {
@@ -62,11 +62,9 @@ const sections = [
       text: [
         "ELSPARK is a protected subspace within Arcadia.",
         "A refuge outside the open system.",
-        "Bodies stored here cannot be harmed.",
-        "Players bound to ELSPARK retain continuity after death.",
+        "A residence for visitors to stay and connect in a decentralised society.",
+        "Players signed up under ELSPARK can retain continuity if killed.",
         "They respawn. They persist.",
-        "It is not just safety.",
-        "It is sovereignty over your existence.",
       ],
     },
     {
@@ -74,11 +72,11 @@ const sections = [
       phase: "arcadia",
       text: [
         "Arcadia is finite.",
-        "All land exists within fixed planetary limits.",
+        "All land is owned by Ahriman, but you just need to kill the scarecrows and player can be safe.",
         "Unclaimed regions are open for expansion.",
         "Players can claim, shape and define territory.",
         "Structures, systems and spaces can be built.",
-        "ElCode enables construction across the planet.",
+        "ElCode can help with the construction across the planet.",
      
       ],
     },
@@ -92,21 +90,18 @@ const sections = [
         "Control is earned, not assigned.",
         "ELSPARK operates as an independent sovereign zone.",
         "Other regions may fall under different rule.",
-        "Power is not given.",
-        "It is taken, built, or negotiated.",
+  
       ],
     },
     {
       title: "JUNE 1ST",
       phase: "arcadia",
       text: [
-        "A system-wide event.",
-        "The Cave barrier breaks.",
+        "Ellys comes to the cave breaking the door for all to go.",
+        "The cave door breaks and outside as they escape for the first time, we have clear demonstration of the laws for the universe..",
         "All players gain access to the open world.",
         "A new phase of Arcadia begins.",
-        "Early actors define the structure of power.",
-        "Late actors enter a shaped world.",
-        "This is the beginning of the living myth.",
+        "This is the beginning of the living myth Code-L.",
       ],
     },
   ];
@@ -136,34 +131,58 @@ export default function Arcadia() {
   };
   return (
     <>
-      <style>{`
-        .ec-phase-tag.arcadia { font-size: 0.55rem; letter-spacing: 0.5em; }
-        .ec-text-block p:nth-child(1).arcadia-signal {
-          font-family: 'Cinzel', serif;
-          letter-spacing: 0.25em;
-          text-transform: uppercase;
-          font-size: 0.75rem;
-          opacity: 0.6;
-        }
-        .ec-text-block p.arcadia-emphasis {
-          font-weight: 400;
-          letter-spacing: 0.02em;
-        }
-        .ec-text-block .signal-break {
-          font-family: 'Cinzel', monospace;
-          font-size: 0.65rem;
-          letter-spacing: 0.3em;
-          text-transform: uppercase;
-          color: var(--accent);
-          opacity: 0.5;
-          margin: 1.5rem 0;
-          text-align: center;
-        }
+ <style>{`
+  .ec-phase-tag.arcadia { 
+    font-size: 0.55rem; 
+    letter-spacing: 0.5em; 
+  }
+  .ec-phase-tag.huge {
+    font-size: 1.2rem !important;
+    letter-spacing: 0.8em;
+  }
+  .ec-text-block p:nth-child(1).arcadia-signal {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    opacity: 0.6;
+  }
+  .ec-text-block p.arcadia-emphasis {
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .ec-text-block .signal-break {
+    font-family: 'Cinzel', monospace;
+    font-size: 2.5rem; /* Base large size */
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.6;
+    margin: 2rem 0;
+    text-align: center;
+    line-height: 1;
+    font-weight: 300;
+  }
+  .ec-text-block .signal-break.huge {
+    font-size: 4rem !important; /* Massive override */
+    letter-spacing: 1em;
+    margin: 3rem 0;
+    opacity: 0.8;
+  }
+  li.signal-break {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
 
-        @media (max-width: 768px) {
-          .ec-text-block p.arcadia-signal { font-size: 0.7rem; }
-        }
-      `}</style>
+  @media (max-width: 768px) {
+    .ec-text-block p.arcadia-signal { font-size: 0.7rem; }
+    .ec-text-block .signal-break { font-size: 1.75rem; }
+    .ec-text-block .signal-break.huge { font-size: 2.5rem !important; }
+    .ec-phase-tag.huge { font-size: 0.9rem !important; }
+  }
+`}</style>
+
 
       <div
         className="ec-shell"
@@ -215,7 +234,7 @@ export default function Arcadia() {
           {/* Screen */}
           <div className="ec-screen">
             <div className="ec-content">
-              <p className="ec-phase-tag arcadia">
+              <p className="ec-phase-tag arcadia huge">
                 Code-L · ARCADIA
               </p>
 
@@ -239,7 +258,7 @@ export default function Arcadia() {
                     {line}
                   </p>
                 ))}
-                <div className="signal-break">/// SIGNAL STABLE ///</div>
+                <li className="signal-break huge ">/// SIGNAL STABLE ///</li>
               </div>
             </div>
           </div>
