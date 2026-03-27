@@ -4,7 +4,7 @@ const cards = [
     {
         title: "Arcadia",
         label: "Autonomous Digital 3D Planet",
-        subtitle: "Running 24/7, the planet has a recorded history weaving the real-time mythos of Code-L unfolding, as Arcadians directly influence the environemnt.",
+        subtitle: "Running 24/7, the planet has a recorded history weaving the unfolding of the real-time mythos Code-L . Arcadians are static, unless connected by a human, who then directly influences the 3D environemnt of Arcadia.",
         path: "/elworld",
         accent: "#4ecb6b",
         available: true,
@@ -50,7 +50,7 @@ const cards = [
   {
     title: "Elly's Code",
     label: "Debut Album",
-    subtitle: "Explore Elly's debut studio album, including tracklist, demos and gameplay notes.",
+    subtitle: "studio album, which is integrated in a musical unfolding through Code-L.",
     path: "/ellyscode",
     accent: "#00cc6a",
     available: true,
@@ -405,11 +405,11 @@ export default function LandingNav() {
           <header className="el-header">
             
 
-            <h1 className="el-title">Elysian Code</h1>
+            <h1 className="el-title">CODE of Arcadia</h1>
           
             <div className="el-rule" />
             <p className="el-subtitle">
-         A transcript 
+         A transcript of updates.
             </p>
           
           </header>

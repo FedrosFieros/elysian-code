@@ -8,8 +8,8 @@ const sections = [
     phase: "arcadia",
     text: [
       "▮ PLANETARY SYSTEM INITIALISED",
-      "Arcadia is a persistent 3D simulated planet governed by deterministic physics.",
-      "Every action, body and interaction is recorded into Code-L; a continuous causal myth.",
+      "Arcadia is a persistent 3D simulated planet governed by deterministic physics and autonomous residents - the Arcadians.",
+      "Every action, body and interaction they do is recorded into Code-L; a continuous causal myth of coordinates and narrative.",
 
       "This is not a static game world.",
       "It is a living system of consequence.",
@@ -22,12 +22,13 @@ const sections = [
     phase: "arcadia",
     text: [
       "Arcadians exist solely on the 3D planet of Arcadia. ",
-      "They are vehicles for consciousness to intervene, and drive them.",
-      "Their intependent and persistent bodies are constantly updating the mythos of Code-L.",
+      "They are vehicles for conscious players (humans) to intervene, and drive them .",
       "Their body remains in Arcadia at all times.",
-      "When the conscious player disconnects, it stays behind. Static.",
-      "The motionless body can be moved across the forrest. Harmed. or killed if your blood is out.",
-      "When you return, you resume from your last known state, or if dead as a new character",
+      "Their intependent and persistent bodies are constantly updating the mythos of Code-L.",
+     
+      "When the conscious player disconnects, the Arcadian stays behind. Static.",
+      "The motionless body can be kidnapped, harmed or killed if their blood is out.",
+      "When conscious player returns, they resume from the Arcadian's last known state, or if dead as a new character",
       "Code-L continues — with or without you. But it remembers you.",
     ],
   },
@@ -38,11 +39,12 @@ const sections = [
       "All players begin inside The Cave.",
       "A closed system designed to contain and distract.",
       "Ahriman designed these caves to trap people, hypnotising them to then feed them to his wolves.",
-      " Lady Dopamina, acting as puppeteer kept the prisoners engaged and didnt try to leave. ",
+      " Lady Dopamina, acting as puppeteer kept the prisoners engaged and enticed. ",
       "For a player to escape, they need to find a hidden key.",
-      "But they might also need to bribe the guard £20, if not they will have to fight.",
-      "A hidden key unlocks the gate to outside world.",
-      "If players find it, they can exit, but only if they bribe the guard £20. He is tough",
+      "A hidden key unlocks the gate away from cave to outside world.",
+      "If players find it, they can exit.",
+      "But when they exit, the guard will stop them and ask for a bribe of €20.If player refuses, guard will fight him to death. .",
+    
       "Most dont make it. But few step out.",
     ],
   },
@@ -50,8 +52,8 @@ const sections = [
     title: "Survival",
     phase: "arcadia",
     text: [
-      "Bodies in Arcadia breathe in heart beats which requires blood to keep runing. Blood count can increases when you hug someone however stabs can make you lose blood.",
-      "Players start with blood count 100 and can move their bodies to make dance moves, but if directed at a person, it stabs them, causing to blood.",
+      "Bodies in Arcadia breathe in heart beats which requires blood to keep runing. Blood count can increase when you hug someone however stabs can make you lose blood.",
+      "Players start with blood count 100 and can move their bodies to make dance moves, but if directed at a person, it stabs them, causing to lose blood.",
       "If conflict is real. So is consequence.",
       "If your body is destroyed, it is lost.",
       "You may return, but not as the same identity.",
@@ -76,7 +78,7 @@ const sections = [
     phase: "arcadia",
     text: [
       "Arcadia is finite.",
-      "All land is owned by Ahriman, but if you just kill the scarecrows his sends to you, because he thinks he owns the land, you will be safe.",
+      "All land is owned by Ahriman, but if you just kill the scarecrows he sends to you (because he thinks he owns the land) you will be safe.",
       "Unclaimed regions are open for expansion.",
       "Players can claim, shape and define territory.",
       "Structures, systems and spaces can be built.",
@@ -96,13 +98,11 @@ const sections = [
     ],
   },
   {
-    title: "June 1st",
+    title: "Phase 1",
     phase: "arcadia",
     text: [
-      "Ellys comes to the cave breaking the door for all to go.",
-      "The cave door breaks and prisoners can escape.",
-      "All players then gain access to the open world.",
-      "A new phase of Arcadia and Code-L begins.",
+      "Click for the first chapter of Arcadia.",
+      ".",
     ],
     subheading: true,
   },
@@ -238,7 +238,7 @@ export default function Arcadia() {
   
         {/* Sidebar */}
         <nav className={`ec-sidebar ${navOpen ? "open" : ""}`}>
-          <Link to="/" className="ec-logo">Elysian Code</Link>
+          <Link to="/" className="ec-logo">ARCADIA</Link>
           <ul className="ec-nav-list">
             {sections.map((sec, i) => (
               <li key={i}>
@@ -302,7 +302,11 @@ export default function Arcadia() {
                   </p>
                 ))}
               
-
+              {section.subheading && (
+                <Link to="/codeLphase1" className="signal-break huge">
+                 <h1 className="codeLarcadia-signal"> Code-L: Phase 1</h1>
+                </Link>
+              )}
                 <li className="signal-break huge ">/// SIGNAL STABLE ///</li>
 
                 <div className="ec-btn-group ">
@@ -324,12 +328,7 @@ export default function Arcadia() {
                   </button>
                 </div>
               </div>
-              {section.subheading && (
-                <Link to="/codeLphase1" className="ec-subheading-link">
-                  ↳ But before June 1st, Arcadians are all locked inside a cave
-                  prison. Click to read.
-                </Link>
-              )}
+         
             </div>
           </div>
 

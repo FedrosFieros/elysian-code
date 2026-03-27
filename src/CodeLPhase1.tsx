@@ -6,9 +6,13 @@ const sections = [
     title: "Preface",
     phase: "intro",
     text: [
-      " Code-L is an interactive meta-mythos unfolding across a new 3D digital planet, called Arcadia.",
+      " Code-L is an interactive meta-mythos unfolding across Arcadia - a new 3D digital planet.",
       "In this world, Ahriman has bought over all the land and trapped all Arcadians into caves. ",
-      "And this is where players spawn inside when they enter arcadia.world.",
+      "Distracting them so they dont think to leave. ",
+      "But also wont let them survive if they tried to.",
+      "So, in this cave is where Arcadians are born into.",
+      "Captured beings until human intervenes who can control their body. ",
+"A universal mythos captured for those who see it. "    
 
     ],
   },
@@ -16,7 +20,7 @@ const sections = [
     title: "Code-L Phase 1",
     phase: "cave",
     text: [
-      "Users first experience the planet inside a 3D cave, accessed through el.world available in April.",
+      "Players first experience the planet inside a 3D cave, accessed through arcadia.world available in April.",
     ],
     video: "/caveDraft.mp4",
   },
@@ -70,7 +74,7 @@ const sections = [
     text: [
       "The Puppeteer may invite prisoners toward a dark dungeon at the rear of the cave.",
       "Those who follow enter a ritual space. Chains bind their avatars. They can no longer move — only witness.",
-      "Music builds. Shadows shift. The wolves arrive, led by a cunty singer as their sovereign.",
+      "Music builds. Shadows shift. The wolves arrive, and devour the Arcadians, watching as the wolves eat their bodies and their blood is dropping, until they vanish, but unable to move .",
     ],
     image: "/chained.png",
   },
@@ -507,7 +511,7 @@ export default function TheCave() {
 
         {/* Sidebar */}
         <nav className={`ec-sidebar ${navOpen ? "open" : ""}`}>
-          <Link to="/" className="ec-logo">Elysian Code</Link>
+          <Link to="/" className="ec-logo"> ARCADIA</Link>
           <ul className="ec-nav-list">
             {sections.map((sec, i) => (
               <li key={i}>

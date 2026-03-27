@@ -6,8 +6,8 @@ const sections = [
     title: "Phase 2 - The Escape: June 1st",
     phase: "escape",
     text: [
-      "At 8pm, the wall facing the sea breaks open.",
-      "Ellys steps in and performs 'My heart cant take another bleed', giving option for prisoners to join him to ELSPARK and escape from Ahriman's trap.",
+      "At 8pm, the gated door breaks open.",
+      "Ellys steps inside to help prisoners escape for free. He finds Lady Dopamina to whom he expresses his love and welcomes her to come with him to ELSPARK, promising immortality. .",
     ],
     video: "/escape.avi",
   },
@@ -172,7 +172,7 @@ export default function CodeLPhase2() {
         {/* Sidebar */}
         <nav className={`ec-sidebar ${navOpen ? "open" : ""}`}>
           <Link to="/" className="ec-logo">
-            Elysian Code
+          ARCADIA
           </Link>
           <ul className="ec-nav-list">
             {sections.map((sec, i) => (
