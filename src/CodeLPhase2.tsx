@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./el.css";
 const sections = [
   {
-    title: "Phase 2 - The Escape: June 1st",
+    title: "June 1st - Ellys steps inside cave.",
     phase: "escape",
     text: [
       "At 8pm, the gated door breaks open.",
@@ -12,11 +12,11 @@ const sections = [
     video: "/escape.avi",
   },
   {
-    title: "“my heart cant take another bleed.” (ACT II, track 6).",
+    title: "Puppeteer kills Ellys, while he sings “my heart cant take another bleed.”",
     phase: "escape",
     text: [
       "Ellys returns to tell Lady Dopamina about ELSPARK and that it can offer them immortality and shelter from scarecrows.",
- "the puppeteer Lady Dopamina refused to come and stabs him instead.","the wolves then come out to eat everyone but the people in the cave kick them to death.","people can escape from cave onto the new world, and Ellys also tells them about ELSPARK.",   ],
+ "the puppeteer Lady Dopamina refused to come and chains him stabbing him to death.","the wolves then come out to eat everyone but the people in the cave kick them to death.", ],
     lyrics: [
       "verse 1: “urgency! my heart cant take another bleed.",
       "Ahriman’s war, threatens to kill our inner kids.",
@@ -25,7 +25,8 @@ const sections = [
       "verse 2: “dizzy boy I thought I found her",
       "the one to be with me when it darkens.",
       "foolish of me to trust the puppeteer.",
-      "this cave we need to leave she sold us the wrong idea.",
+      "Lady Dopamina sold us the wrong idea.",
+      "this cave we need to leave, the wolves are here.",
       "my hand i extend to the monarch inside",
       "ego laid the soil for the self now to drive.",
       "foolish of me to let you inside my gear,",
@@ -59,64 +60,27 @@ const sections = [
     audio: "/MHCTAB19.wav",
   },
   {
-    title: "The Boat",
+    title: "Prisoners Escape",
     phase: "escape",
     text: [
-      "Players who join Ellys, board on the boat and sail to island of Pandora, arriving to ELSPARK.",
-    ],
+      
+      "people can escape from cave and while exploring outside some residents from ELSPARK are there to greet them abd guide them to the island of Pandora.",  
+    "They can sail a boat to ELSPARK where they can join a new decentralised society. Residents are granted immortality and a safe shelter for when they go to sleep.",],
     image: "/boat.png",
   },
+ 
   {
-    title: "ELSPARK 3D",
+    title: "ELSPARK ",
     phase: "elspark",
     text: [
-      "A new decentralised world emerges on the island of Pandora.",
-      "An extension of elspark.online, but on a 3D world with every user now having the option to create their own personal park. Fully protected from Ahriman's scarecrows or wolves..",
+      "A new decentralised park on the island of Pandora, free from Ahriman's control.",
+      "Hosted by Elco,offering a new laocratic environment, where hostess poses a question and residents can vote, with everyone's votes holding the same weight.",
+      "ELSPARK offers people who sign up a safe shelter to sleep when their consciousness is away.",
+      " Fully protected from Ahriman's scarecrows or wolves.", 
+      
+
     ],
     image: "/ELSPARK.png",
-  },
-  {
-    title: "ELSPARK Theatre",
-    phase: "elspark",
-    text: [
-      "As soon as they arrive at ELSPARK, they are immediately guided to ELSPARK Theatre where Ellys takes on the stage.",
-      "When the lights dim and curtains open, he reveals a screen.",
-    ],
-    image: "/ELSPARKTheatre.png",
-  },
-  {
-    title: "ELSPARK TV",
-    phase: "elspark",
-    text: [
-      "The screen is ELSPARK TV, a digital platform of original content made by ELTV. Whether pre-recorded digital shows or live performances.",
-      "The first broadcast will be our first edition of ELCA – a live theatrical performance we execute in physical space broadcasting onto the channel.",
-    ],
-    image: "/ELSPARKTV.png",
-  },
-  {
-    title: "ELCA #1",
-    phase: "elspark",
-    text: [
-      "A live theatrical performance of Monarch of my Body broadcasting from ElCave, colcuding the musical for Elly's Code.",
-         ],
-    image: "/ELSPARKTheatre.png",
-  },
-  {
-    title: "Elly's Code",
-    phase: "elspark",
-    text: [
-      "Elly's debut studio album is available to be experienced through an interactive website through which users can observe the prequel to the events on June 1st.",
-      "Split in two ACTS: ACT I follows the story of a caterpillar transforming to a white moth, while ACT II follows the story of Ellys breaking out of the cave for the first time and his journey to find ELSPARK. Then on the 6th track he comes back and invites other prisoners to join him on ELSPARK.",
-    ],
-  },
-  {
-    title: "What happens after? Phase 3",
-    phase: "elspark",
-    text: [
-      "Arcadia continues being accessible as a 3D world, and ELSPARK welcomes new audiences away from Ahriman's corrupted social media spaces.",
-      "New accounts always start in the cave, but ones who create an account on ELSPARK can always spawn from there.", 
-   " Other players can set up their own rules in lands across Arcadia too.  .",
-    ],
   },
  
 ];
@@ -188,20 +152,27 @@ export default function CodeLPhase2() {
                 </button>
               </li>
             ))}
-                <Link to="/elspark" className=" ec-btn  "> ELSPARK</Link>
+                <Link to="/elspark" className=" ec-btn  "> <h1>Go to chapter</h1>ELSPARK</Link>
           </ul>
       
         </nav>
 
         {/* Stage */}
         <div className="ec-stage">
+          
           <div className="ec-spotlight" />
 
           {/* Mobile toggle */}
           <button className="ec-toggle" onClick={() => setNavOpen(true)}>
             ☰
           </button>
-
+{/* Background Video */}
+<img
+          className="ec-bg-video"
+          
+        
+          src="/Ellys-chained.png" 
+        />
           {/* Screen */}
           <div className="ec-screen">
             <div className="ec-content">

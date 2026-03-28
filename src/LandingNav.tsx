@@ -410,7 +410,7 @@ export default function LandingNav() {
           
             <div className="el-rule" />
             <p className="el-subtitle">
-         A transcript of updates.
+         A transcript with updates.
             </p>
           
           </header>
