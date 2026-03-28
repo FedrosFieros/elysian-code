@@ -16,7 +16,7 @@ const sections = [
     phase: "escape",
     text: [
       "Ellys returns to tell Lady Dopamina about ELSPARK and that it can offer them immortality and shelter from scarecrows.",
- "the puppeteer Lady Dopamina refused to come and stabs him instead.","the wolves then come out to eat everyone but the people in the cave kick them to death.","people can escape from cave onto the new world, but Ellys tells them about ELSPARK.",   ],
+ "the puppeteer Lady Dopamina refused to come and stabs him instead.","the wolves then come out to eat everyone but the people in the cave kick them to death.","people can escape from cave onto the new world, and Ellys also tells them about ELSPARK.",   ],
     lyrics: [
       "verse 1: “urgency! my heart cant take another bleed.",
       "Ahriman’s war, threatens to kill our inner kids.",
@@ -71,7 +71,7 @@ const sections = [
     phase: "elspark",
     text: [
       "A new decentralised world emerges on the island of Pandora.",
-      "An extension of elspark.online, but on a 3D world with every user now having the option to create their own avatar.",
+      "An extension of elspark.online, but on a 3D world with every user now having the option to create their own personal park. Fully protected from Ahriman's scarecrows or wolves..",
     ],
     image: "/ELSPARK.png",
   },
@@ -102,14 +102,6 @@ const sections = [
     image: "/ELSPARKTheatre.png",
   },
   {
-    title: "What happens after? Phase 3",
-    phase: "elspark",
-    text: [
-      "Arcadia continues being accessible as a 3D world, and ELSPARK welcomes new audiences away from Ahriman's corrupted social media spaces.",
-      "New accounts always start in the cave, but ones who create an account on ELSPARK can always spawn from there. ELSPARK TV broadcasts original ELTV shows and ElCode funds it through tech projects.",
-    ],
-  },
-  {
     title: "Elly's Code",
     phase: "elspark",
     text: [
@@ -117,6 +109,16 @@ const sections = [
       "Split in two ACTS: ACT I follows the story of a caterpillar transforming to a white moth, while ACT II follows the story of Ellys breaking out of the cave for the first time and his journey to find ELSPARK. Then on the 6th track he comes back and invites other prisoners to join him on ELSPARK.",
     ],
   },
+  {
+    title: "What happens after? Phase 3",
+    phase: "elspark",
+    text: [
+      "Arcadia continues being accessible as a 3D world, and ELSPARK welcomes new audiences away from Ahriman's corrupted social media spaces.",
+      "New accounts always start in the cave, but ones who create an account on ELSPARK can always spawn from there.", 
+   " Other players can set up their own rules in lands across Arcadia too.  .",
+    ],
+  },
+ 
 ];
 
 type Phase = "intro" | "cave";
@@ -186,7 +188,9 @@ export default function CodeLPhase2() {
                 </button>
               </li>
             ))}
+                <Link to="/elspark" className=" ec-btn  "> ELSPARK</Link>
           </ul>
+      
         </nav>
 
         {/* Stage */}
@@ -212,6 +216,7 @@ export default function CodeLPhase2() {
                 {section.text?.map((line, i) => (
                   <p key={i}>{line}</p>
                 ))}
+                
               </div>
 
               {/* Lyrics block */}

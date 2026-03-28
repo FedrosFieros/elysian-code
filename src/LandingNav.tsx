@@ -4,7 +4,7 @@ const cards = [
     {
         title: "Arcadia",
         label: "An autonomous Digital 3D rendered Planet",
-        subtitle: "Running 24/7, the planet has a recorded history weaving the unfolding of the real-time mythos Code-L . Arcadians are static, unless connected by a human, who then directly influences the 3D environemnt around them.",
+        subtitle: "Resided by Arcadians, whose body remains static until a conscious player connects with them. Running 24/7, the planet has a recorded history weaving the unfolding of the real-time mythos Code-L . Arcadians are static, unless connected by a human, who then directly influences the 3D environemnt around them and shaping the character's trajectory.",
         path: "/elworld",
         accent: "#4ecb6b",
         available: true,
@@ -13,16 +13,16 @@ const cards = [
   {
     title: "Code-L Phase 1",
     label: "Ahriman's Cave",
-    subtitle: "Initially every player is trapped in their first entry onto Arcadia, commencing  inside a 3D digital cave, with only few at a time able to escape out to the rest of the world.",
+    subtitle: "Initially every Arcadian spawns  inside a 3D digital cave, with only few at a time able to escape out to the rest of the world.",
     path: "/codeLphase1",
     accent: "#e8c97a",
     available: true,
     icon: "◈",
   },
   {
-    title: "Code-L Phase 2",
+    title: "June 1st",
     label: "The Escape",
-    subtitle: "Ellys breaks into the cave and helps every prisoner to escape and tells them that if they are looking for shelter and spawn safely they need to find ELSPARK.",
+    subtitle: "Ellys breaks into the cave, but Lady Dopamina traps him and kills him. However he opens door for every prisoner to escape. He advises them that if they are looking for shelter and spawn safely they need to find ELSPARK.",
     path: "/CodeLPhase2",
     accent: "#ff7c5c",
     available: true,
@@ -32,7 +32,7 @@ const cards = [
   {
     title: "ELSPARK",
     label: "Digital Park",
-    subtitle: "A decentralised social digital park on Arcadia. Players who sign up are granted safe shelter away from Ahriman, whose scarecrows attack sleeping bodies if left exposed.",
+    subtitle: "A decentralised social digital park on Arcadia, safe from Ahriman's wolves and scarecorps. Players who sign up are granted safe shelter away from Ahriman, whose scarecrows attack sleeping bodies if left exposed. In addition, ELSPARK grants immortality. When an ELSPARK player dies, they can always respawn, but a new version of them.",
     path: "/elspark",
     accent: "#c0bfbf",
     available: true,
