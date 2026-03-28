@@ -14,6 +14,7 @@ const sections = [
   {
     title: "Puppeteer kills Ellys, while he sings “my heart cant take another bleed.”",
     phase: "escape",
+    image:"Ellys-chained.png",
     text: [
       "Ellys returns to tell Lady Dopamina about ELSPARK and that it can offer them immortality and shelter from scarecrows.",
  "the puppeteer Lady Dopamina refused to come and chains him stabbing him to death.","the wolves then come out to eat everyone but the people in the cave kick them to death.", ],
@@ -189,7 +190,23 @@ export default function CodeLPhase2() {
                 ))}
                 
               </div>
-
+ {/* Media: video first, otherwise image */}
+ {section.video ? (
+                <video
+                  className="ec-image"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  src={section.video}
+                />
+              ) : section.image ? (
+                <img
+                  src={section.image}
+                  alt={section.title}
+                  className="ec-image"
+                />
+              ) : null}
               {/* Lyrics block */}
               {section.lyrics && (
                 <div className="ec-text-block" style={{ marginTop: "1.5rem" }}>
@@ -223,23 +240,7 @@ export default function CodeLPhase2() {
                 </div>
               )}
 
-              {/* Media: video first, otherwise image */}
-              {section.video ? (
-                <video
-                  className="ec-image"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  src={section.video}
-                />
-              ) : section.image ? (
-                <img
-                  src={section.image}
-                  alt={section.title}
-                  className="ec-image"
-                />
-              ) : null}
+             
             </div>
           </div>
 
