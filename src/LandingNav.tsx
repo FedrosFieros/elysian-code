@@ -430,12 +430,13 @@ export default function LandingNav() {
                     className="el-card-accent"
                     style={{ background: card.accent }}
                   />
-                  <span className={`el-badge ${card.available ? "el-badge-live" : "el-badge-wip"}`}>
-                    {card.available ? "Live" : "Soon"}
-                  </span>
+              
                   <h2 className="el-card-title" style={{ color: card.available ? "#f0ece4" : "rgba(240,236,228,0.4)" }}>
                     {card.title}
                   </h2>
+                  <span className={`"" ${card.available ? "el-badge-live" : "el-badge-wip"}`}>
+                    {card.available ? "Live" : "Soon"}
+                  </span>
                   <div className="el-card-icon" style={{ color: card.accent }}>
                     {card.icon}
                   </div>
