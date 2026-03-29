@@ -301,7 +301,7 @@ const phaseColors = {
   
           {/* Stage */}
           <div className="ec-stage">
-             {/* Background Video */}
+             {/* Background Video
  <video
           className="ec-bg-video"
           autoPlay
@@ -309,7 +309,7 @@ const phaseColors = {
           muted
           playsInline
           src="/demonicgirldisco.mov" // ← swap this path
-        />
+        />  */}
             <div className="ec-spotlight" />
   
             {/* Mobile toggle */}
