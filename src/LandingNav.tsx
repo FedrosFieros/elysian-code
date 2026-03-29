@@ -41,7 +41,7 @@ const cards = [
   {
     title: "ELSPARKTV",
     label: "Original Programming",
-    subtitle: "A curated digital platform for original shows produced by ELTV.",
+    subtitle: "A curated digital platform for original shows produced by ELTV. Our media production network, pairing creatives across different fields to create shows, live performances or other experimental media.",
     path: "/elspark-tv",
     accent: "#b07fff",
     available: true,
@@ -59,7 +59,7 @@ const cards = [
   {
     title: "ELCA",
     label: "Live Theatre Festival",
-    subtitle: "A live theatre festival broadcasted from ELSPARK TV. First edition June 1st.",
+    subtitle: "A live theatre festival broadcasted from ELSPARK TV. First edition June 5th.",
     path: "/elworld",
     accent: "#888",
     available: false,
@@ -75,9 +75,9 @@ const cards = [
     icon: "◉",
   },
   {
-    title: "Elcode Updates",
-    label: "Strategy & News",
-    subtitle: "Current projects, strategy and announcements.",
+    title: "Elcode ",
+    label: "Source of Funding for Arcadia",
+    subtitle: "ElCode helps small-medium businesses with their software needs, with a customised platform or as their longterm software arm. It connects a multi-disciplinary team from its diverse network, with each contributing team retaining 70% of profits. Profit coming back to ElCode is shared as 20% for ELSPARK/Arcadia, 20% for ELTV, 10% to reserve and rest of 50% shared to members of ElCode team who distribute this amount equally.",
     path: "/elcode-updates",
     accent: "#0077ff",
     available: false,
@@ -85,8 +85,8 @@ const cards = [
   },
   {
     title: "ELTV Updates",
-    label: "Shows & Scheduling",
-    subtitle: "Shows, scripts, dates and scheduling.",
+    label: "We make it super accessible for teams of creatives to form but also offering a curated space to exhibit.",
+    subtitle: "Shows, skits, live festivals, music and a general cultural tsunami.",
     path: "/eltv",
     accent: "#ff4800",
     available: false,
@@ -409,9 +409,9 @@ export default function LandingNav() {
             <h1 className="el-title">CODE of Arcadia</h1>
           
             <div className="el-rule" />
-            <p className="el-subtitle">
- <h1>A psychological, interactive reality.</h1>
- <li>An infinitely auto-generative mythos, measured every frame through matrix coordinates and memories. </li>
+            <p className="">
+ <h1>Arcadia is a digitally rendered planet, shaped by its residents, the Arcadians.</h1>
+ <h2>and Code -L is an infinitely auto-generative mythos, measured every frame through matrix coordinates and memories. </h2>
             </p>
           
           </header>

@@ -128,19 +128,19 @@ const sections = [
     title: "ELSPARK Theatre",
     phase: "elspark",
     text: [
-      "As soon as they arrive at ELSPARK, they are immediately guided to ELSPARK Theatre where Ellys takes on the stage.",
-      "When the lights dim and curtains open, he reveals a screen.",
+      "A stage for scheduled or improvised shows. Open 24/7.",
+  
     ],
-    image: "/ELSPARKTheatre.png",
+    image: "/ELSPARKTV.png",
   },
   {
     title: "ELSPARK TV",
     phase: "elspark",
-    text: [
-      "The screen is ELSPARK TV, a digital platform of original content made by ELTV. Whether pre-recorded digital shows or live performances.",
-      "The first broadcast will be our first edition of ELCA – a live theatrical performance we execute in physical space broadcasting onto the channel.",
+    text: [    "When the lights dim and curtains open, however can reveals a screen.",
+      "The screen is ELSPARK TV, a digital platform of original content made by ELTV and performed by humans on Earth. Whether pre-recorded digital shows or live performances.",
+  ,
     ],
-    image: "/ELSPARKTV.png",
+    image: "/ELSPARKTheatre.png",
   },
 
 
@@ -148,9 +148,9 @@ const sections = [
     title: "What happens after? Phase 3",
     phase: "elspark",
     text: [
-      "Arcadia continues being accessible as a 3D world, and ELSPARK welcomes new audiences away from Ahriman's corrupted social media spaces.",
+      "Arcadia continues being accessible as a 3D world, and ELSPARK welcomes new audiences away from Ahriman's collonized land.",
       "New accounts always start in the cave, but ones who create an account on ELSPARK can always spawn from there.", 
-   " Other players can set up their own rules in lands across Arcadia too.  .",
+   " Other Arcadians are free to set up their own rules in lands across Arcadia too, following the physics provided.  .",
     ],
   },
  
@@ -298,7 +298,13 @@ export default function ELSPARK() {
 
               <h1 className="ec-title">{section.title}</h1>
               <div className="ec-rule" />
-
+              {section.image ? (
+  <img
+    src={section.image}
+    alt={section.title}
+    className="ec-image"
+  />
+) : null}
               <div className="ec-text-block">
                 {section.text.map((line, i) => {
                   const isSignal = i === 0 && line.includes("▮");
