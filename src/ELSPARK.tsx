@@ -138,7 +138,7 @@ const sections = [
     phase: "elspark",
     text: [    "When the lights dim and curtains open, however can reveals a screen.",
       "The screen is ELSPARK TV, a digital platform of original content made by ELTV and performed by humans on Earth for Arcadians to watch. Whether pre-recorded digital shows or live performances.",
-  ,
+  
     ],
     image: "/ELSPARKTheatre.png",
   },
@@ -309,7 +309,7 @@ export default function ELSPARK() {
 ) : null}
               <div className="ec-text-block">
                 {section && section.text.map((line, i) => {
-                  const isSignal = i === 0 && line.includes("▮");
+               
                   const isBreak = line
 
       
