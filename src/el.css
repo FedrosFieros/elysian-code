@@ -185,7 +185,9 @@ margin-left: 20%;
 margin-right: 20%;
 opacity:0.9;
 }
-
+.navcard{
+  width:50%;
+}
 .ec-content {
 position:relative;
   padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 5vw, 4rem);

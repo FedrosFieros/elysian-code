@@ -12,7 +12,7 @@ const cards = [
       },
   {
     title: "Code-L Phase 1",
-    label: "Ahriman's Cave",
+    label: "Ahriman's Cave (available in May)",
     subtitle: "Initially every Arcadian spawns  inside a 3D digital cave, with only few at a time able to escape out to the rest of the world.",
     path: "/codeLphase1",
     accent: "#e8c97a",
@@ -32,11 +32,30 @@ const cards = [
   {
     title: "ELSPARK",
     label: "Digital Park",
-    subtitle: "A decentralised social digital park on Arcadia, safe from Ahriman's wolves and scarecorps. Players who sign up are granted safe shelter away from Ahriman, whose scarecrows attack sleeping bodies if left exposed. In addition, ELSPARK grants immortality. When an ELSPARK player dies, they can always respawn, but a new version of them.",
+    subtitle: "A decentralised social digital park on Arcadia, safe from Ahriman's wolves and scarecorps. Players who sign up are granted safe shelter away from Ahriman, whose scarecrows attack sleeping bodies if left exposed. In addition, ELSPARK grants immortality. When an ELSPARK player dies, they can always respawn, but as a new version of them.",
     path: "/elspark",
     accent: "#c0bfbf",
     available: true,
     icon: "✦",
+  },
+ 
+  {
+    title: "Elly's Code",
+    label: "An interactive musical",
+    subtitle: "Commencing from the first time Ellys escapes The Cave and his journey to find ELSPARK, to then go back to The Cave where Lady Dopamina kills him. But he then gets ressurected as Ellysv1 at ELSPARK. Players can experience it in real-time, watching the events unfold, around them but they cannot influence them. What was done at the time of the events, stays.",
+    path: "/ellyscode",
+    accent: "#00cc6a",
+    available: true,
+    icon: "♫",
+  },
+  {
+    title: "meta-metamorphosis",
+    label: "Initiation Ritual ",
+    subtitle: "For the conscious player to gain immortality, they can play through an interactive game of a caterpillar transforming into a white moth and then later transforming to a symbol determined by how the game was played.",
+    path: "/metametamorphosis",
+    accent: "#00cc6a",
+    available: true,
+    icon: "♫",
   },
   {
     title: "ELSPARKTV",
@@ -46,24 +65,6 @@ const cards = [
     accent: "#b07fff",
     available: true,
     icon: "▣",
-  },
-  {
-    title: "meta-metamorphosis",
-    label: "Initiation Ritual ",
-    subtitle: "For the conscious player to gain immortality, they can play through an interactive game of a caterpillar transforming into a white moth and then later transforming to a red butterfly.",
-    path: "/metametamorphosis",
-    accent: "#00cc6a",
-    available: true,
-    icon: "♫",
-  },
-  {
-    title: "Elly's Code",
-    label: "An interactive musical",
-    subtitle: "Commencing from the first time Ellys escapes The Cave and his journey to find ELSPARK, to then go back to The Cave where Lady Dopamina kills him. But he then gets ressurected as Ellysv1 at ELSPARK. Players can experience it in real-time, watching the events unfold, around them but they cannot influence them. What was done at the time of the events, stays.",
-    path: "/ellyscode",
-    accent: "#00cc6a",
-    available: true,
-    icon: "♫",
   },
   {
     title: "ELCA",
@@ -77,7 +78,7 @@ const cards = [
   {
     title: "ElCave",
     label: "Ritual Exhibition",
-    subtitle: "An experiential ritualistic exhibition for one person at a time, 20 minutes.",
+    subtitle: "An experiential ritualistic private exhibition on Earth, with only one person at a time for 20 minutes.",
     path: "/elworld",
     accent: "#888",
     available: false,
@@ -86,15 +87,15 @@ const cards = [
   {
     title: "Elcode ",
     label: "Source of Funding for Arcadia",
-    subtitle: "ElCode helps small-medium businesses with their software needs, with a customised platform or as their longterm software arm. It connects a multi-disciplinary team from its diverse network, with each contributing team retaining 70% of profits. Profit coming back to ElCode is shared as 20% for ELSPARK/Arcadia, 20% for ELTV, 10% to reserve and rest of 50% shared to members of ElCode team who distribute this amount equally.",
+    subtitle: "ElCode helps independent enterpreneurs or small-medium businesses build a customised platform, to digitise their service, reaching a wider audience and controlling their personal operational requirements. Tailored to their needs to accomodate automation of the manual. Profit coming back to ElCode is shared as 20% for operations of ELSPARK (which is the heart of Arcadia and what keeps it breathing), 20% for ELTV (funding to original media, shows and interactive software built in-house), 10% to ElCare with rest of 50% shared to members of ElCode Core team who all distribute this amount equally. ",
     path: "/elcode-updates",
     accent: "#0077ff",
     available: false,
     icon: "⌘",
   },
   {
-    title: "ELTV Updates",
-    label: "We make it super accessible for teams of creatives to form but also offering a curated space to exhibit.",
+    title: "ELTV ",
+    label: "Our media production network, connecting creatives across Europe to film digital shows and broadcast on ELSPARK TV. .",
     subtitle: "Shows, skits, live festivals, music and a general cultural tsunami.",
     path: "/eltv",
     accent: "#ff4800",
@@ -266,6 +267,7 @@ export default function LandingNav() {
           inset: 0;
           opacity: 0;
           transition: opacity 0.5s ease;
+          
         }
         .el-card:hover .el-card-bg { opacity: 1; }
 
@@ -415,23 +417,25 @@ export default function LandingNav() {
           <header className="el-header">
             
 
-            <h1 className="el-title">CODE of Arcadia</h1>
+            <h1 className="el-title">Arcadian CODE</h1>
           
             <div className="el-rule" />
             <p className="">
- <h1>Arcadia is a digitally rendered planet, shaped by its residents, the Arcadians.</h1>
- <h2>and Code -L is an infinitely auto-generative mythos, measured every frame through matrix coordinates and memories. </h2>
+ <h1 className="cinematic">Arcadia is a digitally rendered planet, shaped by its residents, the Arcadians.</h1>
+ <h2 className="cinematic">and Code -L is an infinitely auto-generative mythos, measured every frame through matrix coordinates and memories. </h2>
             </p>
           
           </header>
 
           {/* Cards Grid */}
-          <div className="el-grid">
+          <div className="el-grid ">
+          <h2 className="cinematic">Content </h2>
+        
             {cards.map((card, i) => {
               const inner = (
-                <>
+                <div className="">
                   <div
-                    className="el-card-bg"
+                    className="el-card-bg "
                     style={{
                       background: `radial-gradient(ellipse at 80% 120%, ${card.accent}18 0%, transparent 60%)`,
                     }}
@@ -445,7 +449,7 @@ export default function LandingNav() {
                     {card.title}
                   </h2>
                   <span className={`"" ${card.available ? "el-badge-live" : "el-badge-wip"}`}>
-                    {card.available ? "Live" : "Soon"}
+                    {card.available ? "click to read" : "Soon"}
                   </span>
                   <div className="el-card-icon" style={{ color: card.accent }}>
                     {card.icon}
@@ -456,7 +460,7 @@ export default function LandingNav() {
                   {card.available && (
                     <span className="el-card-arrow" style={{ color: card.accent }}>↗</span>
                   )}
-                </>
+                </div>
               );
 
               return card.available ? (
