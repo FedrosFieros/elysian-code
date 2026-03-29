@@ -59,10 +59,10 @@ const cards = [
   {
     title: "Elly's Code",
     label: "An interactive musical",
-    subtitle: "Commencing from time Ellys escapes The Cave and his journey to find ELSPARK, to then go back to The Cave where Lady Dopamina kills him. But he then gets ressurected as Ellysv1 at ELSPARK. Players can experience it in real-time, watching the events unfold, around them but they cannot influence them. What was done at the time of the events, stays.",
+    subtitle: "Commencing from the first time Ellys escapes The Cave and his journey to find ELSPARK, to then go back to The Cave where Lady Dopamina kills him. But he then gets ressurected as Ellysv1 at ELSPARK. Players can experience it in real-time, watching the events unfold, around them but they cannot influence them. What was done at the time of the events, stays.",
     path: "/ellyscode",
     accent: "#00cc6a",
-    available: false,
+    available: true,
     icon: "♫",
   },
   {

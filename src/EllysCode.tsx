@@ -3,179 +3,15 @@ import "./EllysCode.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const SONGS = [
+ 
   {
-    title: "preface",
-    act: "I",
-    lyrics: (
-      <>
-        <p className="cinematic">
-          Code-L is a recorded and living meta-mythos. Events are captured and can be relieved but not changed. Elly's Code explores the story of Ellys and the first time he escaped from the cave to find ELSPARK.
-          </p>
-          <p>
-          Elly's Code is split in two acts.
-          ACT I explores the birth of Carl, a white caterpillar transforming
-          onto a white moth and then ends the ACT burning into ashes and coming
-          out as a red butterfly.
-        </p>
-        <p>Name of ACT I is meta-metamorphosis and can be experienced as an independent video game. It explores the spiritual awakeneing of Elly's before he realises he is a prisoer inside The Cave.</p>
-      </>
-    ),
-  },
-  {
-    title: "created to exist",
-    act: "I",
-    lyrics: (
-      <>
-        <p className="cinematic">
-          From cosmic egg, the universe brings forth strings of lucy, which when
-          multiplied create a matrix to weave reality.
-        </p>
-        <p className="cinematic emphasis">
-          Then Carl, a white caterpillar, comes to life.
-          <li>
-            the song explores our birth into the world and the reason for our
-            existence. questions meaning of life and purpose.
-          </li>
-        </p>
-      </>
-    ),
-    soundcloud:
-      "https://soundcloud.com/conscious-entropy/created-to-exist?in=conscious-entropy/sets/white-moth&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
-  },
-  {
-    title: "I follow the echo (why did they kill Jesus)",
-    act: "I",
-    lyrics: (
-      <>
-        <p className="cinematic">
-          Exploring the story of carl listening to an echo guiding him through
-          life. We watch Carl as he is led onto a crowd where a character
-          resembling Jesus is on a cross, killed by the people around him.{" "}
-        </p>
-        <p className="text highlight">
-          The character is goddess of creation.
-          <li>
-            at the end of the song, we see Carl climbs at the top of a tree,
-            using the energy he consumed, creating a cocoon around him.
-          </li>
-        </p>
-      </>
-    ),
-    soundcloud:
-      "https://soundcloud.com/conscious-entropy/why-did-they-kill-jesus?in=conscious-entropy/sets/white-moth&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
-  },
-  {
-    title: "new source of energy",
-    act: "I",
-    lyrics: (
-      <>
-        <p className="cinematic">
-          While the cocoon forms, Carl finds a hyper-independent space for his
-          internal transformation.
-        </p>
-        <p className="emphasis">External energy becomes internal power.</p>
-        <div className="signal-break">/// TRANSFORMATION ///</div>
-      </>
-    ),
-    soundcloud:
-      "https://soundcloud.com/conscious-entropy/new-source-of-energy?in=conscious-entropy/sets/white-moth&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
-  },
-  {
-    title: "demonic disco",
-    act: "I",
-    lyrics: (
-      <>
-        <p className="cinematic">
-          Inside the cocoon Carl finds space to dance and unleash his inner
-          demons. Excited for what is to come, he hopes he turns into a
-          butterfly like the ones he saw flying
-        </p>
-        <p className="emphasis">External energy becomes internal power.</p>
-        <div className="signal-break">/// TRANSFORMATION ///</div>
-      </>
-    ),
-    soundcloud:
-      "https://soundcloud.com/conscious-entropy/demonic-disco?in=conscious-entropy/sets/white-moth&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
-  },
-  {
-    title: "random random life can be",
-    act: "I",
-    lyrics: (
-      <>
-        <p className="cinematic">
-          Carl breaks out of cocoon but as a moth, instead of a butterfly. He
-          doesnt mind and flys away exploring his new-found wings.
-        </p>
-      </>
-    ),
-    soundcloud:
-      "https://soundcloud.com/conscious-entropy/random-random-life-can-be?in=conscious-entropy/sets/white-moth&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
-  },
-  {
-    title: "intrinsically stringed",
-    act: "I",
-    lyrics: (
-      <>
-        <p className="cinematic">
-          After a butterfly tells Carl, the moth, that he will never be a
-          butterfly he isolates himself and closes on himself, turning a
-          sarcophagus around a flower.
-        </p>
-      </>
-    ),
-    soundcloud:
-      "https://soundcloud.com/conscious-entropy/my-art-my-rules?in=conscious-entropy/sets/white-moth&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
-  },
-  {
-    title: "apocalypse will come for us all",
-    act: "I",
-    lyrics: (
-      <>
-        <p className="cinematic">
-          Carl, white moth decides to accept himself and continue pursuing his
-          dream of turning into a butterfly.
-        </p>
-
-        <p>
-          {" "}
-          he breaks out of sarcophagus and finds a bar of flowers to start
-          drinking nonsstop with no option for player to stop
-        </p>
-      </>
-    ),
-    soundcloud:
-      "https://soundcloud.com/conscious-entropy/the-apocalypse-will-come-for-us-all?in=conscious-entropy/sets/white-moth&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
-  },
-  {
-    title: "meta-metamorphosis (from 0 to a 1, to a moth to a butterfly)",
-    act: "I",
-    lyrics: (
-      <>
-        <p className="cinematic">
-          Someone mentions about alchemists who can change the physical
-          composition of any substance
-        </p>
-
-        <p>
-          {" "}
-          Carl distances himself and finds a quiet place to experiment chemical
-          substances to turn himself into a butterfly. Experiment fails and
-          blows up the whole place. Amidst the ashes, a red butterfly appears
-          and starts flapping its wings
-        </p>
-      </>
-    ),
-    soundcloud:
-      "https://soundcloud.com/conscious-entropy/moth-to-butterfly-1?in=conscious-entropy/sets/white-moth&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
-  },
-  {
-    title: "ACT II preface",
+    title: " preface",
     act: "II",
     lyrics: (
       <>
         <p className="cinematic">
-          The birth of the red butterfly symbolises Elly's awakening in the
-          physical world. With ACT I exploring his transformation from a
+          The birth of the red butterfly symbolised Elly's conscious awakening in the
+          physical world. With ACT I exploring his spiritual transformation from a
           caterpillar to a butterfly, he now wakes up inside of Ahriman's cave
           and realises it's a trap.
         </p>
@@ -193,7 +29,7 @@ const SONGS = [
         
         <p className="cinematic">Ellys awakens in Ahriman's prison cave. </p>
         <p className="highlight">He sees the blue screens hypnotizing people around and realises there is life outside the cave. </p>
-    <p>He prays to Elco who orchestrates a storm, breaking the wall where he sees the sea for the first time.  Time to escape.</p>
+    <p>He prays to Elco who orchestrates a storm, breaking the wall where he sees the sea for the first time.  His perfect time to escape.</p>
       </span>
     ),
     soundcloud:
@@ -201,12 +37,69 @@ const SONGS = [
 
   },
   {
-    title: "Arcadia (Hawai)",
+    title: "Arcadian Hawai",
     act: "II",
     lyrics: (
       <>
         <p className="cinematic">
-          False paradise revealed. Ahriman's illusion.
+        In his ElCave he finds freedom to express, create and plan how to find ELSPARK.
+        </p>
+        <p className="text">Sets sail for true freedom. ELSPARK calls.</p>
+        <div className="signal-break">/// ILLUSION BROKEN ///</div>
+      </>
+    ),
+    audio: "/audio/arcadia-hawai.wav",
+  },
+  {
+    title: "Passive slave of dopamine",
+    act: "II",
+    lyrics: (
+      <>
+        <p className="cinematic">
+On his pursuit to ELSPARK he finds a job at a garden, responsible to treat the wheats. He builds biggest seeds they have seen, which he finds out Lord Beauraux would come and collect it. Ellys picks it up and travels to ELSPARK where he plants them to become mooshis
+
+        </p>
+   
+        <div className="signal-break">/// ILLUSION BROKEN ///</div>
+      </>
+    ),
+    audio: "/audio/arcadia-hawai.wav",
+  },
+  {
+    title: "Idle Saint, flawed idols",
+    act: "II",
+    lyrics: (
+      <>
+        <p className="cinematic">
+         On his pursuit to find the way to reach ELSPARK he seeks for guidance and doesnt know who to pray to.
+        </p>
+       
+        <div className="signal-break">///  spiritual confusion ///</div>
+      </>
+    ),
+    audio: "/audio/arcadia-hawai.wav",
+  },
+  {
+    title: "Buddha Buddha come rescue me",
+    act: "II",
+    lyrics: (
+      <>
+        <p className="cinematic">
+       He finds boat and sails to ELSPARK.
+        </p>
+    
+      
+      </>
+    ),
+    audio: "/audio/arcadia-hawai.wav",
+  },
+  {
+    title: "my heart cant take another bleed",
+    act: "II",
+    lyrics: (
+      <>
+        <p className="cinematic">
+He goes back to The Cave to tell Lady Dopamina and the others, but she ends up killing him.
         </p>
         <p className="text">Sets sail for true freedom. ELSPARK calls.</p>
         <div className="signal-break">/// ILLUSION BROKEN ///</div>
@@ -220,10 +113,9 @@ const SONGS = [
     lyrics: (
       <>
         <p className="cinematic emphasis">
-          ELTV premiere. Sovereignty reclaimed.
+ Ellys ressurected but in ELSPARK, proves Elco granted him immortality and she can perform miracles.
         </p>
-        <p className="broadcast-line">ELCA broadcasts from ELSPARK Theatre.</p>
-        <div className="signal-break">/// ELTV LIVE ///</div>
+   
       </>
     ),
     audio: "/audio/monarch-of-my-body.wav",
