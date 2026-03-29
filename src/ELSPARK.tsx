@@ -137,7 +137,7 @@ const sections = [
     title: "ELSPARK TV",
     phase: "elspark",
     text: [    "When the lights dim and curtains open, however can reveals a screen.",
-      "The screen is ELSPARK TV, a digital platform of original content made by ELTV and performed by humans on Earth. Whether pre-recorded digital shows or live performances.",
+      "The screen is ELSPARK TV, a digital platform of original content made by ELTV and performed by humans on Earth for Arcadians to watch. Whether pre-recorded digital shows or live performances.",
   ,
     ],
     image: "/ELSPARKTheatre.png",
@@ -160,11 +160,13 @@ const sections = [
     text: [
       "▮ ACCESS POINT AVAILABLE",
       "The social infrastructure of the park is ready.",
-      "https://elspark.online",
+      "",
 
       "The 3D world is still forming.",
       "/// END OF TRANSMISSION ///",
+
     ],
+    link: "https://elspark.online",
   },
 ];
 
@@ -306,21 +308,18 @@ export default function ELSPARK() {
   />
 ) : null}
               <div className="ec-text-block">
-                {section.text.map((line, i) => {
+                {section && section.text.map((line, i) => {
                   const isSignal = i === 0 && line.includes("▮");
-                  const isBreak = line.includes("///");
+                  const isBreak = line
 
-                  const isEmphasis =
-                    line.toLowerCase().includes("participate") ||
-                    line.toLowerCase().includes("laocracy") ||
-                    line.toLowerCase().includes("not democracy");
+      
 
                   // clickable link
-                  const isLink = line.includes("http");
+                  const isLink = section.link;
 
                   if (isBreak) {
                     return (
-                      <div key={i} className="signal-break">
+                      <div key={i} className="cinematic">
                         {line}
                       </div>
                     );
@@ -344,10 +343,7 @@ export default function ELSPARK() {
                   return (
                     <p
                       key={i}
-                      className={`
-                        ${isSignal ? "signal" : ""}
-                        ${isEmphasis ? "emphasis" : ""}
-                      `}
+                      className="cinematic"
                     >
                       {line}
                     </p>
