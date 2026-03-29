@@ -27,26 +27,28 @@ const sections = [
       "Their intependent and persistent bodies are constantly updating the mythos of Code-L.",
      
       "When the conscious player disconnects, the Arcadian stays behind. Static.",
-      "The motionless body can be kidnapped, harmed or killed if their blood is out.",
-      "When conscious player returns, they resume from the Arcadian's last known state, or if dead as a new character",
-      "Code-L continues — with or without you. But it remembers you.",
+      "The motionless body can be kidnapped, harmed or killed if they run out of heart blood.",
+      "When conscious player returns, they resume from their dedicated Arcadian's last known state, or if dead as a new character.",
+      "They always spawn inside of The Cave.",
     ],
   },
   {
     title: "The Cave",
     phase: "arcadia",
     text: [
-      "All players begin inside The Cave.",
+      "All Arcadians begin inside The Cave.",
       "A closed system designed to contain and distract.",
       "Ahriman designed these caves to trap people, hypnotising them to then feed them to his wolves.",
-      " Lady Dopamina, acting as puppeteer kept the prisoners engaged and enticed. ",
-      "For a player to escape, they need to find a hidden key.",
-      "A hidden key unlocks the gate away from cave to outside world.",
-      "If players find it, they can exit.",
-      "But when they exit, the guard will stop them and ask for a bribe of €20.If player refuses, guard will fight him to death. .",
+      " Lady Dopamina, acting as puppeteer keeps the prisoners engaged and enticed. ",
+      "For an Arcadian to escape, they need to find a hidden key.",
+      "A hidden key unlocks the gate away from the cave to the outside world.",
+      "If an Arcadian finds it, they can exit.",
+      "However, when they exit, the guard called Conforma will stop them and ask for a bribe of €20.If player refuses, Conforma will fight him to death. She is a good fighter.",
     
       "Most dont make it. But few step out.",
-    ],
+"Ones who do, can explore Arcadia. Build stuff and follow their own rules, given the physics they have available.",
+"when consciousness exits, bodies are left static. Exposed to scarecrows sent by Ahriman who eat them.",
+"When the Arcadian of a signed up consciousness dies, the player respawns as a new Arcadian."    ],
   },
   {
     title: "Survival",
@@ -58,7 +60,7 @@ const sections = [
       "If your body is destroyed, it is lost.",
       "You may return, but not as the same identity.",
       "Account is reset.",
-      "Everything is remembered in Code-L, but you are a new person.",
+      "Everything is remembered in Code-L, but you are a new Arcadian.",
     ],
   },
   {
@@ -67,10 +69,10 @@ const sections = [
     text: [
       "ELSPARK is a protected subspace within Arcadia.",
       "A refuge outside the open system.",
-      "A park where all residents can gain continuity and shelter when the conscious player exits the Arcadian.",
-      "Players signed up under ELSPARK can respawn if killed.",
-      "They persist.",
-      "They also stay sheltered when consciousness disconnects. In a safe space so none can harm their body.",
+      "A park where all residents can gain continuity and shelter when the conscious player exits their Arcadian.",
+      "ELSPARK offers direct access for consciousness to engage with an Arcadian for the long-term.",
+      "Engage in a society of open-minded people, looking to build a new Arcadia and take it back from Ahriman.",
+      "Running on LAOCRACY, it is an infrastructure to offer power to every person, who can create and become part of its economic distribution structure.",
     ],
   },
   {
@@ -78,11 +80,11 @@ const sections = [
     phase: "arcadia",
     text: [
       "Arcadia is finite.",
-      "All land is owned by Ahriman, but if you just kill the scarecrows he sends to you (because he thinks he owns the land) you will be safe.",
+      "Majority of the land is owned by Ahriman, but if Arcadians kill the scarecrows he sends (because he thinks he owns the land), they can be safe.",
       "Unclaimed regions are open for expansion.",
-      "Players can claim, shape and define territory.",
+      "Arcadians can claim, shape and define territory.",
       "Structures, systems and spaces can be built.",
-      "ElCode can help with the construction across the planet.",
+      "ElCode offers help with the construction of the planet.",
     ],
   },
   {
@@ -94,7 +96,7 @@ const sections = [
       "Territories form. Alliances emerge.",
       "Control is earned, not assigned.",
       "ELSPARK operates as an independent sovereign zone.",
-      "Other regions may fall under different rule.",
+      "Other regions can create their own rules.",
     ],
   },
   {
@@ -312,7 +314,7 @@ export default function Arcadia() {
                  <h1 className="codeLarcadia-signal"> Code-L: Phase 1</h1>
                 </Link>
               )}
-                <li className="signal-break huge ">/// SIGNAL STABLE ///</li>
+                <li className="signal-break  ">/// SIGNAL STABLE ///</li>
 
                 <div className="ec-btn-group ">
                   <button

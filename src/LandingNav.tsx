@@ -3,8 +3,8 @@ import "./el.css"; // Your shared CSS file
 const cards = [
     {
         title: "Arcadia",
-        label: "An autonomous Digital 3D rendered Planet",
-        subtitle: "Resided by Arcadians, whose body remains static until a conscious player connects with them. Running 24/7, the planet has a recorded history weaving the unfolding of the real-time mythos Code-L . Arcadians are static, unless connected by a human, who then directly influences the 3D environemnt around them and shaping the character's trajectory.",
+        label: "An autonomous 3D Planet",
+        subtitle: "Resided by Arcadians, whose body remains static until a conscious being connects with them. Arcadian Records record the history at every frame, capturing the mythos Code-L created by the people. A character's trajectory is shaped by the consciousness which lifts it from a static state (inertia) .",
         path: "/elworld",
         accent: "#4ecb6b",
         available: true,
@@ -410,7 +410,8 @@ export default function LandingNav() {
           
             <div className="el-rule" />
             <p className="el-subtitle">
-         A transcript with updates.
+ <h1>A psychological, interactive reality.</h1>
+ <li>An infinitely auto-generative mythos, measured every frame through matrix coordinates and memories. </li>
             </p>
           
           </header>

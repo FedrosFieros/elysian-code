@@ -48,8 +48,21 @@ const sections = [
       "Elcoin holders can cash out proportionally to euros in OCBR.",
       "Example: If OCBR holds €2,000,000, selling 2 elcoins returns (2 ÷ 1,000,000) × €2,000,000 = €2.",
       "The sold elcoins are removed from circulation and returned to the bank reserve.",
-      "Users can also trade their digital creations or services with others in elcoins.",
+      "Elcoins is the sole form of exchange on ELSPARK. Where people can trade services to each other, or trade digi-posts.",
     ],
+  },
+  {
+    title: "DIGI-POSTS",
+    phase: "elspark",
+    text: [
+      "Collectible, decentralised media with integrated comment section on its hardware.",
+"Can only be accessed by those with a copy of it.",
+"Arcadians can buy a copy of a digi-post by giving the original creator one elcoin and storing in their personal collection.",
+"Then they can view on demand."     ,
+    "If not digi-post can be lost in a sea of so many more.",
+  "Collectors can also use copies of 3 digi-posts they purchased to create a digi-cura-post, worth 2 elcoins.",
+"When someone buys this digi-cura-post, it gives 0.5 elcoins to the curator and each of the original creators.",
+"creator retain ownership of their digi-posts."],
   },
   {
     title: "LAOCRACY",
@@ -64,7 +77,7 @@ const sections = [
       "This is not democracy.",
       "This is laocracy.",
       "/// GOVERNANCE STRUCTURE ///",
-      "Elco, an AI host, interacts with residents — offering guidance or connecting them with relevant humans for assistance.",
+      "Elco, acting as the spirit of it all, interacts with residents — offers them guidance or connecting them with relevant humans for further assistance.",
       "Each month, Elco organises open elections.",
       "Residents vote on updates such as: new features, UX design, attractions, or other community-driven changes.",
       "Collective voting results directly shape the park's evolution.",
@@ -84,17 +97,28 @@ const sections = [
     ],
   },
   {
+    title: "DIGI-MARKET",
+    phase: "elspark",
+    text: [
+      "DIGI-MARKET is the place for sellers to market private services they can offer, in exchange for elcoins.",
+         "A digital marketplace for online sellers to offer a timed session, they can deliver digitally on the spot.",
+         "Sellers can offer language coaching, life advice, consultations, or going on an adventure across Arcadia. - anything a seller offers, you can exchange for coins.",
+         "Sellers can also offer products such as clothes, furniture and tools."
+
+    ],
+  },
+  {
     title: "ATTRACTIONS",
     phase: "elspark",
     text: [
       "ELSPARK is composed of spaces.",
       "Each space serves a function.",
-      "Move freely between them.",
+      "These attractions are built for Arcadians to express, create and connect.",
+      
       "/// SPACES AVAILABLE ///",
-      "SOCIAL LABYRINTH — Meet strangers instantly.",
-      "PERSONAL PARK — Safe space for shelter away from Ahriman's scarecrows.",
-      "NEWSPAPER — A real-time chronicle.",
-      "DIGI-MARKET — Exchange skills and sessions.",
+      "SOCIAL LABYRINTH — Meet strangers instantly in a private room. Just the two of you.",
+      "PERSONAL PARK — Subsidised, private and personally curated 3D space, home for the Arcadian.",
+      "DIGI-MARKET — Exchange skills and timed sessions.",
       "Some spaces are system-built.",
       "Others will be user-created.",
       "The map is not fixed.",
@@ -147,7 +171,7 @@ const sections = [
 const phaseColors = {
   elspark: {
     accent: "#00e0ff",
-    glow: "rgba(0,224,255,0.16)",
+    glow: "rgba(223, 223, 223, 0.16)",
   },
 };
 
@@ -239,7 +263,7 @@ export default function ELSPARK() {
         {/* Sidebar */}
         <nav className={`ec-sidebar ${navOpen ? "open" : ""}`}>
           <Link to="/" className="ec-logo">
-            Elysian Code
+         ELSPARK CODE
           </Link>
 
           <ul className="ec-nav-list">

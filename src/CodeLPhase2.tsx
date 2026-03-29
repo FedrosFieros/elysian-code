@@ -3,12 +3,29 @@ import { useState, useEffect } from "react";
 import "./el.css";
 const sections = [
   {
-    title: "June 1st - Ellys steps inside cave.",
+    title: "June 1st - Ellys breaks cave door.",
     phase: "escape",
     text: [
-      "At 8pm, the gated door breaks open.",
-      "Ellys steps inside to help prisoners escape for free. He finds Lady Dopamina to whom he expresses his love and welcomes her to come with him to ELSPARK, promising immortality. .",
-    ],
+      "At 8pm, the gated door breaks open ",
+      "Ellys:",
+      "Lady Domina, i am here to take you with me. I found it. I found immortality. we no longer have to worry about death, together we can live for eternity. Sheltered from Ahriman's scarecrows fed on our flesh. ",
+      "Lady Dopamina :",
+      "”Oh silly child. who told you that immortality is for you. You should had stayed in your place next time. Come and take a seat, the blue light can guide you. You wont ever need to look outside.",
+    "Ellys:",
+ "But it’s true. Elco promised it to me. There can be a whole world outside of the blue light in this cave that we see. She can give it to you and to other Arcadians alike. She resides on ELSPARK, on an island away from Ahriman’s greedy mind.",
+"Lady Domina:","They will always come back to the cave, it’s safe and accessible. You speak utopian, in a dystopian world.”.",
+"Ellys:",
+"Shouldn’t they at least explore what lies outside to see if they like it? They deserve to have a vote. They deserve to participate in the distribution of gold . Shouldn’t they consider looking at alternatives to this cave? Or will they carry on being emprisoned algorithmic prey."
+,"Lady Domina:",
+"No they cant” - (closes door and wolves come out from dungeon)",
+"Ellys:",
+"Why wont you let them go? What is your ultimate goal? Food for the wolves are you looking for? Ahriman is lying to you, he will come to kill you next.”",
+"Lady Dopamina (chains him):",
+"”Pleasure is the highest form of luxury, I will show it to you crystal clear if you dont want to adhere, (stabs him three times)"
+
+]
+
+    ,
     video: "/escape.avi",
   },
   {
@@ -16,18 +33,18 @@ const sections = [
     phase: "escape",
     image:"Ellys-chained.png",
     text: [
-      "Ellys returns to tell Lady Dopamina about ELSPARK and that it can offer them immortality and shelter from scarecrows.",
- "the puppeteer Lady Dopamina refused to come and chains him stabbing him to death.","the wolves then come out to eat everyone but the people in the cave kick them to death.", ],
+      "Chained and stabbed by Dopamina Ellys starts to sing:",
+  ],
     lyrics: [
-      "verse 1: “urgency! my heart cant take another bleed.",
+      "verse 1: “urgency “urgency! my heart cant take another bleed.",
       "Ahriman’s war, threatens to kill our inner kids.",
-      "urgency! a scar she stabbed for my blood to freeze.",
+      "urgency “urgency! a scar she stabbed for my blood to freeze.",
       "Bases she built on my heart, without my permit.”",
       "verse 2: “dizzy boy I thought I found her",
       "the one to be with me when it darkens.",
       "foolish of me to trust the puppeteer.",
-      "Lady Dopamina sold us the wrong idea.",
-      "this cave we need to leave, the wolves are here.",
+      "this cave we need to leave, she sold us the wrong idea.",
+    
       "my hand i extend to the monarch inside",
       "ego laid the soil for the self now to drive.",
       "foolish of me to let you inside my gear,",
@@ -44,19 +61,22 @@ const sections = [
       "we dont need violence, we need new ecosystems.",
       "we need infrastructures to distribute gold.",
       "then ahriman has no worth, then ahriman has no worth",
+      ".",
+      "(Action)Ellys sings directly to Lady Dopamina, while he is bleeding.",
+      ".",
       "verse 5: “light a spark and throw it down my spine,",
       "you can start a wildfire when you smile.",
       "melt my heart, posses me if you want me",
       "I try to lift the anchor, my hand you are holding",
-      "how can we sail to a new life to a system I dont believe in, I wont oblige.",
+      "how can we sail to a new life? to a system I dont believe in, I wont oblige.",
       "I choose not to stay to this cave here to hide.",
       "my hand let go, I choose to take control",
       "the wheel i rotated, I lift the anchor for the sea I sail",
       "looking for a new world, i welcome you to come with me",
       "the tides we face but we stay still, whether you come or not,",
-      "I will still go, thank you for the lessons you have given me,",
-      "my heart cant bleed no more.'",
-      "actions: Ellys invites puppeteer to come with him but she doesnt",
+      "from this cave I will still go, thank you for the lessons you have given me,",
+      "my heart cannot bleed no more.'",
+      "action: Ellys dies.",
     ],
     audio: "/MHCTAB19.wav",
   },
@@ -74,14 +94,14 @@ const sections = [
     title: "ELSPARK ",
     phase: "elspark",
     text: [
-      "A new decentralised park on the island of Pandora, free from Ahriman's control.",
-      "Hosted by Elco,offering a new laocratic environment, where hostess poses a question and residents can vote, with everyone's votes holding the same weight.",
-      "ELSPARK offers people who sign up a safe shelter to sleep when their consciousness is away.",
+      "Ellys wakes up on ELSPARK.", "A  decentralised park on the island of Pandora, free from Ahriman's control or visibility.",
+      "Hosted by Elco,offers a new laocratic environment, where questions are posed every month and residents can vote, with everyone's votes holding the same weight.",
+      "ELSPARK also offers people who sign up a safe shelter to sleep when their consciousness is away.",
       " Fully protected from Ahriman's scarecrows or wolves.", 
       
 
     ],
-    image: "/ELSPARK.png",
+   
   },
  
 ];
@@ -176,21 +196,7 @@ export default function CodeLPhase2() {
         />
           {/* Screen */}
           <div className="ec-screen">
-            <div className="ec-content">
-              <p className="ec-phase-tag">
-                {section.phase === "escape" ? "Code-L · Phase 2" : "ELSPARK"}
-              </p>
-
-              <h1 className="ec-title">{section.title}</h1>
-              <div className="ec-rule" />
-
-              <div className="ec-text-block">
-                {section.text?.map((line, i) => (
-                  <p key={i}>{line}</p>
-                ))}
-                
-              </div>
- {/* Media: video first, otherwise image */}
+            {/* Media: video first, otherwise image */}
  {section.video ? (
                 <video
                   className="ec-image"
@@ -208,6 +214,21 @@ export default function CodeLPhase2() {
                 />
               ) : null}
               {/* Lyrics block */}
+            <div className="ec-content">
+              <p className="ec-phase-tag">
+                {section.phase === "escape" ? "Code-L · Phase 2" : "ELSPARK"}
+              </p>
+
+              <h1 className="ec-title">{section.title}</h1>
+              <div className="ec-rule" />
+
+              <div className="ec-text-block">
+                {section.text?.map((line, i) => (
+                  <p key={i}>{line}</p>
+                ))}
+                
+              </div>
+ 
               {section.lyrics && (
                 <div className="ec-text-block" style={{ marginTop: "1.5rem" }}>
                   <p

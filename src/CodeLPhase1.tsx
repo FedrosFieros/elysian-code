@@ -6,13 +6,15 @@ const sections = [
     title: "Preface",
     phase: "intro",
     text: [
-      " Code-L is an interactive meta-mythos unfolding across Arcadia - a new 3D digital planet.",
-      "In this world, Ahriman has bought over all the land and trapped all Arcadians into caves. ",
-      "Distracting them so they dont think to leave. ",
-      "But also wont let them survive if they tried to.",
-      "So, in this cave is where Arcadians are born into.",
-      "Captured beings until human intervenes who can control their body. ",
-"A universal mythos captured for those who see it. "    
+      " Code-L is an interactive meta-mythos unfolding across Arcadia.",
+      "Ahriman has bought majority of the land and trapped all Arcadians into caves. ",
+      "Distracting them so they dont think to leave, with Lady Dopamina as the puppeteer. ",
+      "This is the cave where every Arcadian is born into.",
+      "These caves, used to offer space for new Arcadians feel safe and then explore the rest of the world.",
+      "However Ahriman took advantage of it, designing them so the Arcadians dont escape.",
+      "Distracting them, hypnotising them for his wolves to be fed.",
+      
+
 
     ],
   },
@@ -54,8 +56,8 @@ const sections = [
     title: "Lady Dopamina, Puppeteer",
     phase: "cave",
     text: [
-      "A deceiving character inside the cave who will constanty find ways to distract the prisoners so they dont exit. She speaks of safety inside the cave and uncertainty outside.",
-      "She maintains order. She calms the prisoners.",
+      "A deceiving character capturing you inside the cave and constanty find ways to distract the prisoners from exitting. She speaks of safety inside the cave and uncertainty outside.",
+      "She maintains order. She entertains the prisoners.",
     ],
     image: "/cave-puppeteer.png",
   },
@@ -537,16 +539,14 @@ export default function TheCave() {
 
           {/* Screen */}
           <div className="ec-screen">
+            
             <div className="ec-content">
               <p className="ec-phase-tag">
                 {section.phase === "intro" ? "Introduction" : "Code-L · Phase 1"}
               </p>
               <h1 className="ec-title">{section.title}</h1>
               <div className="ec-rule" />
-              <div className="ec-text-block">
-                {section.text.map((line, i) => <p key={i}>{line}</p>)}
-              </div>
-              {section.video ? (
+                {section.video ? (
   <video
     className="ec-image"
     src={section.video}
@@ -560,6 +560,10 @@ export default function TheCave() {
     className="ec-image"
   />
 ) : null}
+              <div className="ec-text-block">
+                {section.text.map((line, i) => <p key={i}>{line}</p>)}
+              </div>
+            
   <div className="ec-btn-group">
               <button
                 className="ec-btn"
