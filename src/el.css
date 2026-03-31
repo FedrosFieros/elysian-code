@@ -234,10 +234,11 @@ background-color: #050208;
   gap: 0.9rem;
 }
 .ec-text-block p {
-  font-size: clamp(1rem, 1.5vw, 2.15rem);
+  font-size: clamp(2rem, 2.5vw, 3.15rem);
   line-height: 1.85;
   color: rgba(240,236,228,0.7);
   font-weight: 300;
+  color:#06030a;
 }
 
 .ec-image {

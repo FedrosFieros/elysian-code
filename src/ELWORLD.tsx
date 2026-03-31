@@ -291,7 +291,7 @@ export default function Arcadia() {
               <h1 className="ec-title">{section.title}</h1>
               <div className="ec-rule" />
 
-              <div className="ec-text-block">
+              <div className="ec-text-block ">
                 {section.text.map((line, i) => (
                   <p
                     key={i}

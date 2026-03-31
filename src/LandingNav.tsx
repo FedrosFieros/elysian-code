@@ -29,6 +29,8 @@ const cards = [
     icon: "◎",
   },
 
+];
+const cards1 = [
   {
     title: "ELSPARK",
     label: "Digital Park",
@@ -101,8 +103,7 @@ const cards = [
     accent: "#ff4800",
     available: false,
     icon: "⊕",
-  },
-];
+  },]
 
 export default function LandingNav() {
   return (
@@ -406,13 +407,11 @@ export default function LandingNav() {
 
       <div className="el-landing">
         {/* Curtains */}
-        <div className="el-curtain el-curtain-left" />
-        <div className="el-curtain el-curtain-right" />
+   
 
-        {/* Spotlight */}
-        <div className="el-spotlight" />
 
-        <div className="el-stage">
+
+        <div className="">
           {/* Header */}
           <header className="el-header">
             
@@ -429,9 +428,61 @@ export default function LandingNav() {
 
           {/* Cards Grid */}
           <div className="el-grid ">
-          <h2 className="cinematic">Content </h2>
+          <h2 className="cinematic">Arcadian History </h2>
         
             {cards.map((card, i) => {
+              const inner = (
+                <div className="">
+                  <div
+                    className="el-card-bg "
+                    style={{
+                      background: `radial-gradient(ellipse at 80% 120%, ${card.accent}18 0%, transparent 60%)`,
+                    }}
+                  />
+                  <div
+                    className="el-card-accent"
+                    style={{ background: card.accent }}
+                  />
+              
+                  <h2 className="el-card-title" style={{ color: card.available ? "#f0ece4" : "rgba(240,236,228,0.4)" }}>
+                    {card.title}
+                  </h2>
+                  <span className={`"" ${card.available ? "el-badge-live" : "el-badge-wip"}`}>
+                    {card.available ? "click to read" : "Soon"}
+                  </span>
+                  <div className="el-card-icon" style={{ color: card.accent }}>
+                    {card.icon}
+                  </div>
+                  <p className="el-card-label">{card.label}</p>
+              
+                  <p className="el-card-desc">{card.subtitle}</p>
+                  {card.available && (
+                    <span className="el-card-arrow" style={{ color: card.accent }}>↗</span>
+                  )}
+                </div>
+              );
+
+              return card.available ? (
+                <Link
+                  key={i}
+                  to={card.path}
+                  className="el-card"
+                  style={{ animationDelay: `${i * 0.05 + 1.8}s`, opacity: 0, animation: `stageIn 0.5s ease ${i * 0.05 + 1.8}s forwards` }}
+                >
+                  {inner}
+                </Link>
+              ) : (
+                <div
+                  key={i}
+                  className="el-card el-card-wip"
+                  style={{ animationDelay: `${i * 0.05 + 1.8}s`, opacity: 0, animation: `stageIn 0.5s ease ${i * 0.05 + 1.8}s forwards` }}
+                >
+                  {inner}
+                </div>
+              );
+            })}
+<h1 className="cinematic " > Experiences on Arcadia:</h1>
+{cards1.map((card, i) => {
               const inner = (
                 <div className="">
                   <div
