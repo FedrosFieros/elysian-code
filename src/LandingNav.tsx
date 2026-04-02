@@ -1,550 +1,455 @@
 import { Link } from "react-router-dom";
-import "./el.css"; // Your shared CSS file
+
 const cards = [
-    {
-        title: "Arcadia",
-        label: "An autonomous 3D Planet",
-        subtitle: "Resided by Arcadians, whose body remains static until a conscious being connects with them. Arcadian Records record the history at every frame, capturing the mythos Code-L created by the people. A character's trajectory is shaped by the consciousness which lifts it from a static state (inertia) .",
-        path: "/elworld",
-        accent: "#4ecb6b",
-        available: true,
-        icon: "⬡",
-      },
+  {
+    title: "Arcadia",
+    kicker: "Arcadia · Foundation",
+    headline: "Arcadia: An Autonomous 3D Planet Shaped by Conscious Beings",
+    subtitle:
+      "Resided by Arcadians, whose body remains static until a conscious being connects with them. Arcadian Records capture the mythos Code-L created by the people.",
+    path: "/elworld",
+    available: true,
+    numeral: "I",
+  },
   {
     title: "Code-L Phase 1",
-    label: "Ahriman's Cave (available in May)",
-    subtitle: "Initially every Arcadian spawns  inside a 3D digital cave, with only few at a time able to escape out to the rest of the world.",
+    kicker: "Code-L · Phase 1",
+    headline: "Ahriman's Cave: Where Every Arcadian First Spawns",
+    subtitle:
+      "Initially every Arcadian emerges inside a 3D digital cave, with only few at a time able to escape out to the rest of the world.",
     path: "/codeLphase1",
-    accent: "#e8c97a",
     available: true,
-    icon: "◈",
+    numeral: "II",
   },
   {
     title: "June 1st",
-    label: "The Escape",
-    subtitle: "Ellys breaks into the cave, but Lady Dopamina traps him and kills him. However he opens door for every prisoner to escape. He advises them that if they are looking for shelter and spawn safely they need to find ELSPARK.",
+    kicker: "June 1st · The Escape",
+    headline: "Ellys Opens the Door, Pays With His Life",
+    subtitle:
+      "Ellys breaks into the cave, but Lady Dopamina traps and kills him. Yet in his sacrifice he opens the door for every prisoner to escape — advising them to find ELSPARK for shelter and safe spawn.",
     path: "/CodeLPhase2",
-    accent: "#ff7c5c",
     available: true,
-    icon: "◎",
+    numeral: "III",
   },
   {
     title: "Characters of this world",
-    label: "Real-time influencing mythical Figures",
-    subtitle: "The world was built by 12 entities",
+    kicker: "Mythology · Cast",
+    headline: "The 12 Entities Who Built This World",
+    subtitle:
+      "Real-time influencing mythical figures — characters who operate at the intersection of code and consciousness, shaping Arcadia from the inside.",
     path: "/characters",
-    accent: "#ff7c5c",
     available: true,
-    icon: "◎",
+    numeral: "IV",
   },
-
 ];
+
 const cards1 = [
   {
     title: "ELSPARK",
-    label: "Digital Park",
-    subtitle: "A decentralised social digital park on Arcadia, safe from Ahriman's wolves and scarecorps. Players who sign up are granted safe shelter away from Ahriman, whose scarecrows attack sleeping bodies if left exposed. In addition, ELSPARK grants immortality. When an ELSPARK player dies, they can always respawn, but as a new version of them.",
+    kicker: "ELSPARK · Digital Park",
+    headline: "The Decentralised Sanctuary That Grants Immortality",
+    subtitle:
+      "A decentralised social digital park, safe from Ahriman's wolves and scarecorps. Players granted shelter away from Ahriman's scarecrows — and when an ELSPARK player dies, they respawn as a new version of themselves.",
     path: "/elspark",
-    accent: "#c0bfbf",
     available: true,
-    icon: "✦",
+    numeral: "V",
   },
- 
   {
     title: "Elly's Code",
-    label: "An interactive musical",
-    subtitle: "Commencing from the first time Ellys escapes The Cave and his journey to find ELSPARK, to then go back to The Cave where Lady Dopamina kills him. But he then gets ressurected as Ellysv1 at ELSPARK. Players can experience it in real-time, watching the events unfold, around them but they cannot influence them. What was done at the time of the events, stays.",
+    kicker: "Elly's Code · Musical",
+    headline: "An Interactive Musical Where the Past Cannot Be Changed",
+    subtitle:
+      "Players experience events in real-time — watching Ellys escape The Cave, his journey to ELSPARK, his death, his resurrection as Ellysv1. What was done at the time of the events, stays.",
     path: "/ellyscode",
-    accent: "#00cc6a",
     available: true,
-    icon: "♫",
+    numeral: "VI",
   },
   {
     title: "meta-metamorphosis",
-    label: "Initiation Ritual ",
-    subtitle: "For the conscious player to gain immortality, they can play through an interactive game of a caterpillar transforming into a white moth and then later transforming to a symbol determined by how the game was played.",
+    kicker: "Meta-Metamorphosis · Ritual",
+    headline: "From Caterpillar to White Moth: An Initiation Game",
+    subtitle:
+      "To gain immortality, the conscious player plays through an interactive transformation — caterpillar to white moth, then into a final symbol determined by how the game was played.",
     path: "/metametamorphosis",
-    accent: "#00cc6a",
     available: true,
-    icon: "♫",
+    numeral: "VII",
   },
   {
     title: "ELSPARKTV",
-    label: "Original Programming",
-    subtitle: "A curated digital platform for original shows produced by ELTV. Our media production network, pairing creatives across different fields to create shows, live performances or other experimental media.",
+    kicker: "ELSPARK TV · Programming",
+    headline: "Original Programming From Arcadia's Broadcast Network",
+    subtitle:
+      "A curated digital platform for original shows produced by ELTV — pairing creatives across different fields to create shows, live performances, and experimental media.",
     path: "/elspark-tv",
-    accent: "#b07fff",
     available: true,
-    icon: "▣",
+    numeral: "VIII",
   },
   {
     title: "ELCA",
-    label: "Live Theatre Festival",
-    subtitle: "A live theatre festival broadcasted from ELSPARK TV. First edition June 5th.",
+    kicker: "ELCA · Theatre",
+    headline: "Live Theatre Festival, First Edition June 5th",
+    subtitle: "Broadcasted from ELSPARK TV. A live theatre festival coming to the platform.",
     path: "/elworld",
-    accent: "#888",
     available: false,
-    icon: "◇",
+    numeral: "IX",
   },
   {
     title: "ElCave",
-    label: "Ritual Exhibition",
-    subtitle: "An experiential ritualistic private exhibition on Earth, with only one person at a time for 20 minutes.",
+    kicker: "ElCave · Exhibition",
+    headline: "One Visitor, Twenty Minutes, One Ritual on Earth",
+    subtitle:
+      "An experiential ritualistic private exhibition — only one person at a time for 20 minutes.",
     path: "/elworld",
-    accent: "#888",
     available: false,
-    icon: "◉",
+    numeral: "X",
   },
   {
-    title: "Elcode ",
-    label: "Source of Funding for Arcadia",
-    subtitle: "ElCode helps independent enterpreneurs or small-medium businesses build a customised platform, to digitise their service, reaching a wider audience and controlling their personal operational requirements. Tailored to their needs to accomodate automation of the manual. Profit coming back to ElCode is shared as 20% for operations of ELSPARK (which is the heart of Arcadia and what keeps it breathing), 20% for ELTV (funding to original media, shows and interactive software built in-house), 10% to ElCare with rest of 50% shared to members of ElCode Core team who all distribute this amount equally. ",
+    title: "Elcode",
+    kicker: "Elcode · Infrastructure",
+    headline: "The Economic Engine Funding Arcadia's Existence",
+    subtitle:
+      "Elcode builds customised platforms for independent entrepreneurs and small businesses. Profit sustains ELSPARK (20%), ELTV (20%), ElCare (10%), with the remaining 50% shared equally among Elcode core team members.",
     path: "/elcode-updates",
-    accent: "#0077ff",
     available: false,
-    icon: "⌘",
+    numeral: "XI",
   },
   {
-    title: "ELTV ",
-    label: "Our media production network, connecting creatives across Europe to film digital shows and broadcast on ELSPARK TV. .",
-    subtitle: "Shows, skits, live festivals, music and a general cultural tsunami.",
+    title: "ELTV",
+    kicker: "ELTV · Production",
+    headline: "A Media Network Connecting Creatives Across Europe",
+    subtitle:
+      "Shows, skits, live festivals, music, and a general cultural tsunami — produced in-house and broadcast on ELSPARK TV.",
     path: "/eltv",
-    accent: "#ff4800",
     available: false,
-    icon: "⊕",
-  },]
+    numeral: "XII",
+  },
+];
+
+const styles = `
+  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&display=swap');
+
+  .paper {
+    background: white;
+    font-family: 'IM Fell English', Georgia, serif;
+    color: #1a1a1a;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+    border-left: 0.5px solid #ddd;
+    border-right: 0.5px solid #ddd;
+    min-height: 100vh;
+  }
+
+  .masthead {
+    text-align: center;
+    border-bottom: 3px double #1a1a1a;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .masthead-flag {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.6rem, 7vw, 4.8rem);
+    line-height: 1;
+    color: #1a1a1a;
+    letter-spacing: 0.01em;
+  }
+
+  .masthead-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #666;
+    padding: 0.35rem 0;
+    border-top: 0.5px solid #ccc;
+    border-bottom: 0.5px solid #ccc;
+    margin: 0.4rem 0 0.75rem;
+    font-family: Georgia, serif;
+    letter-spacing: 0.05em;
+  }
+
+  .section-rule {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0 1rem;
+  }
+
+  .section-rule span {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #888;
+    white-space: nowrap;
+  }
+
+  .section-rule::before,
+  .section-rule::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: #bbb;
+  }
+
+  .articles-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .article {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1rem 0;
+    border-bottom: 0.5px solid #e0e0e0;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transform: translateX(60px);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.45s ease,
+                background 0.2s ease,
+                padding 0.2s ease,
+                margin 0.2s ease;
+    position: relative;
+  }
+
+  .article.visible {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .article:hover {
+    background: #f7f5f0;
+    margin: 0 -1.5rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .article-wip {
+    cursor: default;
+    opacity: 0.45;
+  }
+
+  .article-wip:hover {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 1rem 0 !important;
+  }
+
+  .article-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ccc;
+    line-height: 1;
+    min-width: 2rem;
+    text-align: right;
+    user-select: none;
+    padding-top: 0.1rem;
+  }
+
+  .article-divider {
+    width: 0.5px;
+    background: #e0e0e0;
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+
+  .article-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .article-kicker {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #888;
+    font-family: Georgia, serif;
+    margin-bottom: 0.25rem;
+  }
+
+  .article-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.05rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+    color: #1a1a1a;
+  }
+
+  .article-lead .article-headline {
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+  }
+
+  .article-deck {
+    font-size: 29px;
+    line-height: 1.6;
+    color: #555;
+    font-style: italic;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .article-lead .article-deck {
+    -webkit-line-clamp: 5;
+    font-size: 14px;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .article-tag {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: Georgia, serif;
+    padding: 2px 8px;
+    border: 0.5px solid currentColor;
+    border-radius: 2px;
+  }
+
+  .article-tag-live {
+    color: #2d6a3f;
+    border-color: rgba(45, 106, 63, 0.35);
+    background: rgba(45, 106, 63, 0.06);
+  }
+
+  .article-tag-soon {
+    color: #999;
+    border-color: #ddd;
+  }
+
+  .article-arrow {
+    font-size: 14px;
+    color: #bbb;
+    align-self: center;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .article:hover .article-arrow {
+    transform: translateX(4px);
+    color: #1a1a1a;
+  }
+
+  .article-lead {
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .col-divider {
+    border: none;
+    border-top: 3px double #ccc;
+    margin: 1.5rem 0 0.5rem;
+  }
+`;
+
+function ArticleCard({ card, isLead, index }) {
+  const delay = index * 80;
+
+  const inner = (
+    <>
+      <div className="article-number">{card.numeral}</div>
+      <div className="article-divider" />
+      <div className="article-body">
+        <div className="article-kicker">{card.kicker}</div>
+        <div className="article-headline">{card.headline}</div>
+        <div className="article-deck">{card.subtitle}</div>
+        <div className="article-meta">
+          <span className={`article-tag ${card.available ? "article-tag-live" : "article-tag-soon"}`}>
+            {card.available ? "Available" : "Coming Soon"}
+          </span>
+        </div>
+      </div>
+      {card.available && <span className="article-arrow">→</span>}
+    </>
+  );
+
+  const baseClass = `article${isLead ? " article-lead" : ""}${!card.available ? " article-wip" : ""}`;
+
+  // Use IntersectionObserver via ref for slide-in effect
+  const ref = (el) => {
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => el.classList.add("visible"), delay);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+  };
+
+  if (card.available) {
+    return (
+      <Link to={card.path} className={baseClass} ref={ref}>
+        {inner}
+      </Link>
+    );
+  }
+
+  return (
+    <div className={baseClass} ref={ref}>
+      {inner}
+    </div>
+  );
+}
 
 export default function LandingNav() {
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+      <style>{styles}</style>
+      <div className="paper">
+        <div className="masthead">
+          <div className="masthead-flag">The Arcadian Record</div>
+        </div>
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        <div className="masthead-meta">
+          <span>Established in the First Frame</span>
+          <span>Code-L Dispatch · All Worlds</span>
+          <span>Arcadia Standard Time</span>
+        </div>
 
-        .el-landing {
-          min-height: 100vh;
-          width: 100%;
-          background:rgb(106, 106, 106);
-          color: #f0ece4;
-          font-family: 'Cormorant Garamond', Georgia, serif;
-          position: relative;
-          overflow-x: hidden;
-          overflow-y:auto;
-        }
+        <div className="section-rule">
+          <span>Arcadian History</span>
+        </div>
 
-        /* ── CURTAINS ── */
-        .el-curtain {
-          position: fixed;
-          top: 0;
-          height: 100%;
-          width: 52%;
-          z-index: 50;
-          pointer-events: none;
-          background: linear-gradient(160deg, #1c0810 0%, #080308 50%, #1a0512 100%);
-        }
-        .el-curtain::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 28px,
-            rgba(255,255,255,0.012) 29px,
-            rgba(255,255,255,0.012) 30px
-          );
-        }
-        .el-curtain-left {
-          left: 24%;
-          border-right: 2px solid rgba(180,130,60,0.4);
-          animation: curtainLeft 1.8s cubic-bezier(0.77,0,0.18,1) 0.2s forwards;
-        }
-        .el-curtain-right {
-          right: 24%;
-          border-left: 2px solid rgba(180,130,60,0.4);
-          animation: curtainRight 1.8s cubic-bezier(0.77,0,0.18,1) 0.2s forwards;
-        }
-        @keyframes curtainLeft  { to { left: -55%;  } }
-        @keyframes curtainRight { to { right: -55%; } }
+        <div className="articles-container">
+          {cards.map((card, i) => (
+            <ArticleCard key={card.title} card={card} isLead={i === 0} index={i} />
+          ))}
+        </div>
 
-        /* ── STAGE REVEAL ── */
-        .el-stage {
-          opacity: 0;
-          animation: stageIn 0.6s ease 0.9s forwards;
-        }
-        @keyframes stageIn { to { opacity: 1; } }
+        <hr className="col-divider" />
 
-        /* ── SPOTLIGHT ── */
-        .el-spotlight {
-          position: fixed;
-          top: -30%;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 70vw;
-          height: 90vh;
-          pointer-events: none;
-          z-index: 1;
-          background: radial-gradient(
-            ellipse at 50% 0%,
-            rgba(240,220,160,0.08) 0%,
-            rgba(255,200,100,0.04) 30%,
-            transparent 65%
-          );
-        }
+        <div className="section-rule">
+          <span>Experiences on Arcadia</span>
+        </div>
 
-        /* ── HEADER ── */
-        .el-header {
-          text-align: center;
-          padding: 6rem 2rem 3rem;
-          position: relative;
-          z-index: 10;
-        }
-        .el-eyebrow {
-          font-family: 'Cinzel', serif;
-          font-size: clamp(0.6rem, 2.5vw, 1.95rem);
-          letter-spacing: 0.5em;
-          text-transform: uppercase;
-          color: rgba(228,200,120,0.6);
-          margin-bottom: 1.5rem;
-        }
-        .el-title {
-          font-family: 'Cinzel', serif;
-          font-size: clamp(2.4rem, 7vw, 5.5rem);
-          font-weight: 900;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          line-height: 1;
-          background: linear-gradient(135deg, #e8c97a 0%, #fff8ee 45%, #c9a84c 80%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: 1.5rem;
-        }
-        .el-rule {
-          width: 60px;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(228,200,120,0.5), transparent);
-          margin: 1.5rem auto;
-        }
-        .el-subtitle {
-          font-size: clamp(1rem, 2vw, 2.25rem);
-          color: rgba(240,236,228,0.6);
-          font-style: italic;
-          font-weight: 300;
-          letter-spacing: 0.05em;
-          max-width: 520px;
-          margin: 0 auto;
-          line-height: 1.8;
-        }
+        <div className="articles-container">
+          {cards1.map((card, i) => (
+            <ArticleCard key={card.title} card={card} isLead={i === 0} index={i + cards.length} />
+          ))}
+        </div>
 
-        /* ── GRID ── */
-        .el-grid {
-          display: flex;
-          flex-direction:column;
-          grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
-          gap: 1.5px;
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 2rem 1.5rem 6rem;
-          position: relative;
-          z-index: 10;
-        }
-
-        /* ── CARD ── */
-        .el-card {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          padding: 2.5rem 2rem 2rem;
-          min-height: 280px;
-          margin-top:100px;
-          overflow: hidden;
-          text-decoration: none;
-          color: inherit;
-          border: 1px solid rgba(255,255,255,0.04);
-          background:rgb(0, 0, 0);
-          transition: background 0.4s ease;
-          cursor: pointer;
-        }
-        .el-card:first-child { border-radius: 1.5rem 0 0 0; }
-        .el-card:nth-child(3) { border-radius: 0 1.5rem 0 0; }
-        .el-card:nth-last-child(1) { border-radius: 0 0 1.5rem 1.5rem; }
-
-        .el-card-bg {
-          position: absolute;
-          inset: 0;
-          opacity: 0;
-          transition: opacity 0.5s ease;
-          
-        }
-        .el-card:hover .el-card-bg { opacity: 1; }
-
-        .el-card-accent {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          height: 2px;
-          width: 0;
-          transition: width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
-        }
-        .el-card:hover .el-card-accent { width: 100%; }
-
-        .el-card-icon {
-          font-size: 1.8rem;
-          margin-bottom: 1rem;
-          opacity: 0.25;
-          transition: opacity 0.3s ease, transform 0.4s ease;
-        }
-        .el-card:hover .el-card-icon {
-          opacity: 0.9;
-          transform: scale(1.1);
-        }
-
-        .el-card-label {
-          font-family: 'Cinzel', serif;
-          font-size: 1.6rem;
-          letter-spacing: 0.4em;
-          text-transform: uppercase;
-          color: rgba(240,236,228,0.35);
-          margin-bottom: 0.4rem;
-          transition: color 0.3s ease;
-        }
-        .el-card:hover .el-card-label { color: rgba(240,236,228,0.7); }
-
-        .el-card-title {
-          font-family: 'Cinzel', serif;
-          font-size: clamp(1.1rem, 2vw, 1.4rem);
-          font-weight: 600;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          margin-bottom: 0.75rem;
-          line-height: 1.2;
-        }
-
-        .el-card-desc {
-          font-size: 2.275rem;
-          line-height: 1.7;
-          color: rgb(196, 196, 196);
-          font-style: italic;
-          font-weight: 300;
-          transition: color 0.3s ease;
-        }
-        .el-card:hover .el-card-desc { color: rgba(240,236,228,0.8); }
-
-        .el-card-arrow {
-          position: absolute;
-          top: 2rem;
-          right: 2rem;
-          font-size: 1.2rem;
-          opacity: 0;
-          transform: translate(-6px, 6px);
-          transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-        }
-        .el-card:hover .el-card-arrow {
-          opacity: 0.9;
-          transform: translate(0, 0);
-        }
-
-        /* LIVE BADGE */
-        .el-badge {
-          position: absolute;
-          top: 1.25rem;
-          left: 1.25rem;
-          font-family: 'Cinzel', serif;
-          font-size: 0.55rem;
-          letter-spacing: 0.3em;
-          text-transform: uppercase;
-          padding: 0.3rem 0.8rem;
-          border-radius: 999px;
-          border: 1px solid;
-        }
-        .el-badge-live {
-          color: #4ecb6b;
-          border-color: rgba(78,203,107,0.3);
-          background: rgba(78,203,107,0.08);
-        }
-        .el-badge-wip {
-          color: rgba(240,236,228,0.3);
-          border-color: rgba(240,236,228,0.1);
-          background: rgba(0,0,0,0.3);
-        }
-
-        /* WIP STATE */
-        .el-card-wip {
-          cursor: default;
-          filter: saturate(0.3) brightness(0.6);
-        }
-        .el-card-wip:hover { background: #0d090c !important; }
-        .el-card-wip:hover .el-card-bg { opacity: 0 !important; }
-        .el-card-wip:hover .el-card-accent { width: 0 !important; }
-        .el-card-wip:hover .el-card-icon { opacity: 0.25 !important; transform: none !important; }
-
-        /* ── FOOTER ── */
-        .el-footer {
-          text-align: center;
-          padding: 2rem;
-          font-family: 'Cinzel', serif;
-          font-size: 0.6rem;
-          letter-spacing: 0.4em;
-          color: rgba(240,236,228,0.15);
-          position: relative;
-          z-index: 10;
-          border-top: 1px solid rgba(255,255,255,0.04);
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 600px) {
-          .el-header { padding: 4rem 1.5rem 2rem; }
-          .el-grid { grid-template-columns: 1fr; gap: 1px; padding: 1rem 0 4rem; }
-          .el-card { min-height: 220px; }
-          .el-card:first-child, .el-card:nth-child(3), .el-card:nth-last-child(1) { border-radius: 0; }
-        }
-
-        @media (min-width: 601px) and (max-width: 900px) {
-          .el-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (min-width: 901px) {
-          .el-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-}
-
-      `}</style>
-
-      <div className="el-landing">
-        {/* Curtains */}
-   
-
-
-
-        <div className="">
-          {/* Header */}
-          <header className="el-header">
-            
-
-            <h1 className="el-title">Arcadian CODE</h1>
-          
-            <div className="el-rule" />
-            <p className="">
- <h1 className="cinematic">Arcadia is a digitally rendered planet, shaped by its residents, the Arcadians.</h1>
- <h2 className="cinematic">and Code -L is an infinitely auto-generative mythos, measured every frame through matrix coordinates and memories. </h2>
-            </p>
-          
-          </header>
-
-          {/* Cards Grid */}
-          <div className="el-grid ">
-          <h2 className="cinematic">Arcadian History </h2>
-        
-            {cards.map((card, i) => {
-              const inner = (
-                <div className="">
-                  <div
-                    className="el-card-bg "
-                    style={{
-                      background: `radial-gradient(ellipse at 80% 120%, ${card.accent}18 0%, transparent 60%)`,
-                    }}
-                  />
-                  <div
-                    className="el-card-accent"
-                    style={{ background: card.accent }}
-                  />
-              
-                  <h2 className="el-card-title" style={{ color: card.available ? "#f0ece4" : "rgba(240,236,228,0.4)" }}>
-                    {card.title}
-                  </h2>
-                  <span className={`"" ${card.available ? "el-badge-live" : "el-badge-wip"}`}>
-                    {card.available ? "click to read" : "Soon"}
-                  </span>
-                  <div className="el-card-icon" style={{ color: card.accent }}>
-                    {card.icon}
-                  </div>
-                  <p className="el-card-label">{card.label}</p>
-              
-                  <p className="el-card-desc">{card.subtitle}</p>
-                  {card.available && (
-                    <span className="el-card-arrow" style={{ color: card.accent }}>↗</span>
-                  )}
-                </div>
-              );
-
-              return card.available ? (
-                <Link
-                  key={i}
-                  to={card.path}
-                  className="el-card"
-                  style={{ animationDelay: `${i * 0.05 + 1.8}s`, opacity: 0, animation: `stageIn 0.5s ease ${i * 0.05 + 1.8}s forwards` }}
-                >
-                  {inner}
-                </Link>
-              ) : (
-                <div
-                  key={i}
-                  className="el-card el-card-wip"
-                  style={{ animationDelay: `${i * 0.05 + 1.8}s`, opacity: 0, animation: `stageIn 0.5s ease ${i * 0.05 + 1.8}s forwards` }}
-                >
-                  {inner}
-                </div>
-              );
-            })}
-<h1 className="cinematic " > Experiences on Arcadia:</h1>
-{cards1.map((card, i) => {
-              const inner = (
-                <div className="">
-                  <div
-                    className="el-card-bg "
-                    style={{
-                      background: `radial-gradient(ellipse at 80% 120%, ${card.accent}18 0%, transparent 60%)`,
-                    }}
-                  />
-                  <div
-                    className="el-card-accent"
-                    style={{ background: card.accent }}
-                  />
-              
-                  <h2 className="el-card-title" style={{ color: card.available ? "#f0ece4" : "rgba(240,236,228,0.4)" }}>
-                    {card.title}
-                  </h2>
-                  <span className={`"" ${card.available ? "el-badge-live" : "el-badge-wip"}`}>
-                    {card.available ? "click to read" : "Soon"}
-                  </span>
-                  <div className="el-card-icon" style={{ color: card.accent }}>
-                    {card.icon}
-                  </div>
-                  <p className="el-card-label">{card.label}</p>
-              
-                  <p className="el-card-desc">{card.subtitle}</p>
-                  {card.available && (
-                    <span className="el-card-arrow" style={{ color: card.accent }}>↗</span>
-                  )}
-                </div>
-              );
-
-              return card.available ? (
-                <Link
-                  key={i}
-                  to={card.path}
-                  className="el-card"
-                  style={{ animationDelay: `${i * 0.05 + 1.8}s`, opacity: 0, animation: `stageIn 0.5s ease ${i * 0.05 + 1.8}s forwards` }}
-                >
-                  {inner}
-                </Link>
-              ) : (
-                <div
-                  key={i}
-                  className="el-card el-card-wip"
-                  style={{ animationDelay: `${i * 0.05 + 1.8}s`, opacity: 0, animation: `stageIn 0.5s ease ${i * 0.05 + 1.8}s forwards` }}
-                >
-                  {inner}
-                </div>
-              );
-            })}
-          </div>
-
-          <footer className="el-footer">Elysian Code · All worlds connected</footer>
+        <div className="masthead-meta" style={{ marginTop: "2rem", marginBottom: 0 }}>
+          <span>Elysian Code</span>
+          <span>· · ·</span>
+          <span>All worlds connected</span>
         </div>
       </div>
     </>
