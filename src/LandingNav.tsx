@@ -28,6 +28,15 @@ const cards = [
     available: true,
     icon: "◎",
   },
+  {
+    title: "Characters of this world",
+    label: "Real-time influencing mythical Figures",
+    subtitle: "The world was built by 12 entities",
+    path: "/characters",
+    accent: "#ff7c5c",
+    available: true,
+    icon: "◎",
+  },
 
 ];
 const cards1 = [

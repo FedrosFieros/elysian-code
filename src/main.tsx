@@ -10,6 +10,7 @@ import CodeLPhase2 from "./CodeLPhase2";
 import ELSPARK from "./ELSPARK";
 import EllysCode from "./EllysCode";
 import Metametamorphosis from "./metametamorphosis";
+import Characters from "./Characters";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Routes>
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Route path="/elworld" element={<ELWORLD />} />
       <Route path="/elspark" element={<ELSPARK />} />
       <Route path="/ellyscode" element={<EllysCode />} />
+      <Route path="/characters" element={<Characters />} />
       { <Route path="/metametamorphosis" element={<Metametamorphosis />} /> }
     </Routes>
   </BrowserRouter>
