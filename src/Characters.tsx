@@ -295,11 +295,7 @@ export default function Characters() {
                   </p>
                 ))}
               
-              {section.subheading && (
-                <Link to="/codeLphase1" className="codeL ec-btn ">
-                 <h1 className="codeLarcadia-signal"> Code-L: Phase 1</h1>
-                </Link>
-              )}
+            
                 <li className="signal-break  ">/// SIGNAL STABLE ///</li>
 
                 <div className="ec-btn-group ">
