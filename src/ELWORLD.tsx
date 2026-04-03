@@ -1,356 +1,542 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import "./el.css"; // Your shared CSS file
+import { useState, useRef } from "react";
 
 const sections = [
   {
     title: "ARCADIA",
-    phase: "arcadia",
+    kicker: "Planetary System · Initialised",
     text: [
-      "▮ PLANETARY SYSTEM INITIALISED",
-      "Arcadia is a persistent 3D simulated planet governed by deterministic physics and autonomous residents - the Arcadians.",
+      "Arcadia is a persistent 3D simulated planet governed by deterministic physics and autonomous residents — the Arcadians.",
       "Every action, body and interaction they do is recorded into Code-L; a continuous causal myth of coordinates and narrative.",
-
-      "This is not a static game world.",
-      "It is a living system of consequence.",
-      "You do not observe it.",
-      "You enter it.",
+      "This is not a static game world. It is a living system of consequence.",
+      "You do not observe it. You enter it.",
     ],
   },
   {
     title: "Arcadians",
-    phase: "arcadia",
+    kicker: "Residents · Consciousness Vehicles",
     text: [
-      "Arcadians exist solely on the 3D planet of Arcadia. ",
-      "They are vehicles for conscious players (humans) to intervene, and drive them .",
-      "Their body remains in Arcadia at all times.",
-      "Their intependent and persistent bodies are constantly updating the mythos of Code-L.",
-     
+      "Arcadians exist solely on the 3D planet of Arcadia. They are vehicles for conscious players to intervene, and drive them.",
+      "Their body remains in Arcadia at all times. Their independent and persistent bodies are constantly updating the mythos of Code-L.",
       "When the conscious player disconnects, the Arcadian stays behind. Static.",
       "The motionless body can be kidnapped, harmed or killed if they run out of heart blood.",
-      "When conscious player returns, they resume from their dedicated Arcadian's last known state, or if dead as a new character.",
-      "They always spawn inside of The Cave.",
+      "When the conscious player returns, they resume from their Arcadian's last known state — or if dead, as a new character.",
+      "They always spawn inside The Cave.",
     ],
   },
   {
     title: "The Cave",
-    phase: "arcadia",
+    kicker: "Ahriman's Domain · Containment System",
     text: [
-      "All Arcadians begin inside The Cave.",
-      "A closed system designed to contain and distract.",
+      "All Arcadians begin inside The Cave. A closed system designed to contain and distract.",
       "Ahriman designed these caves to trap people, hypnotising them to then feed them to his wolves.",
-      " Lady Dopamina, acting as puppeteer keeps the prisoners engaged and enticed. ",
-      "For an Arcadian to escape, they need to find a hidden key.",
-      "A hidden key unlocks the gate away from the cave to the outside world.",
-      "If an Arcadian finds it, they can exit.",
-      "However, when they exit, the guard called Conforma will stop them and ask for a bribe of €20.If player refuses, Conforma will fight him to death. She is a good fighter.",
-    
-      "Most dont make it. But few step out.",
-"Ones who do, can explore Arcadia. Build stuff and follow their own rules, given the physics they have available.",
-"when consciousness exits, bodies are left static. Exposed to scarecrows sent by Ahriman who eat them.",
-"When the Arcadian of a signed up consciousness dies, the player respawns as a new Arcadian."    ],
+      "Lady Dopamina, acting as puppeteer, keeps the prisoners engaged and enticed.",
+      "For an Arcadian to escape, they need to find a hidden key. A hidden key unlocks the gate away from the cave to the outside world.",
+      "However, when they exit, the guard called Conforma will stop them and ask for a bribe of €20. If the player refuses, Conforma will fight him to death. She is a good fighter.",
+      "Most don't make it. But few step out.",
+      "Ones who do can explore Arcadia — build things and follow their own rules, given the physics they have available.",
+      "When consciousness exits, bodies are left static. Exposed to scarecrows sent by Ahriman who eat them.",
+      "When the Arcadian of a signed-up consciousness dies, the player respawns as a new Arcadian.",
+    ],
   },
   {
     title: "Survival",
-    phase: "arcadia",
+    kicker: "Mechanics · Blood & Consequence",
     text: [
-      "Bodies in Arcadia breathe in heart beats which requires blood to keep runing. Blood count can increase when you hug someone however stabs can make you lose blood.",
-      "Players start with blood count 100 and can move their bodies to make dance moves, but if directed at a person, it stabs them, causing to lose blood.",
+      "Bodies in Arcadia breathe in heartbeats, which requires blood to keep running. Blood count can increase when you hug someone — however stabs can make you lose blood.",
+      "Players start with a blood count of 100 and can move their bodies to make dance moves. But if directed at a person, it stabs them, causing blood loss.",
       "If conflict is real. So is consequence.",
-      "If your body is destroyed, it is lost.",
-      "You may return, but not as the same identity.",
-      "Account is reset.",
-      "Everything is remembered in Code-L, but you are a new Arcadian.",
+      "If your body is destroyed, it is lost. You may return, but not as the same identity.",
+      "Account is reset. Everything is remembered in Code-L, but you are a new Arcadian.",
     ],
   },
   {
     title: "ELSPARK",
-    phase: "arcadia",
+    kicker: "Protected Subspace · Refuge",
     text: [
-      "ELSPARK is a protected subspace within Arcadia.",
-      "A refuge outside the open system.",
+      "ELSPARK is a protected subspace within Arcadia. A refuge outside the open system.",
       "A park where all residents can gain continuity and shelter when the conscious player exits their Arcadian.",
       "ELSPARK offers direct access for consciousness to engage with an Arcadian for the long-term.",
       "Engage in a society of open-minded people, looking to build a new Arcadia and take it back from Ahriman.",
-      "Running on LAOCRACY, it is an infrastructure to offer power to every person, who can create and become part of its economic distribution structure.",
+      "Running on LAOCRACY, it is an infrastructure to offer power to every person — who can create and become part of its economic distribution structure.",
     ],
   },
   {
     title: "Land & Creation",
-    phase: "arcadia",
+    kicker: "Territory · Expansion",
     text: [
-      "Arcadia is finite.",
-      "Majority of the land is owned by Ahriman, but if Arcadians kill the scarecrows he sends (because he thinks he owns the land), they can be safe.",
+      "Arcadia is finite. Majority of the land is owned by Ahriman — but if Arcadians kill the scarecrows he sends, they can be safe.",
       "Unclaimed regions are open for expansion.",
-      "Arcadians can claim, shape and define territory.",
-      "Structures, systems and spaces can be built.",
+      "Arcadians can claim, shape and define territory. Structures, systems and spaces can be built.",
       "ElCode offers help with the construction of the planet.",
     ],
   },
   {
     title: "Governance",
-    phase: "arcadia",
+    kicker: "Authority · Emergent Order",
     text: [
-      "Arcadia has no central authority.",
-      "Order emerges from player interaction.",
-      "Territories form. Alliances emerge.",
-      "Control is earned, not assigned.",
+      "Arcadia has no central authority. Order emerges from player interaction.",
+      "Territories form. Alliances emerge. Control is earned, not assigned.",
       "ELSPARK operates as an independent sovereign zone.",
       "Other regions can create their own rules.",
     ],
   },
   {
     title: "Phase 1",
-    phase: "arcadia",
+    kicker: "Code-L · First Chapter",
     text: [
-      "Click for the first chapter of Arcadia.",
-      ".",
+      "The first chapter of Arcadia begins here.",
+      "Enter the initial conditions. Witness the first events unfold.",
     ],
-    subheading: true,
+    isLast: true,
   },
 ];
-const phaseColors = {
-  arcadia: { accent: "#fa9aaf", glow: "rgba(255,159,255,0.16)" },
-};
 
-export default function Arcadia() {
-  const [index, setIndex] = useState(0);
-  const [navOpen, setNavOpen] = useState(false);
-  const section = sections[index];
-  const { accent } = phaseColors.arcadia;
+const styles = `
+  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&display=swap');
 
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 769px)");
-    const handler = (e: MediaQueryListEvent) => {
-      if (e.matches) setNavOpen(false);
-    };
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
-  const goTo = (i: number) => {
-    setIndex(i);
-    setNavOpen(false);
-  };
-  return (
-    <>
-      <style>{`
-  .ec-phase-tag.arcadia { 
-    font-size: 0.55rem; 
-    letter-spacing: 0.5em; 
+  .arc-paper {
+    background: #fff;
+    font-family: 'IM Fell English', Georgia, serif;
+    color: #1a1a1a;
+    min-height: 100vh;
+    width: 100%;
   }
-  .ec-phase-tag.huge {
-    font-size: 1.2rem !important;
-    letter-spacing: 0.8em;
+
+  .arc-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    border-left: 0.5px solid #ddd;
+    border-right: 0.5px solid #ddd;
+    min-height: 100vh;
   }
-  .ec-text-block p:nth-child(1).arcadia-signal {
-    font-family: 'Cinzel', serif;
+
+  .arc-masthead {
+    text-align: center;
+    border-bottom: 3px double #1a1a1a;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .arc-flag {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.4rem, 7vw, 4.8rem);
+    line-height: 1;
+    color: #1a1a1a;
+  }
+
+  .arc-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #666;
+    padding: 0.35rem 0;
+    border-top: 0.5px solid #ccc;
+    border-bottom: 0.5px solid #ccc;
+    margin: 0.4rem 0 0.75rem;
+    font-family: Georgia, serif;
+    letter-spacing: 0.05em;
+  }
+
+  .arc-section-rule {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .arc-section-rule span {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #888;
+    white-space: nowrap;
+  }
+
+  .arc-section-rule::before,
+  .arc-section-rule::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: #bbb;
+  }
+
+  /* Nav pills */
+  .arc-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid #e0e0e0;
+  }
+
+  .arc-nav-btn {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 0.5px solid #ccc;
+    border-radius: 2px;
+    background: transparent;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+
+  .arc-nav-btn:hover {
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+  }
+
+  .arc-nav-btn.active {
+    background: #1a1a1a;
+    color: #fff;
+    border-color: #1a1a1a;
+  }
+
+  /* Article display */
+  .arc-article {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(40px); opacity: 0; }
+    to   { transform: translateX(0);    opacity: 1; }
+  }
+
+  .arc-numeral {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: #e0e0e0;
+    line-height: 1;
+    min-width: 3rem;
+    text-align: right;
+    user-select: none;
+    flex-shrink: 0;
+    padding-top: 0.2rem;
+  }
+
+  .arc-vline {
+    width: 0.5px;
+    background: #e0e0e0;
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+
+  .arc-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .arc-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #888;
+    text-decoration: none;
+    margin-bottom: 1.25rem;
+    transition: color 0.18s ease;
+  }
+  .arc-back:hover { color: #1a1a1a; }
+
+  .arc-kicker {
+    font-size: 12px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    font-size: 0.75rem;
-    opacity: 0.6;
+    color: #888;
+    font-family: Georgia, serif;
+    margin-bottom: 0.5rem;
   }
-  .ec-text-block p.arcadia-emphasis {
-    font-weight: 400;
-    letter-spacing: 0.02em;
+
+  .arc-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
   }
-  .ec-text-block .signal-break {
-    font-family: 'Cinzel', monospace;
-    font-size: 2.5rem; /* Base large size */
-    letter-spacing: 0.5em;
-    text-transform: uppercase;
-    color: var(--accent);
-    opacity: 0.6;
-    margin: 2rem 0;
-    text-align: center;
-    line-height: 1;
+
+  .arc-rule {
+    width: 48px;
+    height: 1px;
+    background: #1a1a1a;
+    margin-bottom: 1.25rem;
+  }
+
+  .arc-body-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .arc-body-text p {
+    font-size: clamp(23px, 2.2vw, 18px);
+    line-height: 1.85;
+    color: #333;
+    font-style: italic;
     font-weight: 300;
   }
-  .ec-text-block .signal-break.huge {
-    font-size: 4rem !important; /* Massive override */
-    letter-spacing: 1em;
-    margin: 3rem 0;
-    opacity: 0.8;
+
+  .arc-body-text p:first-child {
+    font-size: clamp(17px, 2.5vw, 19px);
+    font-style: normal;
+    font-weight: 400;
+    color: #1a1a1a;
   }
-  li.signal-break {
-    list-style: none;
-    padding: 0;
+
+  .arc-signal {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #bbb;
+    text-align: center;
     margin: 2rem 0;
+    font-style: normal;
   }
-.ec-subheading-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #000;
-  background: var(--accent);
-  text-decoration: none;
-  padding: 0.65em 1.4em;
-  margin-bottom: 1.5rem;
-  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
-  transition: opacity 0.2s ease, gap 0.2s ease;
-  font-weight: 600;
-}
 
-.ec-subheading-link::after {
-  content: '→';
-  transition: transform 0.2s ease;
-}
-
-.ec-subheading-link:hover {
-  opacity: 0.85;
-  gap: 1em;
-}
-
-.ec-subheading-link:hover::after {
-  transform: translateX(4px);
-}
-  @media (max-width: 768px) {
-    .ec-text-block p.arcadia-signal { font-size: 0.7rem; }
-    .ec-text-block .signal-break { font-size: 1.75rem; }
-    .ec-text-block .signal-break.huge { font-size: 2.5rem !important; }
-    .ec-phase-tag.huge { font-size: 0.9rem !important; }
+  /* Navigation controls */
+  .arc-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 0.5px solid #e0e0e0;
   }
-`}</style>
 
-      <div
-        className="ec-shell"
-        style={
-          {
-            "--accent": accent,
-            "--accent-rgb": accent
-              .replace("#", "")
-              .match(/.{2}/g)!
-              .map((h: string) => parseInt(h, 16))
-              .join(","),
-          } as React.CSSProperties
-        }
-      >
-       
-        {/* Mobile overlay */}
-        <div
-          className={`ec-overlay ${navOpen ? "open" : ""}`}
-          onClick={() => setNavOpen(false)}
-        />
+  .arc-ctrl-btn {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border: 0.5px solid #ccc;
+    border-radius: 2px;
+    background: transparent;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .arc-ctrl-btn:hover:not(:disabled) {
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+  }
+
+  .arc-ctrl-btn:disabled {
+    opacity: 0.25;
+    cursor: default;
+  }
+
+  .arc-ctrl-btn.primary {
+    background: #1a1a1a;
+    color: #fff;
+    border-color: #1a1a1a;
+  }
+
+  .arc-ctrl-btn.primary:hover {
+    background: #333;
+  }
+
+  .arc-pips {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .arc-pip {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 0.5px solid #bbb;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+
+  .arc-pip.active {
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+  }
+
+  .arc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #1a1a1a;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+  }
+
+  .arc-cta:hover {
+    background: #1a1a1a;
+    color: #fff;
+  }
+
+  .arc-footer-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #aaa;
+    padding: 0.35rem 0;
+    border-top: 0.5px solid #e0e0e0;
+    margin-top: 3rem;
+    font-family: Georgia, serif;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 600px) {
+    .arc-article { flex-direction: column; gap: 0.75rem; }
+    .arc-numeral { font-size: 2.5rem; text-align: left; }
+    .arc-vline { display: none; }
+  }
+`;
+const toRoman = (n: number): string => {
+  const map = ["I","II","III","IV","V","VI","VII","VIII","IX","X"];
+  return map[n] || String(n + 1);
+};
+export default function Arcadia() {
+  const [index, setIndex] = useState(0);
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const section = sections[index];
+ 
+  const goTo = (i: number) => {
+    setIndex(i);
+    setTimeout(() => {
+      if (bodyRef.current) bodyRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
 
   
-        {/* Sidebar */}
-        <nav className={`ec-sidebar ${navOpen ? "open" : ""}`}>
-          <Link to="/" className="ec-logo">ARCADIA</Link>
-          <ul className="ec-nav-list">
+
+  return (
+    <>
+      <style>{styles}</style>
+      <div className="arc-paper">
+        <div className="arc-inner">
+
+          {/* Back to nav */}
+          <Link to="/" className="arc-back">← Arcadian World</Link>
+
+          {/* Masthead */}
+          <div className="arc-masthead">
+            <div className="arc-flag">The Arcadian Record</div>
+          </div>
+          <div className="arc-meta">
+            <span>Code-L Dispatch · Chapter Archive</span>
+            <span>Arcadia · World Documentation</span>
+            <span>All Frames Recorded</span>
+          </div>
+
+          {/* Section label */}
+          <div className="arc-section-rule">
+            <span>Arcadia — World Guide</span>
+          </div>
+
+          {/* Chapter nav */}
+          <nav className="arc-nav">
             {sections.map((sec, i) => (
-              <li key={i}>
-                <button
-                  className={`ec-nav-item ${i === index ? "active" : ""}`}
-                  onClick={() => goTo(i)}
-                >
-                  {sec.title}
-                </button>
-              </li>
+              <button
+                key={i}
+                className={`arc-nav-btn ${i === index ? "active" : ""}`}
+                onClick={() => goTo(i)}
+              >
+                {sec.title}
+              </button>
             ))}
-          </ul>
-       
-                <Link to="/codeLphase1" className="codeL ec-btn ">
-                 <h1 className="codeLarcadia-signal"> Code-L: Phase 1</h1>
-                </Link>
-     
-        </nav>
-        {/* Stage */}
-        <div className="ec-stage">
-          <div className="ec-spotlight" />
+          </nav>
 
-            {/* Mobile toggle - ADD THIS BACK */}
-  <button 
-    className="ec-toggle" 
-    onClick={() => setNavOpen(o => !o)}
-    style={{zIndex: 100}}  // ensures it's clickable
-  >
-    ☰
-  </button>
- {/* Background Video */}
- <video
-          className="ec-bg-video"
-          autoPlay
-          loop
-          muted
-          playsInline
-          src="/caveDraft.mp4" // ← swap this path
-        />
-          {/* Screen */}
-          <div className="ec-screen">
-            
+          {/* Article */}
+          <div className="arc-article" key={index} ref={bodyRef}>
+            <div className="arc-numeral">{toRoman(index)}</div>
+            <div className="arc-vline" />
+            <div className="arc-body">
+              <div className="arc-kicker">{section.kicker}</div>
+              <h1 className="arc-headline">{section.title}</h1>
+              <div className="arc-rule" />
 
-            <div className="ec-content">
-              
-              <p className="ec-phase-tag arcadia huge">Code-L · ARCADIA</p>
-
-              <h1 className="ec-title">{section.title}</h1>
-              <div className="ec-rule" />
-
-              <div className="ec-text-block ">
+              <div className="arc-body-text">
                 {section.text.map((line, i) => (
-                  <p
-                    key={i}
-                    className={`${
-                      i === 0 && section.title === "ARCADIA"
-                        ? "arcadia-signal"
-                        : ""
-                    } ${
-                      line.includes("You are inside it.")
-                        ? "arcadia-emphasis"
-                        : ""
-                    }`}
-                  >
-                    {line}
-                  </p>
+                  <p key={i}>{line}</p>
                 ))}
-              
-              {section.subheading && (
-                <Link to="/codeLphase1" className="codeL ec-btn ">
-                 <h1 className="codeLarcadia-signal"> Code-L: Phase 1</h1>
+              </div>
+
+              {section.isLast && (
+                <Link to="/codeLphase1" className="arc-cta">
+                  Enter Code-L: Phase 1 →
                 </Link>
               )}
-                <li className="signal-break  ">/// SIGNAL STABLE ///</li>
 
-                <div className="ec-btn-group ">
-                  <button
-                    className="ec-btn"
-                    onClick={() => setIndex(Math.max(0, index - 1))}
-                    disabled={index === 0}
-                  >
-                    ← Back
-                  </button>
-                  <button
-                    className="ec-btn ec-btn-next"
-                    onClick={() =>
-                      setIndex(Math.min(sections.length - 1, index + 1))
-                    }
-                    disabled={index === sections.length - 1}
-                  >
-                    Next →
-                  </button>
+              <p className="arc-signal">/// Signal Stable · Code-L Active ///</p>
+
+              {/* Controls */}
+              <div className="arc-controls">
+                <button
+                  className="arc-ctrl-btn"
+                  onClick={() => goTo(Math.max(0, index - 1))}
+                  disabled={index === 0}
+                >
+                  ← Previous
+                </button>
+
+                <div className="arc-pips">
+                  {sections.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`arc-pip ${i === index ? "active" : ""}`}
+                      onClick={() => goTo(i)}
+                    />
+                  ))}
                 </div>
+
+                <button
+                  className={`arc-ctrl-btn ${index < sections.length - 1 ? "primary" : ""}`}
+                  onClick={() => goTo(Math.min(sections.length - 1, index + 1))}
+                  disabled={index === sections.length - 1}
+                >
+                  Next →
+                </button>
               </div>
-         
             </div>
           </div>
 
-          {/* Controls */}
-          <div className="ec-controls">
-            <div className="ec-progress">
-              {sections.map((_, i) => (
-                <div
-                  key={i}
-                  className={`ec-pip ${i === index ? "active" : ""}`}
-                  onClick={() => setIndex(i)}
-                />
-              ))}
-            </div>
+          <div className="arc-footer-meta">
+            <span>Elysian Code</span>
+            <span>· · ·</span>
+            <span>All worlds connected</span>
           </div>
+
         </div>
       </div>
     </>

@@ -6,7 +6,7 @@ const cards = [
     kicker: "Arcadia · Foundation",
     headline: "Arcadia: An Autonomous 3D Planet Shaped by Conscious Beings",
     subtitle:
-      "Resided by Arcadians, whose body remains static until a conscious being connects with them. Arcadian Records capture the mythos Code-L created by the people.",
+      "Resided by Arcadians, whose body remains static until a conscious being connects with them. Arcadian Records capture the mythos Code-L created by the people — a character's trajectory shaped entirely by the consciousness which lifts it from inertia.",
     path: "/elworld",
     available: true,
     numeral: "I",
@@ -129,7 +129,7 @@ const styles = `
   @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&display=swap');
 
   .paper {
-    background: white;
+    background: #fff;
     font-family: 'IM Fell English', Georgia, serif;
     color: #1a1a1a;
     max-width: 900px;
@@ -287,7 +287,7 @@ const styles = `
   }
 
   .article-deck {
-    font-size: 29px;
+    font-size: 13px;
     line-height: 1.6;
     color: #555;
     font-style: italic;
@@ -356,7 +356,23 @@ const styles = `
   }
 `;
 
-function ArticleCard({ card, isLead, index }) {
+interface CardType {
+  title: string;
+  kicker: string;
+  headline: string;
+  subtitle: string;
+  path: string;
+  available: boolean;
+  numeral: string;
+}
+
+interface ArticleCardProps {
+  card: CardType;
+  isLead: boolean;
+  index: number;
+}
+
+function ArticleCard({ card, isLead, index }: ArticleCardProps) {
   const delay = index * 80;
 
   const inner = (
@@ -379,8 +395,7 @@ function ArticleCard({ card, isLead, index }) {
 
   const baseClass = `article${isLead ? " article-lead" : ""}${!card.available ? " article-wip" : ""}`;
 
-  // Use IntersectionObserver via ref for slide-in effect
-  const ref = (el) => {
+  const ref = (el: HTMLElement | null) => {
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
