@@ -378,7 +378,7 @@ const styles = `
   }
 
   .ch-body-text p {
-    font-size: clamp(26px, 2.2vw, 18px);
+    font-size: clamp(6px, 2.2vw, 18px);
     line-height: 1.85;
     color: #333;
     font-style: italic;

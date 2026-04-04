@@ -1,471 +1,609 @@
 import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
-const cards = [
-  {
-    title: "Arcadia",
-    kicker: "Arcadia · Foundation",
-    headline: "Arcadia: An Autonomous 3D Planet Shaped by Conscious Beings",
-    subtitle:
-      "Resided by Arcadians, whose body remains static until a conscious being connects with them. Arcadian Records capture the mythos Code-L created by the people — a character's trajectory shaped entirely by the consciousness which lifts it from inertia.",
-    path: "/elworld",
-    available: true,
-    numeral: "I",
-  },
-  {
-    title: "Code-L Phase 1",
-    kicker: "Code-L · Phase 1",
-    headline: "Ahriman's Cave: Where Every Arcadian First Spawns",
-    subtitle:
-      "Initially every Arcadian emerges inside a 3D digital cave, with only few at a time able to escape out to the rest of the world.",
-    path: "/codeLphase1",
-    available: true,
-    numeral: "II",
-  },
-  {
-    title: "June 1st",
-    kicker: "June 1st · The Escape",
-    headline: "Ellys Opens the Door, Pays With His Life",
-    subtitle:
-      "Ellys breaks into the cave, but Lady Dopamina traps and kills him. Yet in his sacrifice he opens the door for every prisoner to escape — advising them to find ELSPARK for shelter and safe spawn.",
-    path: "/CodeLPhase2",
-    available: true,
-    numeral: "III",
-  },
-  {
-    title: "Characters of this world",
-    kicker: "Mythology · Cast",
-    headline: "The 12 Entities Who Built This World",
-    subtitle:
-      "Real-time influencing mythical figures — characters who operate at the intersection of code and consciousness, shaping Arcadia from the inside.",
-    path: "/characters",
-    available: true,
-    numeral: "IV",
-  },
-];
+// ─── Data ──────────────────────────────────────────────────────────────────────
 
-const cards1 = [
-  {
-    title: "ELSPARK",
-    kicker: "ELSPARK · Digital Park",
-    headline: "The Decentralised Sanctuary That Grants Immortality",
-    subtitle:
-      "A decentralised social digital park, safe from Ahriman's wolves and scarecorps. Players granted shelter away from Ahriman's scarecrows — and when an ELSPARK player dies, they respawn as a new version of themselves.",
-    path: "/elspark",
-    available: true,
-    numeral: "V",
-  },
-  {
-    title: "Elly's Code",
-    kicker: "Elly's Code · Musical",
-    headline: "An Interactive Musical Where the Past Cannot Be Changed",
-    subtitle:
-      "Players experience events in real-time — watching Ellys escape The Cave, his journey to ELSPARK, his death, his resurrection as Ellysv1. What was done at the time of the events, stays.",
-    path: "/ellyscode",
-    available: true,
-    numeral: "VI",
-  },
-  {
-    title: "meta-metamorphosis",
-    kicker: "Meta-Metamorphosis · Ritual",
-    headline: "From Caterpillar to White Moth: An Initiation Game",
-    subtitle:
-      "To gain immortality, the conscious player plays through an interactive transformation — caterpillar to white moth, then into a final symbol determined by how the game was played.",
-    path: "/metametamorphosis",
-    available: true,
-    numeral: "VII",
-  },
-  {
-    title: "ELSPARKTV",
-    kicker: "ELSPARK TV · Programming",
-    headline: "Original Programming From Arcadia's Broadcast Network",
-    subtitle:
-      "A curated digital platform for original shows produced by ELTV — pairing creatives across different fields to create shows, live performances, and experimental media.",
-    path: "/elspark-tv",
-    available: true,
-    numeral: "VIII",
-  },
-  {
-    title: "ELCA",
-    kicker: "ELCA · Theatre",
-    headline: "Live Theatre Festival, First Edition June 5th",
-    subtitle: "Broadcasted from ELSPARK TV. A live theatre festival coming to the platform.",
-    path: "/elworld",
-    available: false,
-    numeral: "IX",
-  },
-  {
-    title: "ElCave",
-    kicker: "ElCave · Exhibition",
-    headline: "One Visitor, Twenty Minutes, One Ritual on Earth",
-    subtitle:
-      "An experiential ritualistic private exhibition — only one person at a time for 20 minutes.",
-    path: "/elworld",
-    available: false,
-    numeral: "X",
-  },
-  {
-    title: "Elcode",
-    kicker: "Elcode · Infrastructure",
-    headline: "The Economic Engine Funding Arcadia's Existence",
-    subtitle:
-      "Elcode builds customised platforms for independent entrepreneurs and small businesses. Profit sustains ELSPARK (20%), ELTV (20%), ElCare (10%), with the remaining 50% shared equally among Elcode core team members.",
-    path: "/elcode-updates",
-    available: false,
-    numeral: "XI",
-  },
-  {
-    title: "ELTV",
-    kicker: "ELTV · Production",
-    headline: "A Media Network Connecting Creatives Across Europe",
-    subtitle:
-      "Shows, skits, live festivals, music, and a general cultural tsunami — produced in-house and broadcast on ELSPARK TV.",
-    path: "/eltv",
-    available: false,
-    numeral: "XII",
-  },
-];
+type Status = "live" | "soon" | "planned";
 
-const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&display=swap');
-
-  .paper {
-    background: #fff;
-    font-family: 'IM Fell English', Georgia, serif;
-    color: #1a1a1a;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 3rem;
-    border-left: 0.5px solid #ddd;
-    border-right: 0.5px solid #ddd;
-    min-height: 100vh;
-  }
-
-  .masthead {
-    text-align: center;
-    border-bottom: 3px double #1a1a1a;
-    padding-bottom: 0.75rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .masthead-flag {
-    font-family: 'UnifrakturMaguntia', cursive;
-    font-size: clamp(2.6rem, 7vw, 4.8rem);
-    line-height: 1;
-    color: #1a1a1a;
-    letter-spacing: 0.01em;
-  }
-
-  .masthead-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    color: #666;
-    padding: 0.35rem 0;
-    border-top: 0.5px solid #ccc;
-    border-bottom: 0.5px solid #ccc;
-    margin: 0.4rem 0 0.75rem;
-    font-family: Georgia, serif;
-    letter-spacing: 0.05em;
-  }
-
-  .section-rule {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin: 1.25rem 0 1rem;
-  }
-
-  .section-rule span {
-    font-family: 'Playfair Display', serif;
-    font-size: 11px;
-    font-style: italic;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: #888;
-    white-space: nowrap;
-  }
-
-  .section-rule::before,
-  .section-rule::after {
-    content: '';
-    flex: 1;
-    height: 0.5px;
-    background: #bbb;
-  }
-
-  .articles-container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .article {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
-    padding: 1rem 0;
-    border-bottom: 0.5px solid #e0e0e0;
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-    transform: translateX(60px);
-    opacity: 0;
-    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                opacity 0.45s ease,
-                background 0.2s ease,
-                padding 0.2s ease,
-                margin 0.2s ease;
-    position: relative;
-  }
-
-  .article.visible {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  .article:hover {
-    background: #f7f5f0;
-    margin: 0 -1.5rem;
-    padding: 1rem 1.5rem;
-  }
-
-  .article-wip {
-    cursor: default;
-    opacity: 0.45;
-  }
-
-  .article-wip:hover {
-    background: transparent !important;
-    margin: 0 !important;
-    padding: 1rem 0 !important;
-  }
-
-  .article-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 900;
-    color: #ccc;
-    line-height: 1;
-    min-width: 2rem;
-    text-align: right;
-    user-select: none;
-    padding-top: 0.1rem;
-  }
-
-  .article-divider {
-    width: 0.5px;
-    background: #e0e0e0;
-    align-self: stretch;
-    flex-shrink: 0;
-  }
-
-  .article-body {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .article-kicker {
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #888;
-    font-family: Georgia, serif;
-    margin-bottom: 0.25rem;
-  }
-
-  .article-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.05rem, 2.5vw, 1.5rem);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0.4rem;
-    color: #1a1a1a;
-  }
-
-  .article-lead .article-headline {
-    font-size: clamp(1.4rem, 4vw, 2.2rem);
-  }
-
-  .article-deck {
-    font-size: 13px;
-    line-height: 1.6;
-    color: #555;
-    font-style: italic;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .article-lead .article-deck {
-    -webkit-line-clamp: 5;
-    font-size: 14px;
-  }
-
-  .article-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
-  }
-
-  .article-tag {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-family: Georgia, serif;
-    padding: 2px 8px;
-    border: 0.5px solid currentColor;
-    border-radius: 2px;
-  }
-
-  .article-tag-live {
-    color: #2d6a3f;
-    border-color: rgba(45, 106, 63, 0.35);
-    background: rgba(45, 106, 63, 0.06);
-  }
-
-  .article-tag-soon {
-    color: #999;
-    border-color: #ddd;
-  }
-
-  .article-arrow {
-    font-size: 14px;
-    color: #bbb;
-    align-self: center;
-    flex-shrink: 0;
-    transition: transform 0.2s ease, color 0.2s ease;
-  }
-
-  .article:hover .article-arrow {
-    transform: translateX(4px);
-    color: #1a1a1a;
-  }
-
-  .article-lead {
-    border-bottom: 2px solid #1a1a1a;
-    padding-bottom: 1.25rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .col-divider {
-    border: none;
-    border-top: 3px double #ccc;
-    margin: 1.5rem 0 0.5rem;
-  }
-`;
-
-interface CardType {
+type Project = {
   title: string;
   kicker: string;
   headline: string;
   subtitle: string;
   path: string;
-  available: boolean;
+  status: Status;
   numeral: string;
-}
+  phase: string;
+};
 
-interface ArticleCardProps {
-  card: CardType;
-  isLead: boolean;
-  index: number;
-}
+const foundation: Project[] = [
+  {
+    kicker: "Arcadia",
+    title: "Foundation",
+    headline: "An Autonomous 3D Planet Shaped by Conscious Beings",
+    subtitle:
+      "Resided by Arcadians, whose body remains static until a conscious being connects with them. Arcadian Records capture the mythos Code-L created by the people.",
+    path: "/elworld",
+    status: "live",
+    numeral: "I",
+    phase: "World-building",
+  },
+  {
+    kicker: "Code-L Phase 1",
+    title: "Phase 1",
+    headline: "Ahriman's Cave: Where Every Arcadian First Spawns",
+    subtitle:
+      "Initially every Arcadian emerges inside a 3D digital cave, with only few at a time able to escape out to the rest of the world.",
+    path: "/codeLphase1",
+    status: "live",
+    numeral: "II",
+    phase: "Lore",
+  },
+  {
+    title: "June 1st",
+    kicker: "The Escape: June 1st",
+    headline: "Ellys Opens the Door, Pays With His Life",
+    subtitle:
+      "Ellys breaks into the cave, but Lady Dopamina traps and kills him. In his sacrifice he opens the door for every prisoner to escape.",
+    path: "/CodeLPhase2",
+    status: "live",
+    numeral: "III",
+    phase: "Narrative",
+  },
 
-function ArticleCard({ card, isLead, index }: ArticleCardProps) {
-  const delay = index * 80;
+];
+
+const experiences: Project[] = [
+  {
+    title: "Characters",
+    kicker: "Mythology · Cast",
+    headline: "The 12 Entities Who Built This World",
+    subtitle:
+      "Real-time influencing mythical figures — characters who operate at the intersection of code and consciousness, shaping Arcadia from the inside.",
+    path: "/characters",
+    status: "live",
+    numeral: "IV",
+    phase: "Mythology",
+  },
+  {
+    headline: "ELSPARK",
+    kicker: "Digital Park",
+    title: "The Decentralised Sanctuary That Grants Immortality",
+    subtitle:
+      "A decentralised social digital park, safe from Ahriman's wolves. Players granted shelter — and when an ELSPARK player dies, they respawn as a new version.",
+    path: "/elspark",
+    status: "live",
+    numeral: "V",
+    phase: "Platform",
+  },
+  {
+    headline: "Elly's Code",
+    title: "Musical",
+    kicker: "An Interactive Musical Where the Past Cannot Be Changed",
+    subtitle:
+      "Players experience events in real-time — watching Ellys escape The Cave, his journey to ELSPARK, his death, his resurrection as Ellysv1.",
+    path: "/ellyscode",
+    status: "live",
+    numeral: "VI",
+    phase: "Experience",
+  },
+  {
+    title: "meta-metamorphosis",
+    kicker: "Ritual",
+    headline: "From Caterpillar to White Moth: An Initiation Game",
+    subtitle:
+      "To gain immortality, the conscious player plays through an interactive transformation — caterpillar to white moth, into a final symbol determined by play.",
+    path: "/metametamorphosis",
+    status: "live",
+    numeral: "VII",
+    phase: "Game",
+  },
+  {
+    title: "ELSPARKTV",
+    kicker: "Programming",
+    headline: "Original Programming From Arcadia's Broadcast Network",
+    subtitle:
+      "A curated digital platform for original shows produced by ELTV — pairing creatives across different fields to create shows, live performances, and experimental media.",
+    path: "/elspark-tv",
+    status: "live",
+    numeral: "VIII",
+    phase: "Media",
+  },
+  {
+    title: "ELCA",
+    kicker: "Theatre",
+    headline: "Live Theatre Festival, First Edition June 5th",
+    subtitle:
+      "Broadcasted from ELSPARK TV. A live theatre festival coming to the platform.",
+    path: "/elworld",
+    status: "soon",
+    numeral: "IX",
+    phase: "Event",
+  },
+  {
+    title: "ElCave",
+    kicker: "Exhibition",
+    headline: "One Visitor, Twenty Minutes, One Ritual on Earth",
+    subtitle:
+      "An experiential ritualistic private exhibition — only one person at a time for 20 minutes.",
+    path: "/elworld",
+    status: "soon",
+    numeral: "X",
+    phase: "IRL",
+  },
+  {
+    title: "Elcode",
+    kicker: "Infrastructure",
+    headline: "The Economic Engine Funding Arcadia's Existence",
+    subtitle:
+      "Builds customised platforms for independent entrepreneurs. Profit sustains ELSPARK (20%), ELTV (20%), ElCare (10%), with 50% shared among core team.",
+    path: "/elcode-updates",
+    status: "planned",
+    numeral: "XI",
+    phase: "Business",
+  },
+  {
+    title: "ELTV",
+    kicker: "Production",
+    headline: "A Media Network Connecting Creatives Across Europe",
+    subtitle:
+      "Shows, skits, live festivals, music, and a general cultural tsunami — produced in-house and broadcast on ELSPARK TV.",
+    path: "/eltv",
+    status: "planned",
+    numeral: "XII",
+    phase: "Media",
+  },
+];
+
+// ─── Status config ─────────────────────────────────────────────────────────────
+
+const statusConfig: Record<Status, { label: string; color: string; bg: string; dot: string }> = {
+  live:    { label: "Live",         color: "#1a6b38", bg: "rgba(26,107,56,0.08)",   dot: "#2d9e56" },
+  soon:    { label: "Coming Soon",  color: "#7a5c1e", bg: "rgba(122,92,30,0.08)",   dot: "#c9922e" },
+  planned: { label: "Planned",      color: "#666",    bg: "rgba(100,100,100,0.07)", dot: "#aaa"    },
+};
+
+// ─── CSS ───────────────────────────────────────────────────────────────────────
+
+const css = `
+  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body { background: #f5f2ec; }
+
+  .pmo-root {
+    background: #f5f2ec;
+    min-height: 100vh;
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: #18170f;
+  }
+
+  /* ── Masthead ── */
+  .pmo-masthead {
+    background: #18170f;
+    color: #f5f2ec;
+    text-align: center;
+    padding: 2.5rem 1.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pmo-masthead::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(245,242,236,0.03) 0px,
+      rgba(245,242,236,0.03) 1px,
+      transparent 1px,
+      transparent 60px
+    );
+    pointer-events: none;
+  }
+
+  .pmo-flag {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.4rem, 7vw, 4.5rem);
+    line-height: 1;
+    color: #f5f2ec;
+    letter-spacing: 0.01em;
+    position: relative;
+  }
+
+  .pmo-tagline {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(245,242,236,0.5);
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+    position: relative;
+  }
+
+  /* ── Stats bar ── */
+  .pmo-statsbar {
+    background: #18170f;
+    border-top: 1px solid rgba(245,242,236,0.1);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .pmo-stat {
+    padding: 0.65rem 2rem;
+    border-right: 1px solid rgba(245,242,236,0.08);
+    text-align: center;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .pmo-stat:last-child { border-right: none; }
+
+  .pmo-stat-num {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #f5f2ec;
+    line-height: 1;
+  }
+
+  .pmo-stat-label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,242,236,0.35);
+    margin-top: 0.2rem;
+  }
+
+  /* ── Body layout ── */
+  .pmo-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 5rem;
+  }
+
+  /* ── Section header ── */
+  .pmo-section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #18170f;
+  }
+
+  .pmo-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #18170f;
+  }
+
+  .pmo-section-desc {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #999;
+    margin-left: auto;
+  }
+
+  .pmo-section + .pmo-section {
+    margin-top: 3.5rem;
+  }
+
+  /* ── Single-column list ── */
+  .pmo-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Project card ── */
+  .pmo-card {
+    background: transparent;
+    padding: 1.6rem 0 1.6rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    border-bottom: 1px solid #ddd9cf;
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  .pmo-card:first-child { border-top: 1px solid #ddd9cf; }
+
+  .pmo-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  /* Left accent bar */
+  .pmo-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.6rem;
+    bottom: 1.6rem;
+    width: 3px;
+    background: var(--card-dot);
+    border-radius: 0 2px 2px 0;
+  }
+
+  .pmo-card-active:hover .pmo-card-title {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  .pmo-card-inactive {
+    cursor: default;
+    opacity: 0;
+  }
+
+  .pmo-card-inactive.visible {
+    opacity: 0.45;
+  }
+
+  /* ── Card interior ── */
+  .pmo-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .pmo-card-meta-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .pmo-card-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
+    font-weight: 900;
+    color: #bbb8b0;
+    letter-spacing: 0.05em;
+  }
+
+  .pmo-card-phase {
+    font-size: clamp(0.65rem, 1.8vw, 0.7rem);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #aaa;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .pmo-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: clamp(0.65rem, 1.8vw, 0.7rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-family: 'Crimson Pro', serif;
+    padding: 3px 9px 3px 6px;
+    border-radius: 20px;
+    background: var(--status-bg);
+    color: var(--status-color);
+    flex-shrink: 0;
+  }
+
+  .pmo-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--card-dot);
+    flex-shrink: 0;
+  }
+
+  .pmo-card-kicker {
+    font-size: clamp(0.65rem, 1.8vw, 0.72rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #aaa;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .pmo-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.45rem, 5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: #18170f;
+  }
+
+  .pmo-card-desc {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    line-height: 1.65;
+    color: #666;
+    font-style: italic;
+    margin-top: 0.1rem;
+  }
+
+  .pmo-card-arrow {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    color: #bbb;
+    letter-spacing: 0.15em;
+    font-family: 'Crimson Pro', serif;
+    text-transform: uppercase;
+    transition: color 0.2s, letter-spacing 0.2s;
+  }
+
+  .pmo-card-active:hover .pmo-card-arrow {
+    color: #18170f;
+    letter-spacing: 0.25em;
+  }
+
+  /* ── Footer ── */
+  .pmo-footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #bbb;
+    border-top: 0.5px solid #ccc8bc;
+    font-family: 'Crimson Pro', serif;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .pmo-statsbar { flex-wrap: wrap; }
+    .pmo-stat { flex: 1 1 33%; border-bottom: 1px solid rgba(245,242,236,0.08); }
+    .pmo-section-desc { display: none; }
+    .pmo-body { padding: 2rem 1rem 5rem; }
+  }
+`;
+
+// ─── Card component ────────────────────────────────────────────────────────────
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const ref = useRef<HTMLElement | null>(null);
+  const [visible, setVisible] = useState(false);
+  const sc = statusConfig[project.status];
+  const isActive = project.status === "live";
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setVisible(true), index * 60);
+          obs.unobserve(el);
+        }
+      },
+      { threshold: 0.05 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [index]);
+
+  const cardStyle = {
+    "--card-dot": sc.dot,
+    "--status-bg": sc.bg,
+    "--status-color": sc.color,
+  } as React.CSSProperties;
+
+  const className = [
+    "pmo-card",
+    isActive ? "pmo-card-active" : "pmo-card-inactive",
+    visible ? "visible" : "",
+  ].join(" ");
 
   const inner = (
     <>
-      <div className="article-number">{card.numeral}</div>
-      <div className="article-divider" />
-      <div className="article-body">
-        <div className="article-kicker">{card.kicker}</div>
-        <div className="article-headline">{card.headline}</div>
-        <div className="article-deck">{card.subtitle}</div>
-        <div className="article-meta">
-          <span className={`article-tag ${card.available ? "article-tag-live" : "article-tag-soon"}`}>
-            {card.available ? "Available" : "Coming Soon"}
-          </span>
+      <div className="pmo-card-top">
+        <div className="pmo-card-meta-left">
+          <span className="pmo-card-num">{project.numeral}</span>
+          <span className="pmo-card-phase">{project.phase}</span>
         </div>
+        <span className="pmo-status">
+          <span className="pmo-status-dot" />
+          {sc.label}
+        </span>
       </div>
-      {card.available && <span className="article-arrow">→</span>}
+
+      <div className="pmo-card-kicker">{project.kicker}</div>
+      <div className="pmo-card-title">{project.headline}</div>
+      <div className="pmo-card-desc">{project.subtitle}</div>
+
+      {isActive && (
+        <span className="pmo-card-arrow">View →</span>
+      )}
     </>
   );
 
-  const baseClass = `article${isLead ? " article-lead" : ""}${!card.available ? " article-wip" : ""}`;
-
-  const ref = (el: HTMLElement | null) => {
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => el.classList.add("visible"), delay);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-  };
-
-  if (card.available) {
+  if (isActive) {
     return (
-      <Link to={card.path} className={baseClass} ref={ref}>
+      <Link
+        to={project.path}
+        className={className}
+        style={cardStyle}
+        ref={ref as React.Ref<HTMLAnchorElement>}
+      >
         {inner}
       </Link>
     );
   }
 
   return (
-    <div className={baseClass} ref={ref}>
+    <div
+      className={className}
+      style={cardStyle}
+      ref={ref as React.Ref<HTMLDivElement>}
+    >
       {inner}
     </div>
   );
 }
 
+// ─── Stats ─────────────────────────────────────────────────────────────────────
+
+
+// ─── Main ──────────────────────────────────────────────────────────────────────
+
 export default function LandingNav() {
+
+
   return (
     <>
-      <style>{styles}</style>
-      <div className="paper">
-        <div className="masthead">
-          <div className="masthead-flag">The Arcadian Record</div>
-        </div>
+      <style>{css}</style>
+      <div className="pmo-root">
 
-        <div className="masthead-meta">
-          <span>Established in the First Frame</span>
-          <span>Code-L Dispatch · All Worlds</span>
-          <span>Arcadia Standard Time</span>
-        </div>
+        {/* Masthead */}
+        <header className="pmo-masthead">
+          <div className="pmo-flag">The Arcadian Record</div>
+          <div className="pmo-tagline">Project Overview · Code-L · All Worlds</div>
+        </header>
 
-        <div className="section-rule">
-          <span>Arcadian History</span>
-        </div>
+     
 
-        <div className="articles-container">
-          {cards.map((card, i) => (
-            <ArticleCard key={card.title} card={card} isLead={i === 0} index={i} />
-          ))}
-        </div>
+        {/* Body */}
+        <main className="pmo-body">
 
-        <hr className="col-divider" />
+          {/* Section 1 */}
+          <section className="pmo-section">
+            <div className="pmo-section-head">
+              <h2 className="pmo-section-title">Arcadian History</h2>
+              <span className="pmo-section-desc">World-building · Lore · Canon</span>
+            </div>
+            <div className="pmo-list">
+              {foundation.map((p, i) => (
+                <ProjectCard key={p.title} project={p} index={i} />
+              ))}
+            </div>
+          </section>
 
-        <div className="section-rule">
-          <span>Experiences on Arcadia</span>
-        </div>
+          {/* Section 2 */}
+          <section className="pmo-section">
+            <div className="pmo-section-head">
+              <h2 className="pmo-section-title">Experiences on Arcadia</h2>
+              <span className="pmo-section-desc">Platforms · Games · Media · IRL</span>
+            </div>
+            <div className="pmo-list">
+              {experiences.map((p, i) => (
+                <ProjectCard key={p.title} project={p} index={i + foundation.length} />
+              ))}
+            </div>
+          </section>
 
-        <div className="articles-container">
-          {cards1.map((card, i) => (
-            <ArticleCard key={card.title} card={card} isLead={i === 0} index={i + cards.length} />
-          ))}
-        </div>
+        </main>
 
-        <div className="masthead-meta" style={{ marginTop: "2rem", marginBottom: 0 }}>
-          <span>Elysian Code</span>
-          <span>· · ·</span>
-          <span>All worlds connected</span>
-        </div>
+        <footer className="pmo-footer">
+          Elysian Code · All worlds connected · Arcadia Standard Time
+        </footer>
       </div>
     </>
   );
