@@ -931,9 +931,7 @@ export default function EllysCode() {
       audio.load();
     }
   }, [index, song.audio, hasWav]);
- 
-  useEffect(() => { setAudioReady(false); }, [index]);
- 
+
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   }, [index]);

@@ -39,7 +39,7 @@ const foundation: Project[] = [
   },
   {
     title: "June 1st",
-    kicker: "The Escape: June 1st",
+    kicker: "Code-L Phase 2 - The Escape: June 1st",
     headline: "Ellys Breaks the Door, Pays With His Life",
     subtitle:
       "Ellys breaks into the cave, but Lady Dopamina traps and kills him. In his sacrifice he opens the door for every prisoner to escape.",
@@ -53,7 +53,7 @@ const foundation: Project[] = [
 const experiences: Project[] = [
   {
     title: "Characters",
-    kicker: "Mythology · Cast",
+    kicker: "Mythology · Characters",
     headline: "The 12 Entities Who Built This World",
     subtitle:
       "Real-time influencing mythical figures — characters who operate at the intersection of code and consciousness, shaping Arcadia from the inside.",
@@ -76,7 +76,7 @@ const experiences: Project[] = [
   {
     headline: "Elly's Code",
     title: "Musical",
-    kicker: "An Interactive Musical Where the Past Cannot Be Changed",
+    kicker: "An Interactive Musical exploring the prequel",
     subtitle:
       "Players experience events in real-time — watching Ellys escape The Cave, his journey to ELSPARK, his death, his resurrection as Ellysv1.",
     path: "/ellyscode",
@@ -97,7 +97,7 @@ const experiences: Project[] = [
   },
   {
     headline: "ELSPARKTV",
-    kicker: "Programming",
+    kicker: "Regular Programming",
     title: "Original Programming From Arcadia's Broadcast Network",
     subtitle:
       "A curated digital platform for original shows produced by ELTV — pairing creatives across different fields to create shows, live performances, and experimental media.",
