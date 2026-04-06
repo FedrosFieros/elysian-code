@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
-// ─── Data ──────────────────────────────────────────────────────────────────────
-
 type Status = "live" | "soon" | "planned";
 
 type Project = {
@@ -42,7 +40,7 @@ const foundation: Project[] = [
   {
     title: "June 1st",
     kicker: "The Escape: June 1st",
-    headline: "Ellys Opens the Door, Pays With His Life",
+    headline: "Ellys Breaks the Door, Pays With His Life",
     subtitle:
       "Ellys breaks into the cave, but Lady Dopamina traps and kills him. In his sacrifice he opens the door for every prisoner to escape.",
     path: "/CodeLPhase2",
@@ -50,7 +48,6 @@ const foundation: Project[] = [
     numeral: "III",
     phase: "Narrative",
   },
-
 ];
 
 const experiences: Project[] = [
@@ -99,9 +96,9 @@ const experiences: Project[] = [
     phase: "Game",
   },
   {
-    title: "ELSPARKTV",
+    headline: "ELSPARKTV",
     kicker: "Programming",
-    headline: "Original Programming From Arcadia's Broadcast Network",
+    title: "Original Programming From Arcadia's Broadcast Network",
     subtitle:
       "A curated digital platform for original shows produced by ELTV — pairing creatives across different fields to create shows, live performances, and experimental media.",
     path: "/elspark-tv",
@@ -110,9 +107,9 @@ const experiences: Project[] = [
     phase: "Media",
   },
   {
-    title: "ELCA",
-    kicker: "Theatre",
-    headline: "Live Theatre Festival, First Edition June 5th",
+    headline: "ELCA",
+    title: "Theatre",
+    kicker: "Live Theatre Festival, First Edition June 5th",
     subtitle:
       "Broadcasted from ELSPARK TV. A live theatre festival coming to the platform.",
     path: "/elworld",
@@ -132,8 +129,8 @@ const experiences: Project[] = [
     phase: "IRL",
   },
   {
-    title: "Elcode",
-    kicker: "Infrastructure",
+    kicker: "Elcode",
+    title: "Infrastructure",
     headline: "The Economic Engine Funding Arcadia's Existence",
     subtitle:
       "Builds customised platforms for independent entrepreneurs. Profit sustains ELSPARK (20%), ELTV (20%), ElCare (10%), with 50% shared among core team.",
@@ -143,8 +140,8 @@ const experiences: Project[] = [
     phase: "Business",
   },
   {
-    title: "ELTV",
-    kicker: "Production",
+    kicker: "ELTV",
+    title: "Production",
     headline: "A Media Network Connecting Creatives Across Europe",
     subtitle:
       "Shows, skits, live festivals, music, and a general cultural tsunami — produced in-house and broadcast on ELSPARK TV.",
@@ -155,321 +152,412 @@ const experiences: Project[] = [
   },
 ];
 
-// ─── Status config ─────────────────────────────────────────────────────────────
-
 const statusConfig: Record<Status, { label: string; color: string; bg: string; dot: string }> = {
-  live:    { label: "Live",         color: "#1a6b38", bg: "rgba(26,107,56,0.08)",   dot: "#2d9e56" },
-  soon:    { label: "Coming Soon",  color: "#7a5c1e", bg: "rgba(122,92,30,0.08)",   dot: "#c9922e" },
-  planned: { label: "Planned",      color: "#666",    bg: "rgba(100,100,100,0.07)", dot: "#aaa"    },
+  live: { label: "Live", color: "#d9d9d9", bg: "rgba(255,255,255,0.06)", dot: "#8ce0ff" },
+  soon: { label: "Coming Soon", color: "#f0d7a1", bg: "rgba(240,215,161,0.08)", dot: "#f0d7a1" },
+  planned: { label: "Planned", color: "#b0b0b0", bg: "rgba(255,255,255,0.04)", dot: "#b0b0b0" },
 };
 
-// ─── CSS ───────────────────────────────────────────────────────────────────────
-
 const css = `
-  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+  :root {
+    --bg: #050505;
+    --bg2: #0b0b0d;
+    --panel: rgba(255,255,255,0.04);
+    --panel-strong: rgba(255,255,255,0.07);
+    --line: rgba(255,255,255,0.09);
+    --text: #f5f5f5;
+    --muted: rgba(245,245,245,0.68);
+    --muted2: rgba(245,245,245,0.45);
+    --accent: #8ce0ff;
+    --warm: #f0d7a1;
+  }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body { background: #f5f2ec; }
+  html, body { min-height: 100%; }
+  body {
+    background:
+      radial-gradient(circle at 50% -10%, rgba(140,224,255,0.14), transparent 28%),
+      radial-gradient(circle at 20% 15%, rgba(240,215,161,0.08), transparent 22%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06), transparent 18%),
+      linear-gradient(180deg, var(--bg), var(--bg2));
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+  }
 
   .pmo-root {
-    background: #f5f2ec;
     min-height: 100vh;
-    font-family: 'Crimson Pro', Georgia, serif;
-    color: #18170f;
-  }
-
-  /* ── Masthead ── */
-  .pmo-masthead {
-    background: #18170f;
-    color: #f5f2ec;
-    text-align: center;
-    padding: 2.5rem 1.5rem 2rem;
     position: relative;
     overflow: hidden;
+    background:
+      radial-gradient(circle at top center, rgba(255,255,255,0.06), transparent 24%),
+      linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
   }
 
-  .pmo-masthead::before {
+  .pmo-root::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(to bottom, rgba(255,255,255,0.03), transparent 18%, transparent 82%, rgba(255,255,255,0.02)),
+      radial-gradient(circle at center, transparent 56%, rgba(0,0,0,0.42) 100%);
+    z-index: 0;
+  }
+
+  .pmo-shell {
+    position: relative;
+    z-index: 1;
+  }
+
+  .pmo-masthead {
+    min-height: 66vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 5rem 1.5rem 3rem;
+    position: relative;
+  }
+
+  .pmo-masthead::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(245,242,236,0.03) 0px,
-      rgba(245,242,236,0.03) 1px,
-      transparent 1px,
-      transparent 60px
-    );
-    pointer-events: none;
+    left: 50%;
+    bottom: 2.5rem;
+    transform: translateX(-50%);
+    width: min(56vw, 420px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(140,224,255,0.75), rgba(240,215,161,0.7), transparent);
+    filter: blur(0.1px);
+  }
+
+  .pmo-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.03);
+    color: var(--muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    backdrop-filter: blur(14px);
+  }
+
+  .pmo-kicker-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 18px rgba(140,224,255,0.8);
   }
 
   .pmo-flag {
-    font-family: 'UnifrakturMaguntia', cursive;
-    font-size: clamp(2.4rem, 7vw, 4.5rem);
-    line-height: 1;
-    color: #f5f2ec;
-    letter-spacing: 0.01em;
-    position: relative;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    max-width: 12ch;
+    margin: 0 auto;
+    text-wrap: balance;
+    text-shadow: 0 0 24px rgba(255,255,255,0.05);
   }
 
   .pmo-tagline {
-    font-family: 'Crimson Pro', serif;
-    font-style: italic;
-    font-size: 0.9rem;
-    color: rgba(245,242,236,0.5);
-    letter-spacing: 0.1em;
-    margin-top: 0.5rem;
-    position: relative;
+    max-width: 58ch;
+    margin: 1.3rem auto 0;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--muted);
   }
 
-  /* ── Stats bar ── */
   .pmo-statsbar {
-    background: #18170f;
-    border-top: 1px solid rgba(245,242,236,0.1);
-    display: flex;
-    justify-content: center;
-    gap: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(18px);
   }
 
   .pmo-stat {
-    padding: 0.65rem 2rem;
-    border-right: 1px solid rgba(245,242,236,0.08);
+    padding: 1rem 1.1rem;
     text-align: center;
-    font-family: 'Crimson Pro', serif;
+    border-right: 1px solid var(--line);
   }
 
   .pmo-stat:last-child { border-right: none; }
 
   .pmo-stat-num {
     display: block;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #f5f2ec;
+    font-family: "Playfair Display", serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text);
     line-height: 1;
   }
 
   .pmo-stat-label {
     display: block;
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
+    margin-top: 0.35rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: rgba(245,242,236,0.35);
-    margin-top: 0.2rem;
+    color: var(--muted2);
   }
 
-  /* ── Body layout ── */
   .pmo-body {
-    max-width: 720px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 2.5rem 1.25rem 5rem;
-  }
-
-  /* ── Section header ── */
-  .pmo-section-head {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #18170f;
-  }
-
-  .pmo-section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(0.75rem, 2vw, 0.85rem);
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #18170f;
-  }
-
-  .pmo-section-desc {
-    font-family: 'Crimson Pro', serif;
-    font-style: italic;
-    font-size: 0.85rem;
-    color: #999;
-    margin-left: auto;
+    padding: 3.5rem 1.25rem 6rem;
   }
 
   .pmo-section + .pmo-section {
     margin-top: 3.5rem;
   }
 
-  /* ── Single-column list ── */
-  .pmo-list {
+  .pmo-section-head {
     display: flex;
-    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
-  /* ── Project card ── */
+  .pmo-section-title {
+    font-family: "Inter", sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(245,245,245,0.9);
+  }
+
+  .pmo-section-desc {
+    font-size: 0.85rem;
+    color: var(--muted2);
+    letter-spacing: 0.08em;
+  }
+
+  .pmo-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
   .pmo-card {
-    background: transparent;
-    padding: 1.6rem 0 1.6rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    position: relative;
+    display: block;
     text-decoration: none;
     color: inherit;
-    position: relative;
-    border-bottom: 1px solid #ddd9cf;
+    padding: 1.35rem 1.35rem 1.2rem 1.35rem;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    backdrop-filter: blur(20px);
+    box-shadow:
+      0 24px 60px rgba(0,0,0,0.24),
+      inset 0 1px 0 rgba(255,255,255,0.05);
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(14px) scale(0.985);
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease,
+      background 0.35s ease,
+      opacity 0.55s ease;
+    overflow: hidden;
   }
 
-  .pmo-card:first-child { border-top: 1px solid #ddd9cf; }
-
-  .pmo-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.45s ease, transform 0.45s ease;
-  }
-
-  /* Left accent bar */
   .pmo-card::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 1.6rem;
-    bottom: 1.6rem;
-    width: 3px;
-    background: var(--card-dot);
-    border-radius: 0 2px 2px 0;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(140,224,255,0.12), transparent 34%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
   }
 
-  .pmo-card-active:hover .pmo-card-title {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
+  .pmo-card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
+
+  .pmo-card:hover {
+    transform: translateY(-3px) scale(1.005);
+    border-color: rgba(140,224,255,0.22);
+    box-shadow:
+      0 30px 70px rgba(0,0,0,0.35),
+      0 0 0 1px rgba(140,224,255,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  .pmo-card:hover::before { opacity: 1; }
 
   .pmo-card-inactive {
+    opacity: 0.76;
     cursor: default;
-    opacity: 0;
   }
 
-  .pmo-card-inactive.visible {
-    opacity: 0.45;
-  }
-
-  /* ── Card interior ── */
   .pmo-card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: 0.25rem;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
   }
 
   .pmo-card-meta-left {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.8rem;
+    min-width: 0;
   }
 
   .pmo-card-num {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(0.75rem, 2vw, 0.85rem);
-    font-weight: 900;
-    color: #bbb8b0;
-    letter-spacing: 0.05em;
+    font-family: "Playfair Display", serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: rgba(245,245,245,0.75);
+    flex-shrink: 0;
   }
 
   .pmo-card-phase {
-    font-size: clamp(0.65rem, 1.8vw, 0.7rem);
-    letter-spacing: 0.28em;
+    font-size: 0.72rem;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
-    color: #aaa;
-    font-family: 'Crimson Pro', serif;
+    color: rgba(245,245,245,0.42);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .pmo-status {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    font-size: clamp(0.65rem, 1.8vw, 0.7rem);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-family: 'Crimson Pro', serif;
-    padding: 3px 9px 3px 6px;
-    border-radius: 20px;
+    gap: 0.4rem;
+    padding: 0.42rem 0.72rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.08);
     background: var(--status-bg);
     color: var(--status-color);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     flex-shrink: 0;
   }
 
   .pmo-status-dot {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: var(--card-dot);
-    flex-shrink: 0;
+    box-shadow: 0 0 16px color-mix(in srgb, var(--card-dot) 70%, transparent);
   }
 
   .pmo-card-kicker {
-    font-size: clamp(0.65rem, 1.8vw, 0.72rem);
-    letter-spacing: 0.3em;
+    font-size: 0.72rem;
+    letter-spacing: 0.34em;
     text-transform: uppercase;
-    color: #aaa;
-    font-family: 'Crimson Pro', serif;
+    color: rgba(245,245,245,0.55);
+    margin-bottom: 0.55rem;
   }
 
   .pmo-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.45rem, 5vw, 2rem);
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.45rem, 4vw, 2.25rem);
+    line-height: 1.1;
     font-weight: 700;
-    line-height: 1.15;
-    color: #18170f;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.65rem;
+    max-width: 14ch;
   }
 
   .pmo-card-desc {
-    font-size: clamp(1rem, 3vw, 1.2rem);
+    max-width: 70ch;
+    font-size: clamp(0.98rem, 2vw, 1.08rem);
     line-height: 1.65;
-    color: #666;
-    font-style: italic;
-    margin-top: 0.1rem;
+    color: var(--muted);
   }
 
   .pmo-card-arrow {
-    display: inline-block;
-    margin-top: 0.6rem;
-    font-size: clamp(0.8rem, 2vw, 0.9rem);
-    color: #bbb;
-    letter-spacing: 0.15em;
-    font-family: 'Crimson Pro', serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    transition: color 0.2s, letter-spacing 0.2s;
+    color: rgba(245,245,245,0.65);
+    transition: color 0.2s ease, transform 0.2s ease;
   }
 
   .pmo-card-active:hover .pmo-card-arrow {
-    color: #18170f;
-    letter-spacing: 0.25em;
+    color: #ffffff;
+    transform: translateX(2px);
   }
 
-  /* ── Footer ── */
   .pmo-footer {
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid var(--line);
+    color: rgba(245,245,245,0.4);
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #bbb;
-    border-top: 0.5px solid #ccc8bc;
-    font-family: 'Crimson Pro', serif;
+    font-size: 0.7rem;
   }
 
-  /* ── Responsive ── */
-  @media (max-width: 600px) {
-    .pmo-statsbar { flex-wrap: wrap; }
-    .pmo-stat { flex: 1 1 33%; border-bottom: 1px solid rgba(245,242,236,0.08); }
-    .pmo-section-desc { display: none; }
-    .pmo-body { padding: 2rem 1rem 5rem; }
+  @media (max-width: 900px) {
+    .pmo-statsbar {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .pmo-section-head {
+      align-items: start;
+      flex-direction: column;
+    }
+    .pmo-footer {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pmo-masthead {
+      min-height: 58vh;
+      padding: 4.5rem 1rem 2.5rem;
+    }
+    .pmo-flag {
+      font-size: clamp(2.6rem, 12vw, 4rem);
+    }
+    .pmo-tagline {
+      font-size: 0.98rem;
+    }
+    .pmo-body {
+      padding: 2.25rem 1rem 5rem;
+    }
+    .pmo-card {
+      padding: 1.15rem;
+      border-radius: 18px;
+    }
+    .pmo-card-title {
+      max-width: none;
+    }
   }
 `;
 
-// ─── Card component ────────────────────────────────────────────────────────────
-
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
   const sc = statusConfig[project.status];
   const isActive = project.status === "live";
@@ -480,11 +568,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), index * 60);
+          window.setTimeout(() => setVisible(true), index * 55);
           obs.unobserve(el);
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0.08 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -519,9 +607,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <div className="pmo-card-title">{project.headline}</div>
       <div className="pmo-card-desc">{project.subtitle}</div>
 
-      {isActive && (
-        <span className="pmo-card-arrow">View →</span>
-      )}
+      {isActive && <span className="pmo-card-arrow">Enter world →</span>}
     </>
   );
 
@@ -539,71 +625,64 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   }
 
   return (
-    <div
-      className={className}
-      style={cardStyle}
-      ref={ref as React.Ref<HTMLDivElement>}
-    >
+    <div className={className} style={cardStyle} ref={ref}>
       {inner}
     </div>
   );
 }
 
-// ─── Stats ─────────────────────────────────────────────────────────────────────
-
-
-// ─── Main ──────────────────────────────────────────────────────────────────────
 
 export default function LandingNav() {
-
-
   return (
     <>
       <style>{css}</style>
       <div className="pmo-root">
-
-        {/* Masthead */}
-        <header className="pmo-masthead">
-          <div className="pmo-flag">The Arcadian Record</div>
-          <div className="pmo-tagline">Project Overview · Code-L · All Worlds</div>
-        </header>
-
-     
-
-        {/* Body */}
-        <main className="pmo-body">
-
-          {/* Section 1 */}
-          <section className="pmo-section">
-            <div className="pmo-section-head">
-              <h2 className="pmo-section-title">Arcadian History</h2>
-              <span className="pmo-section-desc">World-building · Lore · Canon</span>
+        <div className="pmo-shell">
+          <header className="pmo-masthead">
+            <div>
+              <div className="pmo-kicker">
+                <span className="pmo-kicker-dot" />
+                Launch Preview
+              </div>
+              <div className="pmo-flag">Arcadia. Code-L. ELSPARK.</div>
+              <div className="pmo-tagline">
+                A cinematic planetary system where mythology, music, code, and transformation are presented as one world.
+              </div>
             </div>
-            <div className="pmo-list">
-              {foundation.map((p, i) => (
-                <ProjectCard key={p.title} project={p} index={i} />
-              ))}
-            </div>
-          </section>
+          </header>
 
-          {/* Section 2 */}
-          <section className="pmo-section">
-            <div className="pmo-section-head">
-              <h2 className="pmo-section-title">Experiences on Arcadia</h2>
-              <span className="pmo-section-desc">Platforms · Games · Media · IRL</span>
-            </div>
-            <div className="pmo-list">
-              {experiences.map((p, i) => (
-                <ProjectCard key={p.title} project={p} index={i + foundation.length} />
-              ))}
-            </div>
-          </section>
 
-        </main>
+          <main className="pmo-body">
+            <section className="pmo-section">
+              <div className="pmo-section-head">
+                <h2 className="pmo-section-title">The First Acts</h2>
+                <span className="pmo-section-desc">Origin · Lore · Revelation</span>
+              </div>
+              <div className="pmo-list">
+                {foundation.map((p, i) => (
+                  <ProjectCard key={p.title} project={p} index={i} />
+                ))}
+              </div>
+            </section>
 
-        <footer className="pmo-footer">
-          Elysian Code · All worlds connected · Arcadia Standard Time
-        </footer>
+            <section className="pmo-section">
+              <div className="pmo-section-head">
+                <h2 className="pmo-section-title">The Living Worlds</h2>
+                <span className="pmo-section-desc">Platform · Ritual · Broadcast</span>
+              </div>
+              <div className="pmo-list">
+                {experiences.map((p, i) => (
+                  <ProjectCard key={p.title} project={p} index={i + foundation.length} />
+                ))}
+              </div>
+            </section>
+          </main>
+
+          <footer className="pmo-footer">
+            <span>ELCODE / Arcadia launch system</span>
+            <span>Built for story, stage, and signal</span>
+          </footer>
+        </div>
       </div>
     </>
   );

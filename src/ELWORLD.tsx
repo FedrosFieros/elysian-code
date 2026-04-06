@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 
 const sections = [
   {
@@ -93,144 +93,264 @@ const sections = [
 ];
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IM+Fell+English:ital@0;1&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --bg: #050505;
+    --bg2: #09090b;
+    --panel: rgba(255,255,255,0.05);
+    --panel-2: rgba(255,255,255,0.08);
+    --line: rgba(255,255,255,0.1);
+    --text: #f5f5f5;
+    --muted: rgba(245,245,245,0.72);
+    --muted2: rgba(245,245,245,0.46);
+    --accent: #8ce0ff;
+    --warm: #f0d7a1;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(140,224,255,0.14), transparent 22%),
+      radial-gradient(circle at 18% 14%, rgba(240,215,161,0.08), transparent 18%),
+      linear-gradient(180deg, var(--bg), var(--bg2));
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+  }
+
   .arc-paper {
-    background: #fff;
-    font-family: 'IM Fell English', Georgia, serif;
-    color: #1a1a1a;
     min-height: 100vh;
     width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .arc-paper::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.42) 100%),
+      linear-gradient(to bottom, rgba(255,255,255,0.03), transparent 18%, transparent 82%, rgba(255,255,255,0.02));
+    z-index: 0;
   }
 
   .arc-inner {
-    max-width: 900px;
+    position: relative;
+    z-index: 1;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
-    border-left: 0.5px solid #ddd;
-    border-right: 0.5px solid #ddd;
-    min-height: 100vh;
+    padding: 2rem 1.25rem 4rem;
   }
 
-  .arc-masthead {
+  .arc-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2.2rem;
+  }
+
+  .arc-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+    color: rgba(245,245,245,0.7);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .arc-back:hover {
+    color: #fff;
+    transform: translateX(-2px);
+  }
+
+  .arc-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.03);
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    backdrop-filter: blur(16px);
+  }
+
+  .arc-chip-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 18px rgba(140,224,255,0.8);
+  }
+
+  .arc-hero {
+    min-height: 10vh;
+    display: grid;
+    place-items: center;
     text-align: center;
-    border-bottom: 3px double #1a1a1a;
-    padding-bottom: 0.75rem;
-    margin-bottom: 0.4rem;
+    padding: 2rem 0 3rem;
   }
 
   .arc-flag {
-    font-family: 'UnifrakturMaguntia', cursive;
-    font-size: clamp(2.4rem, 7vw, 4.8rem);
-    line-height: 1;
-    color: #1a1a1a;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+    text-wrap: balance;
+    text-shadow: 0 0 24px rgba(255,255,255,0.05);
+  }
+
+  .arc-hero-sub {
+    max-width: 62ch;
+    margin: 1.1rem auto 0;
+    color: var(--muted);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.65;
   }
 
   .arc-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    color: #666;
-    padding: 0.35rem 0;
-    border-top: 0.5px solid #ccc;
-    border-bottom: 0.5px solid #ccc;
-    margin: 0.4rem 0 0.75rem;
-    font-family: Georgia, serif;
-    letter-spacing: 0.05em;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: rgba(255,255,255,0.02);
+    backdrop-filter: blur(16px);
   }
 
-  .arc-section-rule {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin: 1.5rem 0 1rem;
+  .arc-meta-item {
+    padding: 1rem;
+    text-align: center;
+    border-right: 1px solid var(--line);
   }
 
-  .arc-section-rule span {
-    font-family: 'Playfair Display', serif;
-    font-size: 11px;
-    font-style: italic;
+  .arc-meta-item:last-child { border-right: none; }
+
+  .arc-meta-num {
+    display: block;
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .arc-meta-label {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: #888;
-    white-space: nowrap;
+    color: var(--muted2);
   }
 
-  .arc-section-rule::before,
-  .arc-section-rule::after {
-    content: '';
-    flex: 1;
-    height: 0.5px;
-    background: #bbb;
+  .arc-layout {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+    align-items: start;
   }
 
-  /* Nav pills */
   .arc-nav {
+    position: sticky;
+    top: 1.25rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 0.5px solid #e0e0e0;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(18px);
+  }
+
+  .arc-nav-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    margin-bottom: 0.35rem;
   }
 
   .arc-nav-btn {
-    font-family: Georgia, serif;
-    font-size: 12px;
-    letter-spacing: 0.15em;
+    font-family: Inter, sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 4px 10px;
-    border: 0.5px solid #ccc;
-    border-radius: 2px;
+    padding: 0.85rem 0.9rem;
+    border: 1px solid transparent;
+    border-radius: 14px;
     background: transparent;
-    color: #666;
+    color: rgba(245,245,245,0.68);
+    text-align: left;
     cursor: pointer;
-    transition: all 0.18s ease;
+    transition: all 0.2s ease;
   }
 
   .arc-nav-btn:hover {
-    border-color: #1a1a1a;
-    color: #1a1a1a;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
   }
 
   .arc-nav-btn.active {
-    background: #1a1a1a;
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.1);
     color: #fff;
-    border-color: #1a1a1a;
   }
 
-  /* Article display */
+  .arc-stage {
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    backdrop-filter: blur(22px);
+    box-shadow:
+      0 30px 80px rgba(0,0,0,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    padding: 1.5rem;
+    overflow: hidden;
+  }
+
   .arc-article {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
     align-items: flex-start;
-    animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slideIn 0.45s cubic-bezier(0.25,0.46,0.45,0.94) both;
   }
 
   @keyframes slideIn {
-    from { transform: translateX(40px); opacity: 0; }
-    to   { transform: translateX(0);    opacity: 1; }
+    from { transform: translateX(24px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
   }
 
   .arc-numeral {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    font-weight: 900;
-    color: #e0e0e0;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.4rem, 5vw, 4.8rem);
+    font-weight: 700;
+    color: rgba(245,245,245,0.18);
     line-height: 1;
-    min-width: 3rem;
+    min-width: 3.25rem;
     text-align: right;
-    user-select: none;
     flex-shrink: 0;
-    padding-top: 0.2rem;
+    user-select: none;
+    padding-top: 0.1rem;
   }
 
   .arc-vline {
-    width: 0.5px;
-    background: #e0e0e0;
+    width: 1px;
+    background: var(--line);
     align-self: stretch;
     flex-shrink: 0;
   }
@@ -240,303 +360,351 @@ const styles = `
     min-width: 0;
   }
 
-  .arc-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: Georgia, serif;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #888;
-    text-decoration: none;
-    margin-bottom: 1.25rem;
-    transition: color 0.18s ease;
-  }
-  .arc-back:hover { color: #1a1a1a; }
-
   .arc-kicker {
-    font-size: 12px;
-    letter-spacing: 0.25em;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: #888;
-    font-family: Georgia, serif;
-    margin-bottom: 0.5rem;
+    color: rgba(245,245,245,0.52);
+    margin-bottom: 0.7rem;
   }
 
   .arc-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 5vw, 2.6rem);
-    font-weight: 900;
-    line-height: 1.15;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.8rem, 4.8vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    font-weight: 700;
     margin-bottom: 1rem;
-    color: #1a1a1a;
+    color: #fff;
+    max-width: 14ch;
   }
 
   .arc-rule {
-    width: 48px;
+    width: 64px;
     height: 1px;
-    background: #1a1a1a;
-    margin-bottom: 1.25rem;
+    background: linear-gradient(90deg, rgba(255,255,255,0.9), transparent);
+    margin-bottom: 1.2rem;
   }
 
   .arc-body-text {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.95rem;
+    max-width: 72ch;
   }
 
   .arc-body-text p {
-    font-size: clamp(23px, 2.2vw, 18px);
-    line-height: 1.85;
-    color: #333;
-    font-style: italic;
-    font-weight: 300;
+    font-size: clamp(1rem, 2vw, 1.08rem);
+    line-height: 1.8;
+    color: var(--muted);
   }
 
   .arc-body-text p:first-child {
-    font-size: clamp(17px, 2.5vw, 19px);
-    font-style: normal;
-    font-weight: 400;
-    color: #1a1a1a;
-  }
-
-  .arc-signal {
-    font-family: 'Playfair Display', serif;
-    font-size: 11px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: #bbb;
-    text-align: center;
-    margin: 2rem 0;
-    font-style: normal;
-  }
-
-  /* Navigation controls */
-  .arc-controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 2.5rem;
-    padding-top: 1rem;
-    border-top: 0.5px solid #e0e0e0;
-  }
-
-  .arc-ctrl-btn {
-    font-family: Georgia, serif;
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 8px 18px;
-    border: 0.5px solid #ccc;
-    border-radius: 2px;
-    background: transparent;
-    color: #666;
-    cursor: pointer;
-    transition: all 0.18s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .arc-ctrl-btn:hover:not(:disabled) {
-    border-color: #1a1a1a;
-    color: #1a1a1a;
-  }
-
-  .arc-ctrl-btn:disabled {
-    opacity: 0.25;
-    cursor: default;
-  }
-
-  .arc-ctrl-btn.primary {
-    background: #1a1a1a;
-    color: #fff;
-    border-color: #1a1a1a;
-  }
-
-  .arc-ctrl-btn.primary:hover {
-    background: #333;
-  }
-
-  .arc-pips {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-  }
-
-  .arc-pip {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    border: 0.5px solid #bbb;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.18s ease;
-  }
-
-  .arc-pip.active {
-    background: #1a1a1a;
-    border-color: #1a1a1a;
+    color: rgba(245,245,245,0.92);
+    font-size: clamp(1.03rem, 2vw, 1.12rem);
   }
 
   .arc-cta {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.5rem;
     margin-top: 1.5rem;
-    font-family: Georgia, serif;
-    font-size: 11px;
+    padding: 0.95rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid rgba(140,224,255,0.25);
+    background: rgba(140,224,255,0.08);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.74rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #1a1a1a;
-    text-decoration: none;
-    padding: 10px 20px;
-    border: 1px solid #1a1a1a;
-    border-radius: 2px;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   }
 
   .arc-cta:hover {
-    background: #1a1a1a;
+    transform: translateY(-1px);
+    background: rgba(140,224,255,0.12);
+    border-color: rgba(140,224,255,0.4);
+  }
+
+  .arc-signal {
+    margin-top: 1.5rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: rgba(245,245,245,0.38);
+  }
+
+  .arc-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.4rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .arc-ctrl-btn {
+    font-family: Inter, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(245,245,245,0.72);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .arc-ctrl-btn:hover:not(:disabled) {
     color: #fff;
+    border-color: rgba(140,224,255,0.25);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .arc-ctrl-btn:disabled {
+    opacity: 0.28;
+    cursor: default;
+  }
+
+  .arc-ctrl-btn.primary {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+  }
+
+  .arc-pips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .arc-pip {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(245,245,245,0.35);
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  }
+
+  .arc-pip.active {
+    background: #fff;
+    border-color: #fff;
+    transform: scale(1.08);
   }
 
   .arc-footer-meta {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-size: 11px;
-    color: #aaa;
-    padding: 0.35rem 0;
-    border-top: 0.5px solid #e0e0e0;
-    margin-top: 3rem;
-    font-family: Georgia, serif;
-    letter-spacing: 0.05em;
+    gap: 1rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,245,245,0.34);
+    padding-top: 1.4rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--line);
   }
 
-  @media (max-width: 600px) {
-    .arc-article { flex-direction: column; gap: 0.75rem; }
-    .arc-numeral { font-size: 2.5rem; text-align: left; }
-    .arc-vline { display: none; }
+  @media (max-width: 920px) {
+    .arc-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .arc-nav {
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .arc-nav-label {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .arc-inner {
+      padding: 1rem 0.9rem 3rem;
+    }
+
+    .arc-hero {
+      min-height: 28vh;
+      padding: 2rem 0 2.25rem;
+    }
+
+    .arc-meta {
+      grid-template-columns: 1fr;
+    }
+
+    .arc-meta-item {
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .arc-meta-item:last-child {
+      border-bottom: none;
+    }
+
+    .arc-stage {
+      padding: 1rem;
+      border-radius: 22px;
+    }
+
+    .arc-article {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .arc-numeral {
+      text-align: left;
+      min-width: auto;
+    }
+
+    .arc-vline {
+      display: none;
+    }
+
+    .arc-controls {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .arc-pips {
+      order: -1;
+    }
+
+    .arc-footer-meta {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
   }
 `;
+
 const toRoman = (n: number): string => {
-  const map = ["I","II","III","IV","V","VI","VII","VIII","IX","X"];
+  const map = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
   return map[n] || String(n + 1);
 };
+
 export default function Arcadia() {
   const [index, setIndex] = useState(0);
   const bodyRef = useRef<HTMLDivElement>(null);
-  const section = sections[index];
- 
+  const section = useMemo(() => sections[index], [index]);
+
   const goTo = (i: number) => {
     setIndex(i);
-    setTimeout(() => {
-      if (bodyRef.current) bodyRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.setTimeout(() => {
+      bodyRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
   };
-
-  
 
   return (
     <>
       <style>{styles}</style>
       <div className="arc-paper">
         <div className="arc-inner">
-
-          {/* Back to nav */}
-          <Link to="/" className="arc-back">← Arcadian World</Link>
-
-          {/* Masthead */}
-          <div className="arc-masthead">
-            <div className="arc-flag">The Arcadian Record</div>
-          </div>
-          <div className="arc-meta">
-            <span>Code-L Dispatch · Chapter Archive</span>
-            <span>Arcadia · World Documentation</span>
-            <span>All Frames Recorded</span>
-          </div>
-
-          {/* Section label */}
-          <div className="arc-section-rule">
-            <span>Arcadia — World Guide</span>
-          </div>
-
-          {/* Chapter nav */}
-          <nav className="arc-nav">
-            {sections.map((sec, i) => (
-              <button
-                key={i}
-                className={`arc-nav-btn ${i === index ? "active" : ""}`}
-                onClick={() => goTo(i)}
-              >
-                {sec.title}
-              </button>
-            ))}
-          </nav>
-
-          {/* Article */}
-          <div className="arc-article" key={index} ref={bodyRef}>
-            <div className="arc-numeral">{toRoman(index)}</div>
-            <div className="arc-vline" />
-            <div className="arc-body">
-              <div className="arc-kicker">{section.kicker}</div>
-              <h1 className="arc-headline">{section.title}</h1>
-              <div className="arc-rule" />
-
-              <div className="arc-body-text">
-                {section.text.map((line, i) => (
-                  <p key={i}>{line}</p>
-                ))}
-              </div>
-
-              {section.isLast && (
-                <Link to="/codeLphase1" className="arc-cta">
-                  Enter Code-L: Phase 1 →
-                </Link>
-              )}
-
-              <p className="arc-signal">/// Signal Stable · Code-L Active ///</p>
-
-              {/* Controls */}
-              <div className="arc-controls">
-                <button
-                  className="arc-ctrl-btn"
-                  onClick={() => goTo(Math.max(0, index - 1))}
-                  disabled={index === 0}
-                >
-                  ← Previous
-                </button>
-
-                <div className="arc-pips">
-                  {sections.map((_, i) => (
-                    <div
-                      key={i}
-                      className={`arc-pip ${i === index ? "active" : ""}`}
-                      onClick={() => goTo(i)}
-                    />
-                  ))}
-                </div>
-
-                <button
-                  className={`arc-ctrl-btn ${index < sections.length - 1 ? "primary" : ""}`}
-                  onClick={() => goTo(Math.min(sections.length - 1, index + 1))}
-                  disabled={index === sections.length - 1}
-                >
-                  Next →
-                </button>
-              </div>
+          <div className="arc-topbar">
+            <Link to="/" className="arc-back">← Arcadian World</Link>
+            <div className="arc-chip">
+              <span className="arc-chip-dot" />
+              Code-L Chapter One
             </div>
+          </div>
+
+          <header className="arc-hero">
+            <div>
+              <div className="arc-flag">The Arcadian Record</div>
+           
+            </div>
+          </header>
+
+          
+
+          <div className="arc-layout">
+            <nav className="arc-nav" aria-label="Chapter sections">
+              <div className="arc-nav-label">Sections</div>
+              {sections.map((sec, i) => (
+                <button
+                  key={i}
+                  className={`arc-nav-btn ${i === index ? "active" : ""}`}
+                  onClick={() => goTo(i)}
+                  type="button"
+                >
+                  {sec.title}
+                </button>
+              ))}
+            </nav>
+
+            <main className="arc-stage">
+              <article className="arc-article" key={index} ref={bodyRef}>
+                <div className="arc-numeral">{toRoman(index)}</div>
+                <div className="arc-vline" />
+                <div className="arc-body">
+                  <div className="arc-kicker">{section.kicker}</div>
+                  <h1 className="arc-headline">{section.title}</h1>
+                  <div className="arc-rule" />
+
+                  <div className="arc-body-text">
+                    {section.text.map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))}
+                  </div>
+
+                  {section.isLast && (
+                    <Link to="/codeLphase1" className="arc-cta">
+                      Enter Code-L: Phase 1 →
+                    </Link>
+                  )}
+
+                  <p className="arc-signal">/// Signal Stable · Code-L Active ///</p>
+
+                  <div className="arc-controls">
+                    <button
+                      className="arc-ctrl-btn"
+                      onClick={() => goTo(Math.max(0, index - 1))}
+                      disabled={index === 0}
+                      type="button"
+                    >
+                      ← Previous
+                    </button>
+
+                    <div className="arc-pips" aria-label="Section dots">
+                      {sections.map((_, i) => (
+                        <button
+                          key={i}
+                          className={`arc-pip ${i === index ? "active" : ""}`}
+                          onClick={() => goTo(i)}
+                          type="button"
+                          aria-label={`Go to section ${i + 1}`}
+                        />
+                      ))}
+                    </div>
+
+                    <button
+                      className={`arc-ctrl-btn ${index < sections.length - 1 ? "primary" : ""}`}
+                      onClick={() => goTo(Math.min(sections.length - 1, index + 1))}
+                      disabled={index === sections.length - 1}
+                      type="button"
+                    >
+                      Next →
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </main>
           </div>
 
           <div className="arc-footer-meta">
             <span>Elysian Code</span>
-            <span>· · ·</span>
             <span>All worlds connected</span>
+            <span>Arcadia Standard Time</span>
           </div>
-
         </div>
       </div>
     </>
