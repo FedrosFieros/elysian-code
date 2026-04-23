@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import type React from "react";
 
 type Status = "live" | "soon" | "planned";
 
@@ -12,106 +13,110 @@ type Project = {
   status: Status;
   numeral: string;
   phase: string;
+  primary?: boolean;
 };
 
-const foundation: Project[] = [
+const primaryBranches: Project[] = [
   {
-    kicker: "Arcadia",
-    title: "Foundation",
-    headline: "An Autonomous 3D Planet Shaped by Conscious Beings",
+    kicker: "Branch I",
+    title: "Arcadia",
+    headline: "A 3D Virtual Planet for Digital Residents",
     subtitle:
-      "Resided by Arcadians, whose body remains static until a conscious being connects with them. Arcadian Records capture the mythos Code-L created by the people.",
+      "Arcadians move through Arcadia as digital residents. They remain static until a conscious player connects, making an accessible infrastructure for the world to come alive only through participation.",
     path: "/elworld",
     status: "live",
     numeral: "I",
-    phase: "World-building",
+    phase: "Arcadia",
+    primary: true,
   },
   {
-    kicker: "Code-L Phase 1",
-    title: "Phase 1",
-    headline: "Ahriman's Cave: Where Every Arcadian First Spawns",
+    kicker: "Elly's Code",
+    title: "Elly's Code",
+    headline: "An Interactive Musical in the Mythos",
     subtitle:
-      "Initially every Arcadian emerges inside a 3D digital cave, with only few at a time able to escape out to the rest of the world.",
-    path: "/codeLphase1",
+      "A narrative performance that unfolds in real time, revealing the Cave, the escape, the sacrifice, and the transformation at the heart of Code-L.",
+    path: "/ellyscode",
     status: "live",
     numeral: "II",
-    phase: "Lore",
+    phase: "Musical",
+    primary: true,
   },
   {
-    title: "June 1st",
-    kicker: "Code-L Phase 2 - The Escape: June 1st",
-    headline: "Ellys Breaks the Door, Pays With His Life",
+    kicker: "Elco",
+    title: "Comic Books",
+    headline: "The Serialized Mythos Chapters",
     subtitle:
-      "Ellys breaks into the cave, but Lady Dopamina traps and kills him. In his sacrifice he opens the door for every prisoner to escape.",
-    path: "/CodeLPhase2",
+      "A parallel storyline told through comic books, expanding the universe frame by frame and revealing the deeper chapters of the myth.",
+    path: "/comics",
     status: "live",
     numeral: "III",
-    phase: "Narrative",
+    phase: "Comics",
+    primary: true,
   },
 ];
 
-const experiences: Project[] = [
+const furtherReading: Project[] = [
+  {
+    title: "The Cave",
+    kicker: "Metaphysical Experiment",
+    headline: "A Living Threshold Under Development by ElCode",
+    subtitle:
+      "The Cave is an entry point into Arcadia and a conceptual experiment about presence, participation, and the conditions under which the mythos becomes active.",
+    path: "/codeLphase1",
+    status: "live",
+    numeral: "IV",
+    phase: "Lore",
+  },
   {
     title: "Characters",
     kicker: "Mythology · Characters",
-    headline: "The 12 Entities Who Built This World",
+    headline: "The 12 Entities Shaping the World",
     subtitle:
-      "Real-time influencing mythical figures — characters who operate at the intersection of code and consciousness, shaping Arcadia from the inside.",
+      "A cast of mythical figures operating at the intersection of code and consciousness, shaping the mythos from within.",
     path: "/characters",
     status: "live",
-    numeral: "IV",
+    numeral: "V",
     phase: "Mythology",
   },
   {
-    headline: "ELSPARK",
+    title: "ELSPARK",
     kicker: "Digital Park",
-    title: "The Decentralised Sanctuary That Grants Immortality",
+    headline: "A Sanctuary Beyond the Cave",
     subtitle:
-      "A decentralised social digital park, safe from Ahriman's wolves. Players granted shelter — and when an ELSPARK player dies, they respawn as a new version.",
+      "A decentralised social digital park where players gather, persist, and respawn as versions of themselves.",
     path: "/elspark",
     status: "live",
-    numeral: "V",
-    phase: "Platform",
-  },
-  {
-    headline: "Elly's Code",
-    title: "Musical",
-    kicker: "An Interactive Musical exploring the prequel",
-    subtitle:
-      "Players experience events in real-time — watching Ellys escape The Cave, his journey to ELSPARK, his death, his resurrection as Ellysv1.",
-    path: "/ellyscode",
-    status: "live",
     numeral: "VI",
-    phase: "Experience",
+    phase: "Platform",
   },
   {
     title: "meta-metamorphosis",
     kicker: "Ritual",
-    headline: "From Caterpillar to White Moth: An Initiation Game",
+    headline: "An Initiation Game of Transformation",
     subtitle:
-      "To gain immortality, the conscious player plays through an interactive transformation — caterpillar to white moth, into a final symbol determined by play.",
+      "A symbolic journey from caterpillar to white moth, where each playthrough becomes part of the mythic becoming.",
     path: "/metametamorphosis",
     status: "live",
     numeral: "VII",
     phase: "Game",
   },
   {
-    headline: "ELSPARKTV",
-    kicker: "Regular Programming",
-    title: "Original Programming From Arcadia's Broadcast Network",
+    title: "ELSPARKTV",
+    kicker: "Broadcast",
+    headline: "Original Programming From Arcadia's Signal Layer",
     subtitle:
-      "A curated digital platform for original shows produced by ELTV — pairing creatives across different fields to create shows, live performances, and experimental media.",
+      "A curated broadcast platform for shows, live performances, and experimental media from the wider universe.",
     path: "/elspark-tv",
     status: "live",
     numeral: "VIII",
     phase: "Media",
   },
   {
-    headline: "ELCA",
-    title: "Theatre",
-    kicker: "Live Theatre Festival, First Edition June 5th",
+    title: "ELCA",
+    kicker: "Live Theatre Festival",
+    headline: "A Performance Chapter Coming Into View",
     subtitle:
-      "Broadcasted from ELSPARK TV. A live theatre festival coming to the platform.",
+      "A theatrical extension of the mythos, broadcast through the network and staged as a live experience.",
     path: "/elworld",
     status: "soon",
     numeral: "IX",
@@ -120,31 +125,31 @@ const experiences: Project[] = [
   {
     title: "ElCave",
     kicker: "Exhibition",
-    headline: "One Visitor, Twenty Minutes, One Ritual on Earth",
+    headline: "A One-Visitor Ritual on Earth",
     subtitle:
-      "An experiential ritualistic private exhibition — only one person at a time for 20 minutes.",
+      "An intimate physical installation designed as a private, time-bound ritual experience.",
     path: "/elworld",
     status: "soon",
     numeral: "X",
     phase: "IRL",
   },
   {
-    kicker: "Elcode",
-    title: "Infrastructure",
-    headline: "The Economic Engine Funding Arcadia's Existence",
+    title: "Elcode",
+    kicker: "Infrastructure",
+    headline: "The Engine Funding the Mythos",
     subtitle:
-      "Builds customised platforms for independent entrepreneurs. Profit sustains ELSPARK (20%), ELTV (20%), ElCare (10%), with 50% shared among core team.",
+      "Builds customised platforms and sustains the wider project through production, services, and creative infrastructure.",
     path: "/elcode-updates",
     status: "planned",
     numeral: "XI",
     phase: "Business",
   },
   {
-    kicker: "ELTV",
-    title: "Production",
+    title: "ELTV",
+    kicker: "Production",
     headline: "A Media Network Connecting Creatives Across Europe",
     subtitle:
-      "Shows, skits, live festivals, music, and a general cultural tsunami — produced in-house and broadcast on ELSPARK TV.",
+      "Shows, skits, live festivals, music, and cultural production made in-house for the wider universe.",
     path: "/eltv",
     status: "planned",
     numeral: "XII",
@@ -212,7 +217,7 @@ const css = `
   }
 
   .pmo-masthead {
-    min-height: 66vh;
+    min-height: 72vh;
     display: grid;
     place-items: center;
     text-align: center;
@@ -262,14 +267,14 @@ const css = `
     line-height: 0.95;
     font-weight: 700;
     letter-spacing: -0.04em;
-    max-width: 12ch;
+    max-width: 13ch;
     margin: 0 auto;
     text-wrap: balance;
     text-shadow: 0 0 24px rgba(255,255,255,0.05);
   }
 
   .pmo-tagline {
-    max-width: 58ch;
+    max-width: 60ch;
     margin: 1.3rem auto 0;
     font-size: clamp(1rem, 2vw, 1.15rem);
     line-height: 1.6;
@@ -278,7 +283,7 @@ const css = `
 
   .pmo-statsbar {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     max-width: 1100px;
     margin: 0 auto;
     border-top: 1px solid var(--line);
@@ -345,6 +350,12 @@ const css = `
     letter-spacing: 0.08em;
   }
 
+  .pmo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.95rem;
+  }
+
   .pmo-list {
     display: grid;
     grid-template-columns: 1fr;
@@ -374,6 +385,7 @@ const css = `
       background 0.35s ease,
       opacity 0.55s ease;
     overflow: hidden;
+    min-height: 260px;
   }
 
   .pmo-card::before {
@@ -403,7 +415,7 @@ const css = `
   .pmo-card:hover::before { opacity: 1; }
 
   .pmo-card-inactive {
-    opacity: 0.76;
+    opacity: 0.78;
     cursor: default;
   }
 
@@ -473,17 +485,17 @@ const css = `
 
   .pmo-card-title {
     font-family: "Playfair Display", serif;
-    font-size: clamp(1.45rem, 4vw, 2.25rem);
+    font-size: clamp(1.45rem, 4vw, 2.05rem);
     line-height: 1.1;
     font-weight: 700;
     letter-spacing: -0.03em;
     margin-bottom: 0.65rem;
-    max-width: 14ch;
+    max-width: 16ch;
   }
 
   .pmo-card-desc {
     max-width: 70ch;
-    font-size: clamp(0.98rem, 2vw, 1.08rem);
+    font-size: clamp(0.98rem, 2vw, 1.04rem);
     line-height: 1.65;
     color: var(--muted);
   }
@@ -519,9 +531,35 @@ const css = `
     font-size: 0.7rem;
   }
 
-  @media (max-width: 900px) {
+  .pmo-readmore {
+    margin-top: 2rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.03);
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .pmo-readmore a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(140,224,255,0.35);
+  }
+
+  @media (max-width: 980px) {
+    .pmo-grid {
+      grid-template-columns: 1fr;
+    }
     .pmo-statsbar {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
+    }
+    .pmo-stat {
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+    }
+    .pmo-stat:last-child {
+      border-bottom: none;
     }
     .pmo-section-head {
       align-items: start;
@@ -534,7 +572,7 @@ const css = `
 
   @media (max-width: 640px) {
     .pmo-masthead {
-      min-height: 58vh;
+      min-height: 60vh;
       padding: 4.5rem 1rem 2.5rem;
     }
     .pmo-flag {
@@ -549,6 +587,7 @@ const css = `
     .pmo-card {
       padding: 1.15rem;
       border-radius: 18px;
+      min-height: 240px;
     }
     .pmo-card-title {
       max-width: none;
@@ -560,7 +599,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
   const sc = statusConfig[project.status];
-  const isActive = project.status === "live";
+  const isActive = project.status === "live" && project.primary !== false;
 
   useEffect(() => {
     const el = ref.current;
@@ -631,7 +670,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   );
 }
 
-
 export default function LandingNav() {
   return (
     <>
@@ -640,46 +678,38 @@ export default function LandingNav() {
         <div className="pmo-shell">
           <header className="pmo-masthead">
             <div>
-              <div className="pmo-kicker">
-                <span className="pmo-kicker-dot" />
-                Launch Preview
-              </div>
-              <div className="pmo-flag">Arcadia. Code-L. ELSPARK.</div>
-              <div className="pmo-tagline">
-                A cinematic planetary system where mythology, music, code, and transformation are presented as one world.
+            
+              <div className="pmo-flag">Code-L</div>
+              <div className="pmo-tagline">One living mythos
+        
+                <li>Three branches to unfold through</li> A world where scripted narrative, conscious actions, and transformation unfold across a 3D digital planet, performance, and page.
               </div>
             </div>
           </header>
 
-
           <main className="pmo-body">
             <section className="pmo-section">
               <div className="pmo-section-head">
-                <h2 className="pmo-section-title">The First Acts</h2>
-                <span className="pmo-section-desc">Origin · Lore · Revelation</span>
+                <h2 className="pmo-section-title">The Three Branches</h2>
+                <span className="pmo-section-desc">Primary entry points</span>
               </div>
-              <div className="pmo-list">
-                {foundation.map((p, i) => (
+
+              <div className="pmo-grid">
+                {primaryBranches.map((p, i) => (
                   <ProjectCard key={p.title} project={p} index={i} />
                 ))}
               </div>
+
+              <div className="pmo-readmore">
+                Code-L is a metaphysical experiment under development by ElCode. The Cave functions as an entry for Arcadians into Arcadia, while the wider story continues through the musical and the comics. <li>There is one hypothesis we aim to test.</li><span> Can consciousness access the world of Arcadia without the physical human body? We built the infrastructure to test it.</span>
+              </div>
             </section>
 
-            <section className="pmo-section">
-              <div className="pmo-section-head">
-                <h2 className="pmo-section-title">The Living Worlds</h2>
-                <span className="pmo-section-desc">Platform · Ritual · Broadcast</span>
-              </div>
-              <div className="pmo-list">
-                {experiences.map((p, i) => (
-                  <ProjectCard key={p.title} project={p} index={i + foundation.length} />
-                ))}
-              </div>
-            </section>
+           
           </main>
 
           <footer className="pmo-footer">
-            <span>ELCODE / Arcadia launch system</span>
+            <span>ELCODE / Mythos Code-L</span>
             <span>Built for story, stage, and signal</span>
           </footer>
         </div>
