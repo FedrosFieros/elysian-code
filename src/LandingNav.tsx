@@ -54,7 +54,7 @@ const primaryBranches: Project[] = [
     primary: true,
   },
 ];
-
+/*
 const furtherReading: Project[] = [
   {
     title: "The Cave",
@@ -155,7 +155,7 @@ const furtherReading: Project[] = [
     numeral: "XII",
     phase: "Media",
   },
-];
+];*/
 
 const statusConfig: Record<Status, { label: string; color: string; bg: string; dot: string }> = {
   live: { label: "Live", color: "#d9d9d9", bg: "rgba(255,255,255,0.06)", dot: "#8ce0ff" },
