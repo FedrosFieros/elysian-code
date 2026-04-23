@@ -48,7 +48,7 @@ const primaryBranches: Project[] = [
     subtitle:
       "A parallel storyline told through comic books, expanding the universe frame by frame and revealing the deeper chapters of the myth.",
     path: "/comics",
-    status: "live",
+    status: "soon",
     numeral: "III",
     phase: "Comics",
     primary: true,
