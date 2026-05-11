@@ -18,7 +18,7 @@ type Project = {
 
 const primaryBranches: Project[] = [
   {
-    kicker: "Branch I",
+    kicker: "A 3D Virtual Planet",
     title: "Arcadia",
     headline: "A 3D Virtual Planet for Digital Residents",
     subtitle:
@@ -30,7 +30,7 @@ const primaryBranches: Project[] = [
     primary: true,
   },
   {
-    kicker: "Elly's Code",
+    kicker: "Musical unfolding inside the mythos and Arcadia.",
     title: "Elly's Code",
     headline: "An Interactive Musical in the Mythos",
     subtitle:
@@ -38,7 +38,7 @@ const primaryBranches: Project[] = [
     path: "/ellyscode",
     status: "live",
     numeral: "II",
-    phase: "Musical",
+    phase: "Elly's Code",
     primary: true,
   },
   {
@@ -50,7 +50,7 @@ const primaryBranches: Project[] = [
     path: "/comics",
     status: "soon",
     numeral: "III",
-    phase: "Comics",
+    phase: "Comic Series",
     primary: true,
   },
 ];
@@ -157,10 +157,28 @@ const furtherReading: Project[] = [
   },
 ];*/
 
-const statusConfig: Record<Status, { label: string; color: string; bg: string; dot: string }> = {
-  live: { label: "Live", color: "#d9d9d9", bg: "rgba(255,255,255,0.06)", dot: "#8ce0ff" },
-  soon: { label: "Coming Soon", color: "#f0d7a1", bg: "rgba(240,215,161,0.08)", dot: "#f0d7a1" },
-  planned: { label: "Planned", color: "#b0b0b0", bg: "rgba(255,255,255,0.04)", dot: "#b0b0b0" },
+const statusConfig: Record<
+  Status,
+  { label: string; color: string; bg: string; dot: string }
+> = {
+  live: {
+    label: "CLICK",
+    color: "#d9d9d9",
+    bg: "rgba(0, 0, 0, 0.06)",
+    dot: "#9ca0ff",
+  },
+  soon: {
+    label: "Coming Soon",
+    color: "#f0d7a1",
+    bg: "rgba(240,215,161,0.08)",
+    dot: "#f0d7a1",
+  },
+  planned: {
+    label: "Planned",
+    color: "#b0b0b0",
+    bg: "rgba(255,255,255,0.04)",
+    dot: "#b0b0b0",
+  },
 };
 
 const css = `
@@ -634,7 +652,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <div className="pmo-card-top">
         <div className="pmo-card-meta-left">
           <span className="pmo-card-num">{project.numeral}</span>
-          <span className="pmo-card-phase">{project.phase}</span>
+          <span className="pmo-card-title">{project.phase}</span>
         </div>
         <span className="pmo-status">
           <span className="pmo-status-dot" />
@@ -642,11 +660,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </span>
       </div>
 
-      <div className="pmo-card-kicker">{project.kicker}</div>
+      <div className="pmo-card-desc">{project.kicker}</div>
       <div className="pmo-card-title">{project.headline}</div>
       <div className="pmo-card-desc">{project.subtitle}</div>
 
-      {isActive && <span className="pmo-card-arrow">Enter world →</span>}
+      {isActive && <span className="pmo-card-arrow">Enter </span>}
     </>
   );
 
@@ -678,19 +696,27 @@ export default function LandingNav() {
         <div className="pmo-shell">
           <header className="pmo-masthead">
             <div>
-            
-              <div className="pmo-flag">Code-L</div>
-              <div className="pmo-tagline">One living mythos
-        
-                <li>Three branches to unfold through</li> A world where scripted narrative, conscious actions, and transformation unfold across a 3D digital planet, performance, and page.
+              <img
+                src="/Elcothroneimage.png"
+                alt="tv placeholder"
+                className="el-media"
+              />
+              <div className="pmo-flag">ELCA ELCO</div>
+              <div className="pmo-tagline">
+                Welcome to my EL-OS. A digital park to capture the meta-mythos of Code-L. 
               </div>
+            
             </div>
+            <li className="text-xl">
+                Using EL-OS for digital theatre through attractions, inviting you to step inside the mythos and explore the lore. 
+                
+              </li>
           </header>
-
+       
           <main className="pmo-body">
             <section className="pmo-section">
               <div className="pmo-section-head">
-                <h2 className="pmo-section-title">The Three Branches</h2>
+                <h2 className="pmo-section-title">Attractions</h2>
                 <span className="pmo-section-desc">Primary entry points</span>
               </div>
 
@@ -701,11 +727,17 @@ export default function LandingNav() {
               </div>
 
               <div className="pmo-readmore">
-                Code-L is a metaphysical experiment under development by ElCode. The Cave functions as an entry for Arcadians into Arcadia, while the wider story continues through the musical and the comics. <li>There is one hypothesis we aim to test.</li><span> Can consciousness access the world of Arcadia without the physical human body? We built the infrastructure to test it.</span>
+                Code-L is a metaphysical experiment under development by ElCode.
+                The Cave functions as an entry for Arcadians into Arcadia, while
+                the wider story continues through the musical and the comics.{" "}
+                <li>There is one hypothesis we aim to test.</li>
+                <span>
+                  {" "}
+                  Can consciousness access the world of Arcadia without the
+                  physical human body? We built the infrastructure to test it.
+                </span>
               </div>
             </section>
-
-           
           </main>
 
           <footer className="pmo-footer">
